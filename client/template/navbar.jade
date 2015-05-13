@@ -1,0 +1,24 @@
+template(name="navbar")
+  .navbar-codemy
+    .container
+      ul
+        .pull-left
+          li
+            a.logo(href="#")
+                | CODEMY
+        .pull-right
+          li.hidden-tn
+            a(href="#")
+              i.li_search
+              | Search
+          li
+            a(href="#")
+              i.li_settings
+              | Sign-In
+  .navbar-codemy-sub.visible-tn.hidden-xxs.hidden-xs
+    .container
+      ul
+        li.visible-tn
+          a(href="#")
+            //i.li_search
+            | Search

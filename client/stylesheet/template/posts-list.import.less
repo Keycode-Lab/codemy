@@ -1,0 +1,36 @@
+@posts-sort-height : 40px;
+
+ul.posts-sort {
+  height: @posts-sort-height;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid @gray-lighter;
+}
+
+ul.posts-sort li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.posts-sort li a {
+  display: inline-block;
+  padding: 0 10px;
+  line-height: @posts-sort-height;
+  height: @posts-sort-height;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.9em;
+  color: @black;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &.active {
+    color: @red;
+    border-bottom: 3px solid @red;
+  }
+}
+
+ul.posts-list {
+  .strip-list;
+}
+

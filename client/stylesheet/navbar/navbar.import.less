@@ -1,0 +1,78 @@
+@navbar-height          : 50px;
+@navbar-sub-height      : 25px;
+
+@navbar-background      : @gray-lighter;
+@navbar-sub-background  : @gray-lightest;
+
+@navbar-link            : @black;
+
+.navbar-codemy {
+  display: block;
+  width: 100%;
+  height: @navbar-height;
+  background-color: @navbar-background;
+  overflow: hidden; // Fixes pull-right problems
+}
+
+.navbar-codemy ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%
+}
+
+.navbar-codemy ul li {
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+}
+
+.navbar-codemy ul li a {
+  display: inline-block;
+  line-height: @navbar-height;
+  color: @navbar-link;
+  text-decoration: none;
+  padding: 0 10px;
+  .transition(100ms ease-in-out all);
+  .uppercase;
+  .letter-spacing(0.1em);
+  i {
+    vertical-align: middle;
+    font-size: 1.1em;
+  }
+  &:hover {
+  }
+}
+
+.navbar-codemy ul li a.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  .letter-spacing(0);
+}
+
+
+
+// Navbar Sub
+//======================================
+
+.navbar-codemy-sub {
+  display: block;
+  width: 100%;
+  height: @navbar-sub-height;
+  background: @navbar-sub-background;
+}
+
+.navbar-codemy-sub ul {
+  list-style: none;
+  padding: 0 ;
+  margin: 0;
+}
+
+.navbar-codemy-sub ul li a {
+  line-height: @navbar-sub-height;
+  padding: 0 10px;
+  color: @navbar-link;
+  text-decoration: none;
+}
