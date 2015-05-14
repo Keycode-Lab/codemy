@@ -1,0 +1,21 @@
+template(name="dropdownAccount")
+  ul.dropdown-menu.dropdown-menu-right.account(role="menu")
+    li
+      a(href="")
+        | {{currentUser.profile.username}}
+    li
+      a(href="")
+        i.icon.coffee
+        | 123
+    li
+      a(href="")
+        | Account Info
+    li.divider
+    li
+      a#signout(href="")
+        | Sign Out
+
+template(name="dropdownNotification")
+  ul.dropdown-menu.dropdown-menu-right.notification(role="menu")
+    li
+      a(href="")

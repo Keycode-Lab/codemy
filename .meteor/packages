@@ -8,6 +8,10 @@ meteor-platform
 autopublish
 insecure
 
+# Accounts
+accounts-base
+accounts-password
+
 # Flow-Router/Layout
 meteorhacks:flow-router
 meteorhacks:flow-layout
@@ -26,3 +30,4 @@ fortawesome:fontawesome
 #https://github.com/sortegam/meteor-typicons/blob/master/typicons/css/typicons.css
 sortegam:typicons
 semantic:ui-icon
+

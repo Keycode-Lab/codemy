@@ -1,20 +1,37 @@
+//======================================
+// Navbar Variables
+//======================================
+
 @navbar-height          : 50px;
-@navbar-sub-height      : 25px;
+@navbar-sub-height      : 30px;
 
-@navbar-background      : @gray-lighter;
-@navbar-sub-background  : @gray-lightest;
+@navbar-background      : @dark; //@gray-lighter;
+@navbar-sub-background  : @white; //@gray-lightest;
 
-@navbar-link            : @black;
+@navbar-link            : @white;
+@navbar-sub-link        : @black;
+@navbar-hover           : darken(@navbar-background, 5%);
+@navbar-sub-hover       : darken(@navbar-sub-background, 5%);
+
+
+//======================================
+// Navbar Main
+//======================================
+
+.navbar-codemy,
+.navbar-codemy-sub {
+  font-family: 'Montserrat', 'Proxima Nova Alt', Sans-serif;
+  border-bottom: 1px solid @gray-lighter;
+}
 
 .navbar-codemy {
   display: block;
   width: 100%;
   height: @navbar-height;
   background-color: @navbar-background;
-  overflow: hidden; // Fixes pull-right problems
 }
 
-.navbar-codemy ul {
+.navbar-codemy ul.navbar {
   display: block;
   list-style: none;
   padding: 0;
@@ -23,37 +40,81 @@
   width: 100%
 }
 
-.navbar-codemy ul li {
+.navbar-codemy ul.navbar > .pull-left > li,
+.navbar-codemy ul.navbar > .pull-right > li {
   display: inline-block;
-  height: 100%;
+  height: @navbar-height;
+  line-height: @navbar-height;
   margin: 0;
 }
 
-.navbar-codemy ul li a {
-  display: inline-block;
-  line-height: @navbar-height;
+.navbar-codemy ul.navbar > .pull-left > li > a,
+.navbar-codemy ul.navbar > .pull-right > li > a {
+  display: block;
+  height: 100%;
+  margin-top: -2px; // Pull Up
   color: @navbar-link;
   text-decoration: none;
   padding: 0 10px;
-  .transition(100ms ease-in-out all);
   .uppercase;
-  .letter-spacing(0.1em);
   i {
+    display: inline-block;
     vertical-align: middle;
-    font-size: 1.1em;
+    font-size: 1.3em;
   }
   &:hover {
+    background: @navbar-hover;
   }
 }
 
-.navbar-codemy ul li a.logo {
-  font-size: 1.5em;
+.navbar-codemy ul.navbar li > a.logo {
+  font-size: 1.3em;
   font-weight: bold;
-  .letter-spacing(0);
+  .letter-spacing(-0.05em);
 }
 
 
+.navbar-codemy .profile-wrapper {
+  display: inline-block;
+  background: darken(@navbar-background, 10%);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  vertical-align: bottom;
+  //vertical-align: middle;
+  margin-bottom: 7.5px;
+  overflow: hidden;
+  box-shadow: 0 0 0 3px darken(@navbar-background, 10%) ;
+  img {
+    width: 100%;
+    margin-left: 50%;
+    margin-top:  50%;
+    .translate(-50%, -50%);
+  }
+}
 
+        //==============================
+        // Dropdown -- Navbar Main
+        //==============================
+        .dropdown-menu.account,
+        .dropdown-menu.notification {
+          margin-top: -10px;
+        }
+        // .dropdown-menu.account:before {
+        //   position: absolute;
+        //   top: -7.5px;
+        //   right: 7.5px;
+        //   content: '';
+        //   z-index: 11;
+        //   width: 0;
+        //   height: 0;
+        //   border-left: 10px solid transparent;
+        //   border-right: 10px solid transparent;
+        //   border-bottom: 10px solid @white;
+        // }
+
+
+//======================================
 // Navbar Sub
 //======================================
 
@@ -68,11 +129,37 @@
   list-style: none;
   padding: 0 ;
   margin: 0;
+  height: @navbar-sub-height;
+}
+
+.navbar-codemy-sub li {
+  display: inline-block;
+  height: @navbar-sub-height;
 }
 
 .navbar-codemy-sub ul li a {
+  display: block;
   line-height: @navbar-sub-height;
+  height: @navbar-sub-height;
   padding: 0 10px;
-  color: @navbar-link;
+  color: @navbar-sub-link;
   text-decoration: none;
+  .uppercase;
+  letter-spacing: 0.05em;
+  i {
+    vertical-align: middle;
+  }
+  &:hover {
+    background: @navbar-sub-hover;
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .navbar-codemy-sub li {
+    width: 33.33%;
+  }
+  .navbar-codemy-sub ul li a {
+    text-transform: none;
+    letter-spacing: 0;
+  }
 }
