@@ -1,6 +1,11 @@
 template(name="layout")
-  +Template.dynamic template=top
-  +Template.dynamic template=main
+  #wrapper
+    #canvas
+      #inner-wrapper
+        .overlay-black
+        +navbar
+        +Template.dynamic template=main
+      +sidebarNotification
   //- <!-- Modal -->
   //- div.modal.fade#signin-modal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
   //-   .modal-dialog

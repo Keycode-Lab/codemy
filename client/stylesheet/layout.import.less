@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   font-family: 'ProximaNovaAlt', 'Helvetica Neue', Helvetica, Sans-serif;
+  color: @dark;
 
   -webkit-font-smoothing: antialiased !important;
           font-smoothing: antialiased;
@@ -33,4 +34,10 @@ html, body {
 
 .badge-red {
   background-color: @red;
+}
+
+@media screen and (max-width: @screen-xs) {
+  html, body {
+    font-size: 12px;
+  }
 }

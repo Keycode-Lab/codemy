@@ -1,5 +1,5 @@
 Template.navbar.events({
-  // 'click a#signin-go': function () {
-  //   FlowRouter.go('/signin')
-  // },
+  'click a.notification': function () {
+    $('#wrapper').toggleClass('sidebar-right-set');
+  },
 });
