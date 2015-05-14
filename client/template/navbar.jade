@@ -1,24 +1,45 @@
 template(name="navbar")
   .navbar-codemy
     .container
-      ul
+      ul.navbar
         .pull-left
           li
             a.logo(href="{{pathFor '/'}}")
                 | CODEMY
         .pull-right
-          li.hidden-tn
+          li.hidden-tn.hidden-xxs.hidden-xs
             a(href="#")
-              i.li_search
+              //-i.icon.search
               | Search
-          li
-            a(href="{{pathFor 'signin'}}")
-              i.li_settings
-              | Sign-In
-  .navbar-codemy-sub.visible-tn.hidden-xxs.hidden-xs
+          if currentUser
+            li.dropdown
+              a.dropdown-toggle(href="" data-toggle="dropdown" aria-expanded="true")
+                span.badge.badge-red
+                  | 10
+              +dropdownNotification
+            //-li.hidden-tn.hidden-xxs.hidden-xs
+              a(href="")
+                //-i.li_pen
+                | Question
+            li.dropdown
+              a.dropdown-toggle(href="" data-toggle="dropdown" aria-expanded="true")
+                .profile-wrapper
+                  img(src="{{avatar}}")
+                i.fa.fa-chevron-down
+              +dropdownAccount
+          else
+            li
+              a(href="{{pathFor 'signin'}}")
+                i.li_settings
+                | Sign-In
+  .navbar-codemy-sub.visible-xs.hidden-md
     .container
       ul
-        li.visible-tn
+        li
           a(href="#")
-            //i.li_search
+            //-i.li_search.hidden-xxs.hidden-tn
             | Search
+        //-li
+          a(href="#")
+            //-i.li_pen.hidden-xxs.hidden-tn
+            | Question
