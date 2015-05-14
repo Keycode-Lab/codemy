@@ -1,0 +1,21 @@
+template(name="register")
+  div.container
+    h1.accounts-header Register to Codemy
+    form.accounts#registerForm
+      .form-group
+          label(for="register-username") USERNAME
+            //-span.error-account {{errorMessage 'username'}}
+          input.form-control(id="register-username" type="text")
+        .form-group
+          label(for="register-email") EMAIL
+            //-span.error-account {{errorMessage 'email'}}
+          input.form-control(id="register-email" type="email")
+        .form-group
+          label(for="register-password") PASSWORD
+            //-span.error-account {{errorMessage 'password'}}
+          input.form-control(id="register-password" type="password")
+
+        button.btn.btn-block.btn-green.btn-upper(type="submit") Register
+
+      p
+        a(href="{{pathFor 'signin'}}") Already a member? Sign-in!

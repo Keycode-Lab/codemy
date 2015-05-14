@@ -40,6 +40,18 @@ li.question-item .question-meta {
   p {
     display: block;
     margin: 0;
+    span.author {
+      color: @gray-light;
+      strong {
+        color: @black;
+      }
+    }
+    span.comment {
+      color: @gray-light;
+    }
+    span.votes {
+      color: @green;
+    }
   }
 }
 
@@ -48,6 +60,7 @@ li.question-item .answer-count {
   text-align: center;
   float: right;
   margin: 0;
+  color: @gray;
   span.count {
     display: block;
     margin-top: 0;

@@ -1,0 +1,21 @@
+template(name="signin")
+  div.container
+    h1.accounts-header Sign in to Codemy
+    form.accounts#signinForm
+      .form-group
+        label(for="signin-email") EMAIL/USERNAME
+          //-span.error-account {{errorMessage 'email'}}
+        input.form-control(id="signin-user" type="text")
+      .form-group
+        label(for="signin-password") PASSWORD
+          //-span.error-account {{errorMessage 'password'}}
+        input.form-control(id="signin-password" type="password")
+
+      button.btn.btn-block.btn-green.btn-upper(type="submit") Sign In
+
+      p
+        a(href="{{pathFor 'register'}}") Not a member? Register Now!
+      //-p
+        a#facebook-login(href="#")
+          i.fa.fa-facebook
+          | Sign In with Facebook
