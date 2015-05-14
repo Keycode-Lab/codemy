@@ -1,3 +1,4 @@
+arillo:flow-router-helpers@0.1.4
 autopublish@1.0.3
 autoupdate@1.2.1
 base64@1.0.3
@@ -46,7 +47,9 @@ reactive-var@1.0.5
 reload@1.1.3
 retry@1.0.3
 routepolicy@1.0.5
+semantic:ui-icon@1.12.0
 session@1.1.0
+sortegam:typicons@2.0.6
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 templating@1.1.1
