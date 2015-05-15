@@ -1,10 +1,10 @@
 template(name="layout")
   #wrapper
     #canvas
+      +navbar
       #inner-wrapper
         .overlay-black
-        +navbar
-        +Template.dynamic template=main
+        +yield
       +sidebarNotification
   //- <!-- Modal -->
   //- div.modal.fade#signin-modal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")

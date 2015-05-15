@@ -9,3 +9,7 @@ Template.registerHelper('avatar', function () {
     return '/img/avatar.png';
   }
 });
+
+Template.registerHelper('session', function (input) {
+  return Session.get(input);
+});

@@ -48,7 +48,7 @@ Template.register.events({
       } else {
         var currentUser = Meteor.user().profile.username || Meteor.user().profile.name ;
         //throwSuccess('Registration Successful','Welcome ' + currentUser + '!');
-        FlowRouter.go('/'); //Redirect User to homepage
+        Router.go('/'); //Redirect User to homepage
       }
     });
     return false;
