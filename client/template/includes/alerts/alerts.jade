@@ -1,0 +1,21 @@
+//- template(name="alertDialog")
+//-   div.alertDialog(role="alert")
+//-     | Hello
+
+//- template(name="alertsList")
+//-   .alerts
+//-     each alerts
+//-       +alertDialog
+
+template(name="alerts")
+  .alerts
+    each alerts
+      +alert
+
+template(name="alert")
+  div(role="alert" class="alert {{type}}")
+    button.close(type="button" data-dismiss="alert" aria-label="Close")
+      span(aria-hidden="true") &times;
+    h4
+      | {{title}}
+    | {{message}}

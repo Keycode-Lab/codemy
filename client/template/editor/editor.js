@@ -1,3 +1,20 @@
+Template.editor.helpers({
+  previewState: function () {
+    if ( Session.get('previewState') === true ) {
+      return 'off';
+    } else {
+      return 'on';
+    }
+  },
+  previewStateColor: function () {
+    if ( Session.get('previewState') === true ) {
+      return 'btn-red';
+    } else {
+      return 'btn-green';
+    }
+  }
+});
+
 Template.editor.events({
   'keyup #editor-content': function (e) {
     setTimeout(function(){
@@ -11,13 +28,18 @@ Template.editor.events({
     var $editorWrapper = $('.editor-wrapper');
     if ( $editorWrapper.hasClass('show-preview') ) {
       $editorWrapper.removeClass('show-preview');
+      Session.set('previewState', false);
     } else {
       $editorWrapper.addClass('show-preview');
+      Session.set('previewState', true);
     }
   }
 });
 
 Template.editor.onRendered( function () {
+  // Session
+  Session.set('previewState', true);
+
   // Autosize of Content Text Area (this is a plugin)
   $('#editor-content').autosize();
 

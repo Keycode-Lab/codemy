@@ -1,10 +1,32 @@
-form.accounts {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
 h1.accounts-header {
   text-align: center;
   font-weight: bold;
   margin: 1em auto;
+}
+
+form.accounts {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2em;
+  background: @gray-lightest;
+}
+
+form.accounts input {
+  height: 45px;
+  border: 0;
+  .transition(100ms ease-in-out all);
+  .box-shadow-bottom(2px, @gray-lighter);
+  &:focus,
+  &:active {
+    box-shadow: none;
+    border: 0;
+    background: darken(@white, 10%);
+    .box-shadow-bottom(2px, darken(@gray-lighter, 10%));
+  }
+}
+
+form.accounts p {
+  margin-top: 15px;
+  font-weight: 600;
+  .letter-spacing(0.03em);
 }

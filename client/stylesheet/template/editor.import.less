@@ -1,3 +1,10 @@
+.editor-outer {
+  margin-top: 15px;
+  .btn-toolbar {
+    margin-bottom: 10px;
+  }
+}
+
 .editor-wrapper {
   height: 100%;
   min-height: 300px;
@@ -18,12 +25,14 @@
   width: 100%;
   min-height: 100%;
   //background: red;
-  border-right: 1px solid @gray-lighter;
+  //border-right: 1px solid @white;
 
   textarea#editor-content {
     width: 100%;
     min-height: 300px;
     border: 0;
+    border-radius: 3px;
+    padding: 0.5em;
     &:focus {
       border: 0;
     }
@@ -35,15 +44,23 @@
 
 .preview-wrapper {
   .translate(300%);
+  display: none;
   float: left;
   width: 50%;
   min-height: 100%;
   //background: yellow;
   z-index: 11;
+  .preview-inner {
+    background: @white;
+    border-radius: 3px;
+    min-height: 300px;
+    padding: 0.5em;
+  }
 }
 
 .editor-wrapper.show-preview {
   .preview-wrapper {
+    display: block;
     .translate(0);
   }
   .textarea-wrapper {
@@ -61,11 +78,12 @@
 
   .editor-wrapper.show-preview {
     .preview-wrapper {
+      display: block;
       .translate(0);
     }
     .textarea-wrapper {
       border: 0; // Delete border left
-      border-bottom: 1px solid @gray-lighter;
+      //border-bottom: 1px solid @gray-lighter;
       width: 100%;
     }
   }

@@ -10,8 +10,12 @@ template(name="list")
       li
         a(href="")
           | Needs Answer
-      a.btn.btn-sm.btn-green.hidden-tn(href="{{pathFor 'submit'}}" style="float:right;")
-          | 질문하기
+      if currentUser
+        a.btn.btn-sm.btn-green.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
+            | Ask Question
+      else
+        a.btn.btn-sm.btn-green.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
+            | Ask Question
     ul.posts-list
       li.question-item.clearfix
         .profile-wrapper.hidden-tn.hidden-xxs
@@ -49,7 +53,7 @@ template(name="list")
         .question-meta
           h4
             a(href="#")
-              | documentExec으로 paste 대체 어떻게 하나요?
+              | grades[key]값과 grades.key 의 차이에데해 여쭙니다
           p
             span.author
               | by
@@ -80,7 +84,7 @@ template(name="list")
         .question-meta
           h4
             a(href="#")
-              | documentExec으로 paste 대체 어떻게 하나요?
+              | 스크립트 에러.."Uncaught TypeError: Cannot read property 'hasClass' of undefined " 에 관하여..
           p
             span.author
               | by

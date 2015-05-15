@@ -1,0 +1,19 @@
+template(name="editor")
+  .container
+    .editor-outer
+      .row-fluid
+        .btn-toolbar
+          .btn-group
+            button.btn.btn-xs.btn-preview(type="button" class="{{previewStateColor}}")
+              | 미리보기 {{previewState}}
+      .row-fluid
+        .editor-wrapper.clearfix.show-preview
+          .textarea-wrapper
+            label MARKDOWN
+            textarea(id="editor-content")
+          .preview-wrapper
+            label MARKDOWN PREVIEW
+            .preview-inner
+              | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+
+

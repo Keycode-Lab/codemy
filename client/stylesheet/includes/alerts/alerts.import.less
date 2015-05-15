@@ -1,0 +1,61 @@
+@alertHeight : auto;
+
+.alerts {
+  position: fixed;
+  z-index: 9999999999999999999;
+  padding: 10px;
+  top: 0;
+  right: 0px;
+  pointer-events: none;
+  //opacity: 0.9;
+  //width: 100%;
+  height: @alertHeight;
+  line-height: @alertHeight;
+  width: 300px;
+
+
+}
+
+.alert {
+  background: #ffde10;
+}
+
+.alert.show {
+  border-radius: 0px;
+  //clear: both;
+  margin-bottom: 5px;
+  pointer-events: auto;
+
+
+
+  -webkit-animation-name: animSlideElasticRight;
+     -moz-animation-name: animSlideElasticRight;
+          animation-name: animSlideElasticRight;
+
+  -webkit-animation-duration: 250ms;
+     -moz-animation-duration: 250ms;
+          animation-duration: 250ms;
+
+  // -webkit-box-shadow: 0px 4px 0px -2px rgba(0,0,0,0.2);
+  //    -moz-box-shadow: 0px 4px 0px -2px rgba(0,0,0,0.2);
+  //        box-shadow: 0px 4px 0px -2px rgba(0,0,0,0.2);
+}
+
+.alert.hide {
+  -webkit-animation-direction: reverse;
+          animation-direction: reverse;
+  -webkit-animation-duration: 0.25s;
+          animation-duration: 0.25s;
+}
+
+.alert.danger.show {
+  background: @brand-danger !important;
+}
+
+.alert.success.show {
+  background: @brand-success !important;
+}
+
+.alert.info.show {
+  background: @brand-info !important;
+}
