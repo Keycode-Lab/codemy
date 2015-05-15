@@ -27,6 +27,16 @@
   -webkit-box-orient: vertical;
 }
 
+.user-select(@select) {
+  -moz-user-select: @select;
+
+  -webkit-user-select: @select;
+
+  -ms-user-select: @select;
+
+  user-select: @select;
+}
+
 .truncate (@width) {
   width: @width;
   white-space: nowrap;

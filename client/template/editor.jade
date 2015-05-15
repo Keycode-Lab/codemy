@@ -1,10 +1,17 @@
 template(name="editor")
   .container
     .row-fluid
-      .editor-wrapper.clearfix
+      .btn-toolbar
+        .btn-group
+          button.btn.btn-xs.btn-green.btn-preview(type="button")
+            | 미리보기
+    .row-fluid
+      .editor-wrapper.clearfix.show-preview
         .textarea-wrapper
+          label MARKDOWN
           textarea(id="editor-content")
         .preview-wrapper
+          label MARKDOWN PREVIEW
           | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
 
 
