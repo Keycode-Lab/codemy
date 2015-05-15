@@ -1,11 +1,11 @@
 template(name="sidebarNotification")
-  .sidebar.right.notification
+  .sidebar.right.notification(tabindex="-1")
     h2 Notifications
     ul
       li.clearfix
         p.notification-type
           | 댓글
-        a(href="")
+        a(href="" tabindex="-1")
           | documentExec으로 paste 대체 어떻게 하나요?
         p.notification-preview.line-clamp-2
           | documentExec('insertText', false, clipboardData('text/plain'))을 사용해보세요.

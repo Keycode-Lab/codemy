@@ -11,6 +11,14 @@ html, body {
           box-sizing: border-box;
 
   -webkit-overflow-scrolling: touch !important; //Bring back momentum scrolling in Mobile caused by overflow
+
+  .user-select(none);
+  .user-select(text);
+
+  *:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
 }
 
 #wrapper {
