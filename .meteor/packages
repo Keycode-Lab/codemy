@@ -13,9 +13,12 @@ accounts-base
 accounts-password
 
 # Flow-Router/Layout
-meteorhacks:flow-router
-meteorhacks:flow-layout
-arillo:flow-router-helpers
+# meteorhacks:flow-router
+# meteorhacks:flow-layout
+# arillo:flow-router-helpers
+
+# Iron-Router
+iron:router
 
 # Syntax
 mquandalle:jade
@@ -31,3 +34,10 @@ fortawesome:fontawesome
 sortegam:typicons
 semantic:ui-icon
 
+# Autosize Textarea
+copleykj:jquery-autosize
+
+# Markdown packages
+chuangbo:marked
+simple:highlight.js
+simple:markdown-templating    # Use .md files as templates in meteor

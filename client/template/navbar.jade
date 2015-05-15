@@ -12,11 +12,11 @@ template(name="navbar")
               //-i.icon.search
               | Search
           if currentUser
-            li.dropdown
-              a.dropdown-toggle(href="" data-toggle="dropdown" aria-expanded="true")
+            li
+              a.notification(href="#")
                 span.badge.badge-red
                   | 10
-              +dropdownNotification
+            //-  +dropdownNotification
             //-li.hidden-tn.hidden-xxs.hidden-xs
               a(href="")
                 //-i.li_pen

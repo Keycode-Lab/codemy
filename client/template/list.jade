@@ -1,18 +1,80 @@
 template(name="list")
   .container
-    ul.posts-sort.clearfix(style="margin-top: 10px;")
+    ul.posts-sort.clearfix
       li
-        a.active(href="#")
+        a.active(href="")
           | New
       li
-        a(href="#")
+        a(href="")
           | Popular
       li
-        a(href="#")
+        a(href="")
           | Needs Answer
-      a.btn.btn-sm.btn-green.hidden-tn(href="#" style="float:right;")
+      a.btn.btn-sm.btn-green.hidden-tn(href="{{pathFor 'submit'}}" style="float:right;")
           | 질문하기
     ul.posts-list
+      li.question-item.clearfix
+        .profile-wrapper.hidden-tn.hidden-xxs
+        .question-meta
+          h4
+            a(href="#")
+              | documentExec으로 paste 대체 어떻게 하나요?
+          p
+            span.author
+              | by
+              strong Author
+            span.comment
+              i.icon-chat-alt
+              | 1
+            span.votes
+              i.icon-coffee
+              | 1
+            span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
+              i.fa.fa-check
+              | 0
+        .answer-count.hidden-tn.hidden-xxs
+          span.answer
+            | Answers
+          span.count
+            | 0
+        .row-fluid(style="margin-top: 10px;")
+          .label.label-xs.label-primary
+            | javascript
+          .label.label-xs.label-primary
+            | wysiwyg
+          .label.label-xs.label-primary
+            | jquery
+      li.question-item.clearfix
+        .profile-wrapper.hidden-tn.hidden-xxs
+        .question-meta
+          h4
+            a(href="#")
+              | documentExec으로 paste 대체 어떻게 하나요?
+          p
+            span.author
+              | by
+              strong Author
+            span.comment
+              i.icon-chat-alt
+              | 1
+            span.votes
+              i.icon-coffee
+              | 1
+            span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
+              i.fa.fa-check
+              | 0
+        .answer-count.hidden-tn.hidden-xxs
+          span.answer
+            | Answers
+          span.count
+            | 0
+        .row-fluid(style="margin-top: 10px;")
+          .label.label-xs.label-primary
+            | javascript
+          .label.label-xs.label-primary
+            | wysiwyg
+          .label.label-xs.label-primary
+            | jquery
       li.question-item.clearfix
         .profile-wrapper.hidden-tn.hidden-xxs
         .question-meta

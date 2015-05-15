@@ -1,0 +1,10 @@
+template(name="editor")
+  .container
+    .row-fluid
+      .editor-wrapper.clearfix
+        .textarea-wrapper
+          textarea(id="editor-content")
+        .preview-wrapper
+          | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+
+
