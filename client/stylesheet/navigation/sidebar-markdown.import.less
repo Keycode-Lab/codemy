@@ -1,0 +1,61 @@
+
+.sidebar.markdown {
+  background: @white;
+  border-left: 1px solid @border-color;
+  padding: 1em 0;
+  z-index: 1;
+}
+
+.sidebar.markdown {
+  h3.title {
+    text-align: center;
+    font-family: 'Montserrat', 'Proxima Nova Alt', Sans-serif;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    .strip-list;
+  }
+
+  li {
+    cursor: pointer;
+    border-top: 1px solid @border-color;
+    padding: 0.5em;
+    &:last-child {
+      border-bottom: 1px solid @border-color;
+    }
+  }
+
+  li p {
+    margin: 0;
+  }
+
+  li a {
+    display: block;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  h3.markdown-type {
+    color: @gray;
+    font-weight: bolder;
+    margin-top: 0;
+  }
+
+  p.markdown-body {
+    color: @gray;
+    font-weight: bolder;
+    .uppercase;
+    .letter-spacing(0.1em);
+    //font-size: 0.9em;
+  }
+
+  p.markdown-author {
+    display: block;
+    float: right;
+    margin-top: 10px;
+    font-weight: bold;
+    clear: both;
+  }
+}

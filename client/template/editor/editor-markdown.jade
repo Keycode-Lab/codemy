@@ -1,0 +1,79 @@
+template(name="sidebarMarkdown")
+  .sidebar.overlap.right.markdown(tabindex="-1")
+    h3.title Markdown
+    ul
+      li.clearfix
+        h3.markdown-type
+          | 헤더
+        p.markdown-body
+          | Input
+        pre
+          code
+            ##### This is a h4
+            ### This is a h3
+            ## This is a h2
+        p.markdown-body
+          | Output
+        +markdown
+          ##### This is a h4
+          ### This is a h3
+          ## This is a h2
+      li.clearfix
+        h3.markdown-type
+          | 강조
+        p.markdown-body
+          | Input
+        pre
+          code
+            | *이탤릭 강조*
+            | _이탤릭 강조_
+            | **굵게 강조**
+            | __굵게 강조__
+        p.markdown-body
+          | Output
+        +markdown
+           *이탤릭 강조*
+
+           _이탤릭 강조_
+
+           **굵게 강조**
+
+           __굵게 강조__
+      li.clearfix
+        h3.markdown-type
+          | 코드블락
+        p.markdown-body
+          | Input
+        pre
+          code
+            | ```js
+            | foo = function () {
+            |   if () {
+            |    // Do something here
+            |   }
+            | }
+            | ```
+        p.markdown-body
+          | Output
+        +markdown
+          ```js
+          foo = function () {
+            if () {
+             // Do something here
+            }
+          }
+          ```
+      li.clearfix
+        h3.markdown-type
+          | 블럭인용
+        p.markdown-body
+          | Input
+        pre
+          code
+            | > 블럭인용
+            | > Blockquotes
+        p.markdown-body
+          | Output
+        +markdown
+           > 블럭인용
+           > Blockquotes

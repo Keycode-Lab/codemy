@@ -33,6 +33,9 @@ Template.editorToolbar.events({
       Session.set('previewState', true);
     }
   },
+  'click .btn-markdown': function () {
+    $('#wrapper').toggleClass('sidebar-right-overlap');
+  },
   'click .e-bold': function () {
     // Declare Editor Variables
     var editor = $('#editor-content');

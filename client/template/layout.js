@@ -1,7 +1,7 @@
 Template.layout.events({
   'click #inner-wrapper': function (e) {
-    if( $('#wrapper').hasClass('sidebar-right-set') ) {
-      $('#wrapper').removeClass('sidebar-right-set');
+    if( $('#wrapper').hasClass('sidebar-right-push') ) {
+      $('#wrapper').removeClass('sidebar-right-push');
     }
   },
   'click #signout': function () {
