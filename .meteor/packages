@@ -41,3 +41,8 @@ copleykj:jquery-autosize
 chuangbo:marked
 simple:highlight.js
 simple:markdown-templating    # Use .md files as templates in meteor
+
+
+# sAlert
+juliancwirko:s-alert
+juliancwirko:s-alert-flip

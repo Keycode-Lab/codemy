@@ -287,6 +287,7 @@
 //
 //## Define the breakpoints at which your layout will change, adapting to different screen sizes.
 
+@screen-tn :                 383px;
 @screen-xxs:                 479px;
 
 // Extra small screen / phone
@@ -862,9 +863,12 @@
 //** Blockquote small color
 @blockquote-small-color:      @gray-light;
 //** Blockquote font size
-@blockquote-font-size:        (@font-size-base * 1.25);
+//@blockquote-font-size:        (@font-size-base * 1.25);
+@blockquote-font-size:        @font-size-base;
 //** Blockquote border color
 @blockquote-border-color:     @gray-lighter;
+//@blockquote-border-color:       #0074D9;
+
 //** Page header border color
 @page-header-border-color:    @gray-lighter;
 //** Width of horizontal description list titles

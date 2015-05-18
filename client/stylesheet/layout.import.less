@@ -1,6 +1,6 @@
 html, body {
   height: 100%;
-  font-family: 'ProximaNovaAlt', 'Helvetica Neue', Helvetica, Sans-serif;
+  font-family: 'ProximaNovaAlt', 'Helvetica Neue', Helvetica ,Sans-serif;
   color: @dark;
 
   -webkit-font-smoothing: antialiased !important;
@@ -42,17 +42,112 @@ html, body {
   height: 100%;
 }
 
+a {
+  color: @blue;
+  &:hover {
+    color: darken(@blue, 10%);
+  }
+  &:focus {
+    color: darken(@blue, 15%);
+  }
+}
+
+a.red {
+  color: @red;
+  &:hover {
+    color: darken(@red, 10%);
+  }
+  &:focus {
+    color: darken(@red, 15%);
+  }
+}
+
+.label-info {
+
+}
+
+.label-outline {
+  background: none;
+  border-radius: 10px;
+}
+
+.label-blue {
+  border: 2px solid @blue;
+  color: @blue;
+}
+
+.label-green {
+  border: 2px solid @green;
+  color: @green;
+}
+
+.label-red {
+  border: 2px solid @red;
+  color: @red;
+}
+
+@media screen and (max-width: @screen-xs) {
+  .label-outline {
+    border-width: 1px;
+  }
+}
+
+.btn {
+  font-family: 'Monserrat', 'ProximaNovaAlt', 'Helvetica Neue', Helvetica, Sans-Serif;
+}
+
+.btn-gray {
+  @btn-gray : #E0E0E0;
+  color: @gray-light;
+  background-color: @btn-gray;
+  .box-shadow-bottom(3px, darken(@btn-gray, 5%));
+  //border-bottom: 3px solid darken(@green, 10%);
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &:hover {
+    color: @gray-light;
+    background-color: darken(@btn-gray, 5%);
+  }
+  &:focus {
+    color: @gray-light;
+    background-color: darken(@btn-gray, 5%);
+  }
+}
+
 .btn-green {
   color: @white;
   background-color: @green;
-  border-bottom: 3px solid darken(@green, 10%);
+  .box-shadow-bottom(3px, darken(@green, 5%));
+  //border-bottom: 3px solid darken(@green, 10%);
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
   &:hover {
     color: @white;
-    background-color: darken(@green, 10%);
+    background-color: darken(@green, 5%);
   }
   &:focus {
     color: @white;
-    background-color: darken(@green, 10%);
+    background-color: darken(@green, 5%);
+  }
+}
+
+.btn-red {
+  color: @white;
+  background-color: @red;
+  .box-shadow-bottom(3px, darken(@red, 5%));
+  //border-bottom: 3px solid darken(@green, 10%);
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &:hover {
+    color: @white;
+    background-color: darken(@red, 5%);
+  }
+  &:focus {
+    color: @white;
+    background-color: darken(@red, 5%);
   }
 }
 
@@ -61,12 +156,36 @@ html, body {
   letter-spacing: 0.1em;
 }
 
+@-webkit-keyframes redPulse {
+  from {
+    -webkit-box-shadow: 0 0 10px darken(@red, 20%);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 20px lighten(@red, 20%);
+  }
+  to {
+   -webkit-box-shadow: 0 0 10px darken(@red, 20%);
+ }
+}
+
 .badge-red {
   background-color: @red;
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 @media screen and (max-width: @screen-xs) {
+  @font-size-mobile : 12px;
   html, body {
-    font-size: 12px;
+    font-size: @font-size-mobile;
   }
+  h1 { font-size: floor((@font-size-mobile * 2.3));  } // 2.6
+  h2 { font-size: floor((@font-size-mobile * 2.15)); }
+  h3 { font-size: ceil((@font-size-mobile * 1.7));   }
+  h4 { font-size: ceil((@font-size-mobile * 1.25));  }
+  h5 { font-size: @font-size-mobile;                 }
+  h6 { font-size: ceil((@font-size-mobile * 0.85));  }
 }
+
+
