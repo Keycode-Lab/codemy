@@ -37,12 +37,12 @@
 
 .sidebar.notification {
   background: @white;
-  border-left: 1px solid @gray-lighter;
-  padding: 1em 0.5em;
+  border-left: 1px solid @border-color;
+  padding: 1em 0;
 }
 
 .sidebar.notification {
-  h2 {
+  h3 {
     text-align: center;
     font-family: 'Montserrat', 'Proxima Nova Alt', Sans-serif;
     margin: 0;
@@ -55,10 +55,10 @@
 
   li {
     cursor: pointer;
-    border-top: 1px solid @gray-lighter;
-    padding: 0.5em 0;
+    border-top: 1px solid @border-color;
+    padding: 0.5em;
     &:last-child {
-      border-bottom: 1px solid @gray-lighter;
+      border-bottom: 1px solid @border-color;
     }
   }
 
@@ -69,16 +69,23 @@
   li a {
     display: block;
     margin: 0;
+    font-weight: bold;
+  }
+
+  p.notification-type {
+    color: @gray;
+    font-size: 0.9em;
   }
 
   p.notification-preview {
-
+    color: @gray;
   }
 
   p.notification-author {
     display: block;
     float: right;
     margin-top: 10px;
+    font-weight: bold;
     clear: both;
   }
 }

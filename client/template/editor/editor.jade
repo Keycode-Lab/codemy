@@ -3,17 +3,31 @@ template(name="editor")
     .editor-outer
       .row-fluid
         .btn-toolbar
-          .btn-group
-            button.btn.btn-xs.btn-preview(type="button" class="{{previewStateColor}}")
-              | 미리보기 {{previewState}}
+
       .row-fluid
         .editor-wrapper.clearfix.show-preview
-          .textarea-wrapper
-            label MARKDOWN
-            textarea(id="editor-content")
-          .preview-wrapper
-            label MARKDOWN PREVIEW
-            .preview-inner
-              | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+          .row-fluid
+            label TITLE
+            div(style="float:right;")
+              label.char-count-title 0
+              span / 50 characters
+            input(type="text" id="editor-title")
+          .editor-content.clearfix
+            +editorToolbar
+            .textarea-wrapper
+              label MARKDOWN
+              div(style="float:right;")
+                label.char-count-content 0
+                span / 10,000 characters
+              textarea(id="editor-content")
+            .preview-wrapper
+              label MARKDOWN PREVIEW
+              .preview-inner
+                | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+          .editor-bottom
+            button.btn.btn-green.btn-submit
+              | 질문하기
+            //-button.btn.btn-info.btn-draft
+              | Save Draft
 
 

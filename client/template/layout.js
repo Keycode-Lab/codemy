@@ -17,3 +17,12 @@ Template.layout.events({
     //throwSuccess('Sign Out Successful', 'We will miss you ' + currentUser);
   }
 });
+
+Template.layout.onRendered( function () {
+  if ($(window).width() <= 479) {
+    Session.set('mobile', true);
+  } else {
+    Session.set('mobile', false);
+  };
+
+});

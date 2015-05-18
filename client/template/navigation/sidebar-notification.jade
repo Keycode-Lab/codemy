@@ -1,6 +1,6 @@
 template(name="sidebarNotification")
   .sidebar.right.notification(tabindex="-1")
-    h2 Notifications
+    h3 Notifications
     ul
       li.clearfix
         p.notification-type
@@ -9,5 +9,14 @@ template(name="sidebarNotification")
           | documentExec으로 paste 대체 어떻게 하나요?
         p.notification-preview.line-clamp-2
           | documentExec('insertText', false, clipboardData('text/plain'))을 사용해보세요.
+        p.notification-author
+          | Author
+      li.clearfix
+        p.notification-type
+          | 답변
+        a(href="" tabindex="-1")
+          | documentExec으로 paste 대체 어떻게 하나요?
+        p.notification-preview.line-clamp-2
+          | 우선적으로 $(foo).on('paste' function (event) { event.preventDefault() }); 등으로 paste를 막으세요. 그다음엔,
         p.notification-author
           | Author

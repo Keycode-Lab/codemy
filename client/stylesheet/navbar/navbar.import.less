@@ -21,7 +21,7 @@
 .navbar-codemy,
 .navbar-codemy-sub {
   font-family: 'Montserrat', 'Proxima Nova Alt', 'Nanum Gothic', Sans-serif;
-  border-bottom: 1px solid @gray-lighter;
+  border-bottom: 1px solid @border-color;
 }
 
 .navbar-codemy {
@@ -60,6 +60,7 @@
   i {
     display: inline-block;
     vertical-align: middle;
+    margin-top: -5px;
     font-size: 1.3em;
   }
   &:hover {
@@ -86,7 +87,7 @@
   overflow: hidden;
   box-shadow: 0 0 0 3px darken(@navbar-background, 10%) ;
   img {
-    width: 100%;
+    width: 105%;
     margin-left: 50%;
     margin-top:  50%;
     .translate(-50%, -50%);
@@ -171,5 +172,15 @@
   .navbar-codemy-sub ul li a {
     text-transform: none;
     letter-spacing: 0;
+  }
+  .navbar-codemy .profile-wrapper {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 12.5px;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px darken(@navbar-background, 10%) ;
+    img {
+      margin-bottom: 12.5px;
+    }
   }
 }

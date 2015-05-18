@@ -1,0 +1,20 @@
+// Basic Styling for Toolbar
+// Basic Positioning
+ul.editor-toolbar {
+  .strip-list;
+  margin-bottom: 10px;
+  li {
+    display: inline-block;
+  }
+}
+
+ul.editor-toolbar li a.btn-gray {
+  width: 35px;
+}
+
+@media screen and (max-width: @screen-tn) {
+  // Resize button width at screen-tn (383px)
+  ul.editor-toolbar li a.btn-gray {
+    width: 30px;
+  }
+}

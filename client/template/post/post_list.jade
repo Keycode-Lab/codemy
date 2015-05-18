@@ -1,5 +1,14 @@
 template(name="list")
   .container
+    ul.posts-bar-mobile.clearfix.visible-tn
+      li
+        a(href="")
+          i.icon.search
+          | Search
+      li
+        a(href="")
+          i.icon.write
+          | Ask Question
     ul.posts-sort.clearfix
       li
         a.active(href="")
@@ -19,6 +28,7 @@ template(name="list")
     ul.posts-list
       li.question-item.clearfix
         .profile-wrapper.hidden-tn.hidden-xxs
+          img(src="img/avatar.png")
         .question-meta
           h4
             a(href="#")
@@ -42,14 +52,15 @@ template(name="list")
           span.count
             | 0
         .row-fluid(style="margin-top: 10px;")
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | javascript
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | wysiwyg
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | jquery
       li.question-item.clearfix
         .profile-wrapper.hidden-tn.hidden-xxs
+          img(src="img/avatar3.jpeg")
         .question-meta
           h4
             a(href="#")
@@ -73,14 +84,15 @@ template(name="list")
           span.count
             | 0
         .row-fluid(style="margin-top: 10px;")
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | javascript
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | wysiwyg
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | jquery
       li.question-item.clearfix
         .profile-wrapper.hidden-tn.hidden-xxs
+          img(src="img/avatar2.png")
         .question-meta
           h4
             a(href="#")
@@ -104,9 +116,9 @@ template(name="list")
           span.count
             | 0
         .row-fluid(style="margin-top: 10px;")
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | javascript
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | wysiwyg
-          .label.label-xs.label-primary
+          .label.label-outline.label-red
             | jquery

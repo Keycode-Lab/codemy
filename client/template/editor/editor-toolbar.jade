@@ -1,0 +1,34 @@
+template(name="editorToolbar")
+  ul.editor-toolbar
+    //- Bold
+    li
+      a.btn.btn-gray.e-bold(href="" class="{{btnSize}}" tabindex='-1')
+        i.icon.bold
+    //- Italic
+    li
+      a.btn.btn-gray.e-italic(href="" class="{{btnSize}}" tabindex='-1')
+        i.icon.italic
+
+    //- Code
+    li
+      a.btn.btn-gray.e-code(href="" class="{{btnSize}}" tabindex='-1')
+        i.icon.code
+
+    //- Blockquote
+    li
+      a.btn.btn-gray.e-blockquote(href="" class="{{btnSize}}" tabindex='-1')
+        i.fa.fa-quote-left
+
+    //- Link
+    li
+      a.btn.btn-gray.e-link(href="" class="{{btnSize}}" tabindex='-1')
+        i.icon.linkify
+
+    //- Hide Following from 479px
+    li.hidden-tn.hidden-xxs
+      a.btn.btn-green.btn-md(type="button" class="{{btnSize}}" tabindex='-1')
+        | 마크다운 치트시트
+
+    li
+      a.btn.btn-preview(type="button" class="{{previewStateColor}} {{btnSize}}" tabindex='-1')
+        | 미리보기 {{previewState}}

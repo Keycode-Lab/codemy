@@ -1,11 +1,38 @@
 @posts-sort-height : 45px;
+@posts-bar-height  : 30px;
+
+ul.posts-bar-mobile {
+  .strip-list;
+  height: @posts-bar-height;
+  border-bottom: 1px solid @border-color;
+  li {
+    display: inline-block;
+  }
+  a {
+    display: inline-block;
+    padding: 0 10px;
+    line-height: @posts-bar-height;
+    height: @posts-bar-height;
+    text-decoration: none;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: @black;
+    .uppercase;
+    .letter-spacing(0.05em);
+    &.active {
+      color: @red;
+      border-bottom: 3px solid @red;
+    }
+  }
+}
 
 ul.posts-sort {
   height: @posts-sort-height;
   list-style: none;
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid @gray-lighter;
+  border-bottom: 1px solid @border-color;
 }
 
 ul.posts-sort li {
@@ -27,11 +54,28 @@ ul.posts-sort li a {
   font-size: 0.9em;
   font-weight: 500;
   color: @black;
+
   .uppercase;
   .letter-spacing(0.05em);
+
   &.active {
     color: @red;
     border-bottom: 3px solid @red;
+  }
+  // Animating border bottom
+  &:after {
+    content: '';
+    display: block;
+    margin: auto;
+    margin-top: -3px;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+  &:hover:after {
+    width: 100%;
+    background: @red;
   }
 }
 

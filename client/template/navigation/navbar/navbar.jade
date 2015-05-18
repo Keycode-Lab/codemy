@@ -7,15 +7,16 @@ template(name="navbar")
             a.logo(href="{{pathFor 'list'}}")
                 | CODEMY
         .pull-right
-          li.hidden-tn.hidden-xxs.hidden-xs
+          li.hidden-tn
             a(href="#")
-              //-i.icon.search
+              i.icon.search
               | Search
           if currentUser
             li
               a.notification(href="#")
                 span.badge.badge-red
                   | 10
+
             //-  +dropdownNotification
             //-li.hidden-tn.hidden-xxs.hidden-xs
               a(href="")
@@ -32,7 +33,7 @@ template(name="navbar")
               a(href="{{pathFor 'signin'}}")
                 i.li_settings
                 | Sign-In
-  .navbar-codemy-sub.visible-xs.hidden-md
+  //-.navbar-codemy-sub.visible-xs.hidden-md
     .container
       ul
         li
