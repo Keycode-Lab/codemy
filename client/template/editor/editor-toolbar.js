@@ -34,7 +34,7 @@ Template.editorToolbar.events({
     }
   },
   'click .btn-markdown': function () {
-    $('#wrapper').toggleClass('sidebar-right-overlap');
+    $('#wrapper').toggleClass('sidebar-right-markdown');
   },
   'click .e-bold': function () {
     // Declare Editor Variables

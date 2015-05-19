@@ -1,9 +1,12 @@
+@sidebar-markdown-width: 300px;
 
 .sidebar.markdown {
   background: @white;
   border-left: 1px solid @border-color;
   padding: 1em 0;
   z-index: 1;
+  .translate(@sidebar-markdown-width);
+  width: @sidebar-markdown-width;
 }
 
 .sidebar.markdown {

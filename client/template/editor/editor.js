@@ -1,4 +1,32 @@
 Template.editor.events({
+  'click .btn-submit': function (e, t) {
+    e.preventDefault();
+
+    var currentRoute = Router.current() && Router.current().route.getName();
+
+    var object = {
+      title: $('#editor-title').val(),
+      content: $('#editor-content').val()
+    };
+
+    if (currentRoute === 'submit') {
+      Meteor.call('postSubmit', object, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          // Change this to meteor call.
+          // Meteor.call('updateLastPost', Meteor.userId());
+          // //sAlert.success('Your question has been submitted successfully!');
+          // throwSuccess('Question Submitted','Your question has been submitted successfully!');
+          // //Router.go('postPage', {_id: result._id});
+          // Router.go('/');
+        }
+      });
+    }
+
+
+  },
   'keyup #editor-content': function (e) {
     setTimeout(function(){
       e.preventDefault();
