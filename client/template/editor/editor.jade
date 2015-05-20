@@ -24,6 +24,8 @@ template(name="editor")
               label MARKDOWN PREVIEW
               .preview-inner
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+          .editor-tags
+
           .editor-bottom
             button.btn.btn-green.btn-submit
               | 질문하기

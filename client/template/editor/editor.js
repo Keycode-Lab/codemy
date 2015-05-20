@@ -6,6 +6,28 @@ Template.editor.events({
       Session.set('editor-content', '');
       Session.set('editor-content', content);
     },100);
+  },
+  'click .btn-submit': function (e, t) {
+    e.preventDefault();
+    var post = {
+      title:    document.getElementById('editor-title').value,
+      content:  document.getElementById('editor-content').value
+    }
+
+    var currentRoute = Router.current() && Router.current().route.getName();
+
+    // Submit Question
+    if (currentRoute === 'submit') {
+      Meteor.call('postInsert', post, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          Router.go('/');
+        }
+      });
+    }
+
   }
 });
 
