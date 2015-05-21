@@ -58,7 +58,7 @@ Template.editorToolbar.events({
       editor.get(0).selectionStart =
       editor.get(0).selectionEnd = start + 2;
     }
-    liveUpdate(editor)
+    liveUpdate(editor);
   },
   'click .e-italic': function () {
     // Declare Editor Variables
@@ -82,7 +82,7 @@ Template.editorToolbar.events({
       editor.get(0).selectionStart =
       editor.get(0).selectionEnd = start + 1;
     }
-    liveUpdate(editor)
+    liveUpdate(editor);
   },
   'click .e-code': function () {
     // Declare Editor Variables
@@ -106,7 +106,31 @@ Template.editorToolbar.events({
       editor.get(0).selectionStart =
       editor.get(0).selectionEnd = start + 3;
     }
-    liveUpdate(editor)
+    liveUpdate(editor);
+  },
+  'click .e-blockquote': function () {
+    var editor = $('#editor-content');
+    var select = getSelected(editor);
+
+    editor.focus();
+
+    if (getSelectionText().length >= 1) {
+
+      var eachLines = editor.val().split('\n');
+      for ( i = 0; i < eachLines.length; i++) {
+        eachLines[i] = '> ' + eachLines[i];
+        console.log(getSelectionText());
+        console.log(eachLines[i]);
+      }
+
+    } else {
+
+    };
+
+    liveUpdate(editor);
+  },
+  'click .e-link': function () {
+
   }
 });
 

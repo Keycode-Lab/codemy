@@ -24,6 +24,10 @@ template(name="editor")
               label MARKDOWN PREVIEW
               .preview-inner
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+          .row-fluid
+            label(for="tagsinput")
+              | TAGS
+            select.tagsinput(multiple id="tagsinput" data-role="tagsinput")
           .editor-bottom
             button.btn.btn-green.btn-submit
               | 질문하기

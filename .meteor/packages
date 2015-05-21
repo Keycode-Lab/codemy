@@ -46,3 +46,6 @@ simple:markdown-templating    # Use .md files as templates in meteor
 # sAlert
 juliancwirko:s-alert
 juliancwirko:s-alert-flip
+
+# Tags
+ajduke:bootstrap-tagsinput@=0.5.0
