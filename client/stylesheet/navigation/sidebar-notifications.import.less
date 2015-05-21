@@ -1,9 +1,12 @@
+@sidebar-notification-width: 250px;
 
 .sidebar.notification {
   background: @white;
   border-left: 1px solid @border-color;
   padding: 1em 0;
   z-index: 2;
+  .translate(@sidebar-notification-width);
+  width: @sidebar-notification-width;
 }
 
 .sidebar.notification {

@@ -16,14 +16,14 @@ Template.registerHelper('session', function (input) {
   return Session.get(input);
 });
 
-// Check Active Route Helper
-Template.registerHelper('activeRouteClass', function(/* route names */) {
+Template.registerHelper('activeRoute', function (/* route names */) {
   var args = Array.prototype.slice.call(arguments, 0);
   args.pop();
 
-  var active = _.any(args, function(name) {
+  var active = _.any(args, function (name) {
     return Router.current() && Router.current().route.getName() === name
   });
 
   return active && 'active';
 });
+

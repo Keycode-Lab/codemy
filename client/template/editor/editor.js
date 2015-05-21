@@ -18,7 +18,7 @@ Template.editor.events({
 
     // Submit Question
     if (currentRoute === 'submit') {
-      Meteor.call('postInsert', post, function(error, result) {
+      Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){
           //return throwError('Something went wrong',error.reason);
@@ -27,7 +27,6 @@ Template.editor.events({
         }
       });
     }
-
   }
 });
 
@@ -41,7 +40,7 @@ Template.editor.onRendered( function () {
   // Character Counter Title
   var title = $('input#editor-title');
   var titleCounter = $('.char-count-title');
-  charCounter(50, title, titleCounter);
+  charCounter(70, title, titleCounter);
 
   // Character Counter Content
   var content = $('textarea#editor-content');

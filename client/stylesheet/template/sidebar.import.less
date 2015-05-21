@@ -1,4 +1,4 @@
-@sidebar-width: 250px;
+
 
 #inner-wrapper {
 
@@ -22,20 +22,18 @@
   position: absolute;
   top: 0;
   right: 0;
-  .translate(@sidebar-width);
-  width: @sidebar-width;
   min-height: 100%;
   z-index: 12;
   .transition(250ms cubic-bezier(0,.56,1,.47) all);
 }
 
-#wrapper.sidebar-right-push {
+#wrapper.sidebar-right-notification {
   #canvas {
-    .translate(-@sidebar-width);
+    .translate(-@sidebar-notification-width);
   }
 }
 
-#wrapper.sidebar-right-overlap {
+#wrapper.sidebar-right-markdown {
   .sidebar.markdown {
     .translate(0);
   }

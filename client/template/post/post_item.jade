@@ -1,0 +1,33 @@
+template(name="postItem")
+  li.question-item.clearfix
+    .profile-wrapper.hidden-tn.hidden-xxs
+      img(src="img/avatar.png")
+    .question-meta
+      h4
+        a(href="{{pathFor 'postPage'}}")
+          | {{title}}
+      p
+        span.author
+          | by
+          strong {{user.username}}
+        span.comment
+          i.icon-chat-alt
+          | 1
+        span.votes
+          i.icon-coffee
+          | 1
+        span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
+          i.fa.fa-check
+          | 0
+    .answer-count.hidden-tn.hidden-xxs
+      span.answer
+        | Answers
+      span.count
+        | 0
+    .row-fluid(style="margin-top: 10px;")
+      .label.label-outline.label-red
+        | javascript
+      .label.label-outline.label-red
+        | wysiwyg
+      .label.label-outline.label-red
+        | jquery
