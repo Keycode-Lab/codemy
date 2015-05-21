@@ -1,3 +1,4 @@
+// Current user avatar Helper
 Template.registerHelper('avatar', function () {
   var user = Meteor.user();
   if( user && user.profile ){
@@ -10,10 +11,10 @@ Template.registerHelper('avatar', function () {
   }
 });
 
+// Session Input for Live Preview Helper
 Template.registerHelper('session', function (input) {
   return Session.get(input);
 });
-
 
 Template.registerHelper('activeRoute', function (/* route names */) {
   var args = Array.prototype.slice.call(arguments, 0);
@@ -25,3 +26,4 @@ Template.registerHelper('activeRoute', function (/* route names */) {
 
   return active && 'active';
 });
+

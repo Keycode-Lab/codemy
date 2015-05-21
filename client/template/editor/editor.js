@@ -1,32 +1,4 @@
 Template.editor.events({
-  'click .btn-submit': function (e, t) {
-    e.preventDefault();
-
-    var currentRoute = Router.current() && Router.current().route.getName();
-
-    var object = {
-      title: $('#editor-title').val(),
-      content: $('#editor-content').val()
-    };
-
-    if (currentRoute === 'submit') {
-      Meteor.call('postSubmit', object, function(error, result) {
-        // display the error to the user and abort
-        if (error){
-          //return throwError('Something went wrong',error.reason);
-        } else {
-          // Change this to meteor call.
-          // Meteor.call('updateLastPost', Meteor.userId());
-          // //sAlert.success('Your question has been submitted successfully!');
-          // throwSuccess('Question Submitted','Your question has been submitted successfully!');
-          // //Router.go('postPage', {_id: result._id});
-          // Router.go('/');
-        }
-      });
-    }
-
-
-  },
   'keyup #editor-content': function (e) {
     setTimeout(function(){
       e.preventDefault();
@@ -34,6 +6,27 @@ Template.editor.events({
       Session.set('editor-content', '');
       Session.set('editor-content', content);
     },100);
+  },
+  'click .btn-submit': function (e, t) {
+    e.preventDefault();
+    var post = {
+      title:    document.getElementById('editor-title').value,
+      content:  document.getElementById('editor-content').value
+    }
+
+    var currentRoute = Router.current() && Router.current().route.getName();
+
+    // Submit Question
+    if (currentRoute === 'submit') {
+      Meteor.call('postSubmit', post, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          Router.go('/');
+        }
+      });
+    }
   }
 });
 
@@ -47,7 +40,7 @@ Template.editor.onRendered( function () {
   // Character Counter Title
   var title = $('input#editor-title');
   var titleCounter = $('.char-count-title');
-  charCounter(50, title, titleCounter);
+  charCounter(70, title, titleCounter);
 
   // Character Counter Content
   var content = $('textarea#editor-content');
