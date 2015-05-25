@@ -2,6 +2,8 @@ template(name="dropdownAccount")
   ul.dropdown-menu.dropdown-menu-right.account(role="menu")
     li
       a(href="")
+        .profile-wrapper
+                  img(src="{{avatar}}")
         | {{currentUser.profile.username}}
     li
       a(href="")
@@ -14,11 +16,3 @@ template(name="dropdownAccount")
     li
       a#signout(href="")
         | Sign Out
-
-template(name="dropdownNotification")
-  ul.dropdown-menu.dropdown-menu-right.notification(role="menu")
-    li
-      a(href="")
-        span comment
-        span documentExec으로 paste 대체 어떻게 하나요?
-        span Wysiwyg를 만드려하는데, 기본 paste event를 바꾸고 싶은데 방법있나요?

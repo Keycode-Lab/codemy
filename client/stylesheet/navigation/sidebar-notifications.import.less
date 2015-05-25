@@ -1,0 +1,59 @@
+@sidebar-notification-width: 250px;
+
+.sidebar.notification {
+  background: @white;
+  border-left: 1px solid @border-color;
+  padding: 1em 0;
+  z-index: 2;
+  .translate(@sidebar-notification-width);
+  width: @sidebar-notification-width;
+}
+
+.sidebar.notification {
+  h3 {
+    text-align: center;
+    font-family: 'Montserrat', 'Proxima Nova Alt', Sans-serif;
+    margin: 0;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    .strip-list;
+  }
+
+  li {
+    cursor: pointer;
+    border-top: 1px solid @border-color;
+    padding: 0.5em;
+    &:last-child {
+      border-bottom: 1px solid @border-color;
+    }
+  }
+
+  li p {
+    margin: 0;
+  }
+
+  li a {
+    display: block;
+    margin: 0;
+    font-weight: bold;
+  }
+
+  p.notification-type {
+    color: @gray;
+    font-size: 0.9em;
+  }
+
+  p.notification-preview {
+    color: @gray;
+  }
+
+  p.notification-author {
+    display: block;
+    float: right;
+    margin-top: 10px;
+    font-weight: bold;
+    clear: both;
+  }
+}
