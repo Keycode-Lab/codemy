@@ -1,0 +1,91 @@
+.main.postpage {
+  padding: 2em 4em;
+  padding-top: 0.5em;
+  padding-left: 6em;
+}
+
+.main h2.post-title {
+  margin: 0;
+}
+
+.main.postpage hr {
+  border-width: 3px;
+  border-color: @gray-lighter;
+}
+
+.post-metadata p {
+  position: relative;
+  left: -3em;
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.post-metadata p.author {
+
+}
+
+.post-metadata p.date {
+
+}
+
+
+.post-metadata .profile-wrapper {
+  position: relative;
+  top: 1em;
+  left: ~"calc(-3em - 20px)";
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  //background: @gray;
+  box-shadow: 0 0 0 6px @gray-lighter;
+  vertical-align: middle;
+  img {
+    margin-top: 50%;
+    margin-left: 50%;
+    width: 100%;
+
+    .translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .main.postpage {
+    padding: 2em;
+  }
+  .post-metadata {
+    margin-bottom: -1.5em;
+  }
+  .post-metadata .profile-wrapper {
+    top: -1em;
+    left: 0;
+  }
+  .post-metadata p {
+    top: -2em;
+    left: 0.5em;
+  }
+  .post-metadata p.date {
+    display: block;
+    left: 3.65em;
+    top: -2.7em;
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .post-metadata {
+    margin-bottom: 0;
+  }
+  .post-metadata p {
+    position: static;
+    // top: 0;
+    // left: 0;
+  }
+  .post-metadata p.date {
+    display: inline-block;
+    position: static;
+    //left: 3.65em;
+    //top: -2.7em;
+  }
+}
+

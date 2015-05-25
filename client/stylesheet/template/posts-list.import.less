@@ -1,10 +1,16 @@
 @posts-sort-height : 45px;
 @posts-bar-height  : 30px;
 
+.main.postslist {
+  background: @white;
+  padding: 0 2em;
+}
+
 ul.posts-bar-mobile {
   .strip-list;
   height: @posts-bar-height;
   border-bottom: 1px solid @border-color;
+  background: white;
   li {
     display: inline-block;
   }
@@ -33,6 +39,7 @@ ul.posts-sort {
   padding: 0;
   margin: 0;
   border-bottom: 1px solid @border-color;
+  background: white;
 }
 
 ul.posts-sort li {
@@ -81,5 +88,6 @@ ul.posts-sort li a {
 
 ul.posts-list {
   .strip-list;
+  background: white;
 }
 
