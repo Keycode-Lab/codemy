@@ -25,6 +25,7 @@ html, body {
   position: relative;
   overflow-x: hidden;
   height: 100%;
+  background-color: @gray-lighter;
 }
 
 #canvas {
@@ -40,6 +41,11 @@ html, body {
 #inner-wrapper {
   width: 100%;
   height: 100%;
+
+}
+
+.main {
+  background-color: @white;
 }
 
 a {
@@ -175,10 +181,17 @@ a.red {
   -webkit-animation-iteration-count: infinite;
 }
 
+.badge-primary {
+  background-color: @brand-primary;
+}
+
 @media screen and (max-width: @screen-xs) {
   @font-size-mobile : 12px;
   html, body {
     font-size: @font-size-mobile;
+  }
+  pre code {
+    font-size: @font-size-mobile !important;
   }
   h1 { font-size: floor((@font-size-mobile * 2.3));  } // 2.6
   h2 { font-size: floor((@font-size-mobile * 2.15)); }

@@ -40,12 +40,14 @@ Template.editor.onRendered( function () {
   // Character Counter Title
   var title = $('input#editor-title');
   var titleCounter = $('.char-count-title');
-  charCounter(70, title, titleCounter);
+  var titleHolder = $('.char-limit-title');
+  charCounter(70, title, titleCounter, titleHolder);
 
   // Character Counter Content
   var content = $('textarea#editor-content');
   var contentCounter = $('.char-count-content');
-  charCounter(10000, content, contentCounter);
+  var contentHolder = $('.char-limit-content');
+  charCounter(10000, content, contentCounter, contentHolder);
 
   var textarea = document.getElementById('editor-content');
   var editor = new Behave({

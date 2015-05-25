@@ -1,30 +1,31 @@
 template(name="list")
   .container
-    ul.posts-bar-mobile.clearfix.visible-tn
-      li
-        a(href="")
-          i.icon.search
-          | Search
-      li
-        a(href="")
-          i.icon.write
-          | Ask Question
-    ul.posts-sort.clearfix
-      li
-        a.active(href="")
-          | New
-      li
-        a(href="")
-          | Popular
-      li
-        a(href="")
-          | Needs Answer
-      if currentUser
-        a.btn.btn-sm.btn-green.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
+    .main.postslist
+      ul.posts-bar-mobile.clearfix.visible-tn
+        li
+          a(href="")
+            i.icon.search
+            | Search
+        li
+          a(href="")
+            i.icon.write
             | Ask Question
-      else
-        a.btn.btn-sm.btn-green.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
-            | Ask Question
-    ul.posts-list
-      each posts
-        +postItem
+      ul.posts-sort.clearfix
+        li
+          a.active(href="")
+            | New
+        li
+          a(href="")
+            | Popular
+        li
+          a(href="")
+            | Needs Answer
+        if currentUser
+          a.btn.btn-sm.btn-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
+              | Ask Question
+        else
+          a.btn.btn-sm.btn-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
+              | Ask Question
+      ul.posts-list
+        each posts
+          +postItem

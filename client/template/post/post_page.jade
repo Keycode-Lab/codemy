@@ -1,4 +1,15 @@
 template(name="postPage")
   .container
-    h2 {{title}}
-    p {{content}}
+    .main.postpage
+      .post-metadata
+        .profile-wrapper.hidden-tn.hidden-xxs
+          img(src="/img/avatar.png")
+        p.author
+          | <strong>{{user.username}}</strong>
+        p.date
+          | {{createdAt}}
+      h2.post-title {{title}}
+      hr
+      p
+        +markdown
+          {{content}}

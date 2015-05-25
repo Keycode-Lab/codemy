@@ -1,4 +1,4 @@
-charCounter = function (limit, target, counter) {
+charCounter = function (limit, target, counter, limitHolder) {
   var limit_length = limit; //Declare limit length
   var msg_length = 0;       // Declare starting msg_length
 
@@ -13,9 +13,15 @@ charCounter = function (limit, target, counter) {
     return cnt;
   };
 
+  var limitShow = limit;
+
+  $(limitHolder).html('/ ' + limit + ' characters');
+
   $(target).keyup( function (event) {
     //msg_length = $.trim($(target).val()).bytes(); //to trim whitespaces
     msg_length = ($(target).val()).trim().bytes(); //to trim whitespaces
+
+
 
     if( msg_length <= limit_length ) {    
       $(counter).css("color", "#474646");   

@@ -10,7 +10,7 @@ template(name="editor")
             label TITLE
             div(style="float:right;")
               label.char-count-title 0
-              span / 70 characters
+              span.char-limit-title
             input(type="text" id="editor-title")
           .editor-content.clearfix
             +editorToolbar
@@ -18,7 +18,7 @@ template(name="editor")
               label MARKDOWN
               div(style="float:right;")
                 label.char-count-content 0
-                span / 10,000 characters
+                span.char-limit-content
               textarea(id="editor-content")
             .preview-wrapper
               label MARKDOWN PREVIEW
