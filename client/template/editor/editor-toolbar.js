@@ -8,18 +8,11 @@ Template.editorToolbar.helpers({
   },
   previewStateColor: function () {
     if ( Session.get('previewState') === true ) {
-      return 'btn-red';
+      return 'badge-red';
     } else {
-      return 'btn-green';
+      return 'badge-green';
     }
   },
-  btnSize: function () {
-    if (Session.get('mobile') === true) {
-      return 'btn-xs';
-    } else {
-      return 'btn-sm';
-    }
-  }
 });
 
 Template.editorToolbar.events({
@@ -114,18 +107,23 @@ Template.editorToolbar.events({
 
     editor.focus();
 
-    if (getSelectionText().length >= 1) {
+    var selected = getHighlight(editor);
 
-      var eachLines = editor.val().split('\n');
-      for ( i = 0; i < eachLines.length; i++) {
-        eachLines[i] = '> ' + eachLines[i];
-        console.log(getSelectionText());
-        console.log(eachLines[i]);
-      }
+    var newVal = selected.toString(); // .split(",").join("\n");
 
-    } else {
+    var eachLines = newVal.split('\n');
+    var newLines = [];
 
-    };
+    for ( i = 0; i < eachLines.length; i++) {
+      eachLines[i] = '> ' + eachLines[i];
+      newLines.push(eachLines[i]);
+    }
+
+    newLines = newLines.toString();
+    newLines = newLines.split(",").join("\n");
+
+    // Add Replace text in textarea
+    editor.val(select[0] + newLines + select[1]);
 
     liveUpdate(editor);
   },

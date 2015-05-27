@@ -3,6 +3,7 @@
 //======================================
 
 @navbar-height          : 50px;
+@navbar-height-mb       : 40px;
 @navbar-sub-height      : 30px;
 
 @navbar-background      : @dark; //@gray-lighter;
@@ -179,8 +180,17 @@ a.dropdown-toggle i.fa-chevron-down {
 }
 
 @media screen and (max-width: @screen-xs) {
+  .navbar-codemy {
+    height: @navbar-height-mb;
+  }
+  .navbar-codemy ul.navbar > .pull-left > li,
+  .navbar-codemy ul.navbar > .pull-right > li {
+    display: inline-block;
+    margin: 0;
+    height: @navbar-height-mb;
+    line-height: @navbar-height-mb;
+  }
   .navbar-codemy-sub li {
-    width: 33.33%;
   }
   .navbar-codemy-sub ul li a {
     text-transform: none;

@@ -25,7 +25,8 @@ html, body {
   position: relative;
   overflow-x: hidden;
   height: 100%;
-  background-color: @gray-lighter;
+  background-color: @gray-lightest;
+  background-color: darken(white, 1%);
 }
 
 #canvas {
@@ -41,7 +42,6 @@ html, body {
 #inner-wrapper {
   width: 100%;
   height: 100%;
-
 }
 
 .main {
@@ -107,7 +107,6 @@ a.red {
   color: @gray-light;
   background-color: @btn-gray;
   .box-shadow-bottom(3px, darken(@btn-gray, 5%));
-  //border-bottom: 3px solid darken(@green, 10%);
   font-weight: 700;
   .uppercase;
   .letter-spacing(0.05em);
@@ -175,10 +174,17 @@ a.red {
 }
 
 .badge-red {
-  background-color: @red;
-  -webkit-animation-name: redPulse;
-  -webkit-animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
+  background-color: @red !important;
+  // -webkit-animation-name: redPulse;
+  // -webkit-animation-duration: 1.5s;
+  // -webkit-animation-iteration-count: infinite;
+}
+
+.badge-green {
+  background-color: @green !important;
+  // -webkit-animation-name: redPulse;
+  // -webkit-animation-duration: 1.5s;
+  // -webkit-animation-iteration-count: infinite;
 }
 
 .badge-primary {
@@ -187,6 +193,7 @@ a.red {
 
 @media screen and (max-width: @screen-xs) {
   @font-size-mobile : 12px;
+
   html, body {
     font-size: @font-size-mobile;
   }

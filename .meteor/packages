@@ -12,6 +12,9 @@ insecure
 accounts-base
 accounts-password
 
+# Tools
+msavin:jetsetter
+
 # Flow-Router/Layout
 # meteorhacks:flow-router
 # meteorhacks:flow-layout

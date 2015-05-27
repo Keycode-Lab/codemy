@@ -2,22 +2,58 @@
   padding: 2em 4em;
   padding-top: 0.5em;
   padding-left: 6em;
+  pre {
+    border: 0;
+    // background: #EEEEEE;
+  }
+  blockquote {
+    border-left-color: lighten(@blue, 30%);
+    border-left-width: 2px;
+    background: lighten(@blue, 50%);
+  }
+}
+
+// .main.postpage pre code:hover {
+//   a.btn-zoom, a.btn-zoomOut {
+//     display: inline-block;
+//     opacity: 1;
+//   }
+// }
+
+a.btn-zoom,
+a.btn-zoomOut {
+  display: none;
+  opacity: 0;
+  float: right;
+  z-index: 99;
+  color: lighten(@dark, 60%) !important;
+  background: none;
+  box-shadow: none !important;
+  border-bottom: none;
+  opacity: 0.8;
+  padding: 0;
+  margin: 0;
+  .transition(500ms opacity ease-in-out);
 }
 
 .main h2.post-title {
   margin: 0;
 }
 
+.post-metadata {
+  margin-bottom: -0.5em;
+}
+
 .main.postpage hr {
   border-width: 3px;
   border-color: @gray-lighter;
 }
-
 .post-metadata p {
   position: relative;
   left: -3em;
   display: inline-block;
   margin-bottom: 0;
+  color: lighten(@dark, 40%);
 }
 
 .post-metadata p.author {
@@ -27,7 +63,6 @@
 .post-metadata p.date {
 
 }
-
 
 .post-metadata .profile-wrapper {
   position: relative;
@@ -39,7 +74,7 @@
   height: 40px;
   border-radius: 50%;
   //background: @gray;
-  box-shadow: 0 0 0 6px @gray-lighter;
+  box-shadow: 0 0 0 6px lighten(@dark, 40%);
   vertical-align: middle;
   img {
     margin-top: 50%;
@@ -62,18 +97,22 @@
     left: 0;
   }
   .post-metadata p {
-    top: -2em;
+    top: -1.7em;
     left: 0.5em;
   }
   .post-metadata p.date {
     display: block;
     left: 3.65em;
-    top: -2.7em;
+    top: -2.6em;
   }
 }
 
 @media screen and (max-width: @screen-xs) {
+  .main.postpage {
+    padding: 0.5em;
+  }
   .post-metadata {
+    margin-top: 5px;
     margin-bottom: 0;
   }
   .post-metadata p {
@@ -86,6 +125,11 @@
     position: static;
     //left: 3.65em;
     //top: -2.7em;
+  }
+
+  a.btn-zoom,
+  a.btn-zoomOut {
+    display: none !important;
   }
 }
 
