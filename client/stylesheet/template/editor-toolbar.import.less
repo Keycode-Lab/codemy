@@ -2,19 +2,48 @@
 // Basic Positioning
 ul.editor-toolbar {
   .strip-list;
+  width: 100%;
   margin-bottom: 10px;
   li {
     display: inline-block;
   }
 }
 
-ul.editor-toolbar li a.btn-gray {
-  width: 35px;
+ul.editor-toolbar .btn {
+  padding: 0 !important;
 }
 
-@media screen and (max-width: @screen-tn) {
-  // Resize button width at screen-tn (383px)
+ul.editor-toolbar li a.btn-gray {
+  display: inline-block;
+  width: 38px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  vertical-align: middle;
+  i {
+    margin: 0 auto;
+  }
+}
+
+ul.editor-toolbar .dropdown-toolbar {
+  background: darken(#E0E0E0, 5%);
+  border: 0;
+  margin-top: -5px;
+  box-shadow: none;
+  li {
+    width: 100%;
+    &:hover { background: #E0E0E0; }
+  }
+  li a {
+    font-weight: bold;
+  }
+}
+
+@media screen and (max-width: @screen-xxs) {
+  // Resize button width at screen-tn (479px)
   ul.editor-toolbar li a.btn-gray {
     width: 30px;
+    height: 27px;
+    line-height: 27px;
   }
 }

@@ -26,3 +26,14 @@ template(name="navbar")
               a(href="{{pathFor 'signin'}}")
                 i.li_settings
                 | Sign-In
+  .navbar-codemy-sub.visible-tn
+    .container
+      ul
+        li
+          a(href="")
+            i.icon.search
+            | Search
+        li
+          a(href="{{pathFor 'submit'}}")
+            i.icon.write
+            | Ask Question

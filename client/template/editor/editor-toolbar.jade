@@ -2,33 +2,44 @@ template(name="editorToolbar")
   ul.editor-toolbar
     //- Bold
     li
-      a.btn.btn-gray.e-bold(href="" class="{{btnSize}}" tabindex='-1')
+      a.btn.btn-gray.e-bold(href="" tabindex='-1' data-toggle="tooltip" data-placement="top" title="Bold")
         i.icon.bold
     //- Italic
     li
-      a.btn.btn-gray.e-italic(href="" class="{{btnSize}}" tabindex='-1')
+      a.btn.btn-gray.e-italic(href="" tabindex='-1' data-toggle="tooltip" data-placement="top" title="Italic")
         i.icon.italic
 
     //- Code
     li
-      a.btn.btn-gray.e-code(href="" class="{{btnSize}}" tabindex='-1')
+      a.btn.btn-gray.e-code(href="" tabindex='-1' data-toggle="tooltip" data-placement="top" title="Code")
         i.icon.code
 
     //- Blockquote
     li
-      a.btn.btn-gray.e-blockquote(href="" class="{{btnSize}}" tabindex='-1')
+      a.btn.btn-gray.e-blockquote(href="" tabindex='-1' data-toggle="tooltip" data-placement="top" title="Blockquote")
         i.fa.fa-quote-left
 
     //- Link
     li
-      a.btn.btn-gray.e-link(href="" class="{{btnSize}}" tabindex='-1')
+      a.btn.btn-gray.e-link(href="" tabindex='-1' data-toggle="tooltip" data-placement="top" title="Link")
         i.icon.linkify
 
     //- Hide Following from 479px
     //-li.hidden-tn.hidden-xxs
       a.btn.btn-green.btn-markdown(type="button" class="{{btnSize}}" tabindex='-1')
         | 마크다운 치트시트
-
-    li
-      a.btn.btn-preview(type="button" class="{{previewStateColor}} {{btnSize}}" tabindex='-1')
-        | 미리보기 {{previewState}}
+    li.dropdown(style="float:right")
+      a.btn.btn-gray.dropdown-toggle(href="" data-toggle="dropdown" aria-expanded="true")
+        i.fa.fa-cog
+      ul.dropdown-menu.dropdown-menu-right.dropdown-toolbar(role="menu")
+        li
+          a.btn-preview(href="" tabindex='-1')
+            | Preview
+            span.badge(class="{{previewStateColor}}")
+              | {{previewState}}
+        li
+          a.btn-save-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
+            | Save Draft
+        li
+          a.btn-load-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftModal")
+            | Load Draft

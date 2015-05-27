@@ -1,6 +1,7 @@
 template(name="layout")
   +alerts
   +sAlert
+
   #wrapper
     #canvas
       +navbar
@@ -9,7 +10,8 @@ template(name="layout")
         +yield
       +sidebarMarkdown
       +sidebarNotification
-
+  +draftModal
+  +draftSaveModal
   //- <!-- Modal -->
   //- div.modal.fade#signin-modal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
   //-   .modal-dialog

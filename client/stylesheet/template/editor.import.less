@@ -1,6 +1,6 @@
 // Outer-most Container Level
 .editor-outer {
-  margin-top: 15px;
+  margin-top: 8px;
   .btn-toolbar {
     margin-bottom: 10px;
   }
@@ -12,7 +12,8 @@
   height: 100%;
   min-height: 300px;
   border-radius: 3px;
-  background: @gray-lightest;
+  background: @gray-lighter;
+  // background: lighten(@dark, 75%);
   padding: 1.5em;
 }
 
@@ -49,16 +50,17 @@
   min-height: 100%;
   textarea#editor-content {
     width: 100%;
-    min-height: 300px;
+    min-height: 200px;
     border: 0;
     border-radius: 3px;
     padding: 0.8em;
+    resize: vertical;
     &:focus {
       border: 0;
     }
   }
   ::-webkit-resizer {
-      display: none;
+    // display: none;
   }
 }
 
@@ -69,7 +71,7 @@
     word-wrap: break-word;
     background: @white;
     border-radius: 3px;
-    min-height: 300px;
+    min-height: 200px;
     padding: 0.8em;
     pre {
       border: 0;
@@ -121,35 +123,21 @@
   margin-top: 1em;
 }
 
+#draftModal .modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  .translate(-50%, -50%);
+  z-index: 3;
+  margin: 0;
+  width: 400px
+}
+
 @media screen and (max-width: @screen-tn) {
   .editor-wrapper input#editor-title {
     font-size: 1.2em !important;
   }
-}
-
-
-// Tags
-
-.bootstrap-tagsinput {
-  background-color: @white;
-  border: 0px;
-  box-shadow: none;
-  display: inline-block;
-  padding: 7px;
-  margin-bottom: 10px;
-  //color: ;
-  vertical-align: middle;
-  min-width: 100%;
-  line-height: 22px;
-  cursor: text;
-  .box-shadow-bottom(1.5px, @gray-lighter);
-  // &:focus, &:active{ //Needs fix
-  //  .bgActive(@theme-2);
-  //  .box-shadow-bottom(1.5px, @theme-2);
-  // }
-  input {
-    display: inline-block;
-    min-width: 6em !important;
-    max-width: 100% !important;
+  #draftModal .modal-dialog {
+    width: 300px;
   }
 }
