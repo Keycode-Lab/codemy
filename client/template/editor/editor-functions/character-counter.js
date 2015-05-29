@@ -17,11 +17,8 @@ charCounter = function (limit, target, counter, limitHolder) {
 
   $(limitHolder).html('/ ' + limit + ' characters');
 
-  $(target).keyup( function (event) {
-    //msg_length = $.trim($(target).val()).bytes(); //to trim whitespaces
+  $(target).on('keyup focus', function (event) {
     msg_length = ($(target).val()).trim().bytes(); //to trim whitespaces
-
-
 
     if( msg_length <= limit_length ) {    
       $(counter).css("color", "#474646");   

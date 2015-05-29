@@ -37,9 +37,19 @@ template(name="editorToolbar")
             | Preview
             span.badge(class="{{previewStateColor}}")
               | {{previewState}}
+        if loadedDraft
+          li
+            a.btn-new(href="" tabindex='-1')
+              | New
         li
           a.btn-save-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
             | Save Draft
         li
           a.btn-load-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftModal")
             | Load Draft
+        if loadedDraft
+          li
+            a.btn-autosave(href="" tabindex='-1')
+              | Autosave
+              span.badge(class="{{autosaveStateColor}}")
+                | {{autosaveState}}

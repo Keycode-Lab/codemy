@@ -14,6 +14,7 @@ accounts-password
 
 # Tools
 msavin:jetsetter
+msavin:mongol
 
 # Flow-Router/Layout
 # meteorhacks:flow-router

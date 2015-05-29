@@ -1,16 +1,43 @@
+Template.editorToolbar.onCreated( function () {
+  // Turn Autosave off
+  Session.set('autosaveState', false);
+});
+
+Template.editorToolbar.onDestroyed( function () {
+  // Turn Autosave off
+  Session.set('autosaveState', false);
+});
+
 Template.editorToolbar.helpers({
   previewState: function () {
     if ( Session.get('previewState') === true ) {
-      return 'off';
-    } else {
       return 'on';
+    } else {
+      return 'off';
     }
   },
   previewStateColor: function () {
     if ( Session.get('previewState') === true ) {
-      return 'badge-red';
-    } else {
       return 'badge-green';
+    } else {
+      return 'badge-red';
+    }
+  },
+  loadedDraft: function () {
+    return Session.get('currentDraft');
+  },
+  autosaveState: function () {
+    if ( Session.get('autosaveState') === true ) {
+      return 'on';
+    } else {
+      return 'off';
+    }
+  },
+  autosaveStateColor: function () {
+    if ( Session.get('autosaveState') === true ) {
+      return 'badge-green';
+    } else {
+      return 'badge-red';
     }
   },
 });
@@ -26,31 +53,48 @@ Template.editorToolbar.events({
       Session.set('previewState', true);
     }
   },
+  'click .btn-new': function () {
+    $('#editor-title').val('');
+    $('#editor-content').val('');
+
+    // Dirty hack to update counter
+    $('#editor-title').focus();
+    $('#editor-content').focus();
+
+    Session.set('currentDraft', null);
+    window.clearInterval(Autosave);
+  },
+  'click .btn-autosave': function () {
+    if (Session.get('autosaveState') === false) {
+      Session.set('autosaveState', true);
+    } else {
+      Session.set('autosaveState', false);
+    }
+  },
   'click .btn-markdown': function () {
     $('#wrapper').toggleClass('sidebar-right-markdown');
   },
   'click .e-bold': function () {
-    // Declare Editor Variables
     var editor = $('#editor-content');
     var select = getSelected(editor);
 
     editor.focus();
 
     if (getSelectionText().length >= 1) {
-      editor.val(select[0] + '**'+ select[2] + '**' + select[1]);
+      var editor = document.getElementById ("editor-content");
+      var bold = document.createEvent('TextEvent');
+      bold.initTextEvent('textInput', true, true, null, "**"+select[2]+"**");
+      editor.dispatchEvent(bold);
     } else {
-      var start = editor.get(0).selectionStart;
-      var end = editor.get(0).selectionEnd;
-
-      // set textarea value to: text before caret + tab + text after caret
-      editor.val(editor.val().substring(0, start)
-                + "****"
-                + editor.val().substring(end));
-
-      // put caret at right position again
-      editor.get(0).selectionStart =
-      editor.get(0).selectionEnd = start + 2;
+      var editor = document.getElementById ("editor-content");
+      var bold = document.createEvent('TextEvent');
+      bold.initTextEvent('textInput', true, true, null, "**"+"boldtext"+"**");
+      editor.dispatchEvent(bold);
+      editor.selectionStart -= 10;
+      editor.selectionEnd   -= 2;
     }
+
+    var editor = $('#editor-content');
     liveUpdate(editor);
   },
   'click .e-italic': function () {
@@ -61,20 +105,20 @@ Template.editorToolbar.events({
     editor.focus();
 
     if (getSelectionText().length >= 1) {
-      editor.val(select[0] + '*'+ select[2] + '*' + select[1]);
+      var editor = document.getElementById ("editor-content");
+      var italic = document.createEvent('TextEvent');
+      italic.initTextEvent('textInput', true, true, null, "*"+select[2]+"*");
+      editor.dispatchEvent(italic);
     } else {
-      var start = editor.get(0).selectionStart;
-      var end = editor.get(0).selectionEnd;
-
-      // set textarea value to: text before caret + tab + text after caret
-      editor.val(editor.val().substring(0, start)
-                + "**"
-                + editor.val().substring(end));
-
-      // put caret at right position again
-      editor.get(0).selectionStart =
-      editor.get(0).selectionEnd = start + 1;
+      var editor = document.getElementById ("editor-content");
+      var italic = document.createEvent('TextEvent');
+      italic.initTextEvent('textInput', true, true, null, "*"+"italic"+"*");
+      editor.dispatchEvent(italic);
+      editor.selectionStart -= 7;
+      editor.selectionEnd   -= 1;
     }
+
+    var editor = $('#editor-content');
     liveUpdate(editor);
   },
   'click .e-code': function () {
@@ -83,22 +127,21 @@ Template.editorToolbar.events({
     var select = getSelected(editor);
 
     editor.focus();
-
     if (getSelectionText().length >= 1) {
-      editor.val(select[0] + '```'+ '\n' + select[2] + '\n' + '```' + select[1]);
+      var editor = document.getElementById ("editor-content");
+      var code = document.createEvent('TextEvent');
+      code.initTextEvent('textInput', true, true, null, "```" + "\n" + select[2] + "\n" + "```");
+      editor.dispatchEvent(code);
     } else {
-      var start = editor.get(0).selectionStart;
-      var end = editor.get(0).selectionEnd;
-
-      // set textarea value to: text before caret + tab + text after caret
-      editor.val(editor.val().substring(0, start)
-                + "``````"
-                + editor.val().substring(end));
-
-      // put caret at right position again
-      editor.get(0).selectionStart =
-      editor.get(0).selectionEnd = start + 3;
+      var editor = document.getElementById ("editor-content");
+      var code = document.createEvent('TextEvent');
+      code.initTextEvent('textInput', true, true, null, "```"+"codeblock"+"```");
+      editor.dispatchEvent(code);
+      editor.selectionStart -= 12;
+      editor.selectionEnd   -= 3;
     }
+
+    var editor = $('#editor-content');
     liveUpdate(editor);
   },
   'click .e-blockquote': function () {
@@ -107,24 +150,30 @@ Template.editorToolbar.events({
 
     editor.focus();
 
-    var selected = getHighlight(editor);
+    if (getSelectionText().length >= 1) {
+      var selected = getHighlight(editor);
+      var newVal = selected.toString(); // .split(",").join("\n");
 
-    var newVal = selected.toString(); // .split(",").join("\n");
+      var eachLines = newVal.split('\n');
+      var newLines = [];
 
-    var eachLines = newVal.split('\n');
-    var newLines = [];
+      for ( i = 0; i < eachLines.length; i++) {
+        var editor = document.getElementById ("editor-content");
+        var blockquote = document.createEvent('TextEvent');
+        blockquote.initTextEvent('textInput', true, true, null, "> " + eachLines[i] + "\n");
+        editor.dispatchEvent(blockquote);
+      }
+    } else {
+      var editor = document.getElementById ("editor-content");
+      var blockquote = document.createEvent('TextEvent');
 
-    for ( i = 0; i < eachLines.length; i++) {
-      eachLines[i] = '> ' + eachLines[i];
-      newLines.push(eachLines[i]);
+      blockquote.initTextEvent('textInput', true, true, null, "\n" + "> blockquote");
+      editor.dispatchEvent(blockquote);
+      editor.selectionStart -= 10;
+      editor.selectionEnd   -= 0;
     }
 
-    newLines = newLines.toString();
-    newLines = newLines.split(",").join("\n");
-
-    // Add Replace text in textarea
-    editor.val(select[0] + newLines + select[1]);
-
+    var editor = $('#editor-content');
     liveUpdate(editor);
   },
   'click .e-link': function () {
