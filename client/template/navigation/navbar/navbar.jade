@@ -15,6 +15,9 @@ template(name="navbar")
           li.hidden-tn
             a(href="#")
               i.fa.fa-search
+          li.hidden-tn
+            a(href="{{pathFor 'submit'}}")
+              i.fa.fa-pencil
           if currentUser
             li.dropdown
               a.dropdown-toggle(href="" data-toggle="dropdown" aria-expanded="true")
@@ -22,9 +25,10 @@ template(name="navbar")
                 i.fa.fa-chevron-down
               +dropdownAccount
           else
+
             li
               a(href="{{pathFor 'signin'}}")
-                i.li_settings
+                //-i.li_settings
                 | Sign-In
   .navbar-codemy-sub.visible-tn
     .container

@@ -1,75 +1,20 @@
-Template.editor.destoryed = function () {
-  Session.set(currentDraft, null);
-}
-
-Template.draftSaveModal.onRendered( function () {
-  $('#draft-name').val($('#editor-title').val());
+Template.editor.onCreated( function () {
+  console.log('Editor Template Created')
+  Session.set('currentDraft', null);
 });
 
-Template.draftSaveModal.events({
-  'click .btn-save': function (e, t) {
-    e.preventDefault();
-    var post = {
-      name :    document.getElementById('draft-name').value,
-      title:    document.getElementById('editor-title').value,
-      content:  document.getElementById('editor-content').value
-    }
-
-    // if ($.trim(post.title).length === 0) {
-    //   return false;
-    // }
-
-    // if ($.trim(post.content).length === 0) {
-    //   return false;
-    // }
-
-    var currentRoute = Router.current() && Router.current().route.getName();
-
-    // Submit Question
-    if (currentRoute === 'submit') {
-      Meteor.call('saveDraft', post, function(error, result) {
-        // display the error to the user and abort
-        if (error){
-          //return throwError('Something went wrong',error.reason);
-        } else {
-          // Router.go('/');
-          console.log('draft saved');
-          $('#draftSaveModal').modal('hide');
-        }
-      });
-    }
-  }
+Template.editor.onDestroyed( function () {
+  console.log('Editor Template Destroyed')
+  Session.set('currentDraft', null);
+  window.clearInterval(Autosave);
 });
 
-Template.draftModal.helpers({
-  draft: function () {
-    var user = Meteor.userId();
-    var draft = Drafts.find({'user._id': user });
-
-    if (user && draft) {
-      return draft;
+Template.editor.helpers({
+  draftMode: function () {
+    var draftMode = Session.get('currentDraft');
+    if (draftMode) {
+      return 'Draft Mode';
     }
-  }
-});
-
-Template.draftModal.events({
-  'click li p': function () {
-    var title = this.title;
-    var content = this.content;
-
-    $('#draftModal').modal('hide');
-
-    $('#editor-title').val(title);
-    $('#editor-content').val(content);
-
-    // Update Editor Preview
-    Session.set('editor-content', content);
-
-    // Set Current Draft Mode
-    Session.set('currentDraft', this._id);
-  },
-  'click .btn-delete': function () {
-    Drafts.remove(this._id);
   }
 });
 
@@ -153,25 +98,28 @@ Template.editor.onRendered( function () {
   // Set Default Value of Preview to default
   Session.set('editor-content', '**마크다운 미리보기**');
 
-  // Set Content to latest draft
-      // this.autorun( function () {
-      //   var user = Meteor.userId();
-      //   var draft = Drafts.find({'user._id': user });
+  // Auto Update Loaded Draft
+  this.autorun( function () {
+    console.log('this.autorun in editor is running');
+    if (Session.get('currentDraft') !== null) {
+      Autosave = window.setInterval( function () {
+        console.log('Autosave is running now');
+        var draft = Session.get('currentDraft');
+        var draftContent = Drafts.findOne({_id: draft});
+        var content =  $('#editor-content').val();
 
-      //   if (user && draft) {
-      //     // $('#draftModal').modal('show');
-      //     // $('#draftModal').css('z-index', '9999');
-
-      //     var title   = draft.title;
-      //     var content = draft.content;
-
-      //     $('#editor-title').val(title);
-      //     $('#editor-content').val(content);
-
-      //     Session.set('editor-content', content);
-      //   }
-      // });
-
+        if ((draftContent.content !== content) && (Session.get('autosaveState') === true)) {
+          Drafts.update(draft, {$set: { content: content}}, function (error) {
+            if (error) {
+              console.log(error.reason);
+            } else {
+              console.log('updated draft');
+            }
+          });
+        }
+      }, 5000);
+    }
+  });
 
   // Character Counter Title
   var title = $('input#editor-title');
@@ -186,10 +134,10 @@ Template.editor.onRendered( function () {
   charCounter(10000, content, contentCounter, contentHolder);
 
   var textarea = document.getElementById('editor-content');
-  var editor = new Behave({
-    textarea: document.getElementById('editor-content')
-  });
-  // tabIndent.render(textarea);
+  // var editor = new Behave({
+  //   textarea: document.getElementById('editor-content')
+  // });
+  // // tabIndent.render(textarea);
   // editor.init(textarea);
 });
 

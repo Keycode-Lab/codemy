@@ -1,0 +1,17 @@
+template(name="draftSaveModal")
+  .modal.fade.draftModal(id="draftSaveModal")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type="button" data-dismiss="modal" aria-hidden="true")
+            | x
+          h4.modal-title
+            | 임시저장
+        .modal-body
+          //- label(for="draft-name")
+          //- input#draft-name
+        .modal-footer
+          button.btn.btn-primary.btn-save
+            | 네
+          button.btn.btn-default(data-dismiss="modal")
+            | 아니요

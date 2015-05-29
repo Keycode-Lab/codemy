@@ -42,6 +42,7 @@ a.btn-zoomOut {
 
 .post-metadata {
   margin-bottom: -0.5em;
+  // margin-bottom: -70px; // Voting Wrapper height
 }
 
 .main.postpage hr {
@@ -62,6 +63,21 @@ a.btn-zoomOut {
 
 .post-metadata p.date {
 
+}
+
+.voting-wrapper {
+  text-align: center;
+}
+
+.voting-wrapper.post {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 0;
+  // top: 0;
+  top: ~"calc(1em + 20px)";
+  left: -3em;
+  .translate(-50%, 0);
 }
 
 .post-metadata .profile-wrapper {
