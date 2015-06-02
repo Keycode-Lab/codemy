@@ -50,6 +50,7 @@ Template.draftSaveModal.events({
           // Router.go('/');
           console.log('draft saved');
           $('#draftSaveModal').modal('hide');
+          Session.set('currentDraft', result);
         }
       });
     }

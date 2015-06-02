@@ -1,23 +1,30 @@
 Template.editorToolbar.onCreated( function () {
   // Turn Autosave off
   Session.set('autosaveState', false);
+
+  // Set previewState to Default (true)
+  Session.set('previewState', true);
 });
 
 Template.editorToolbar.onDestroyed( function () {
-  // Turn Autosave off
-  Session.set('autosaveState', false);
+  // if (Session.equals('autosaveState', true)) {
+  //   // Turn Off Autostate if its on.
+  //   window.clearInterval(Autosave);
+  // }
+  // // Turn Autosave off
+  // Session.set('autosaveState', false);
 });
 
 Template.editorToolbar.helpers({
   previewState: function () {
-    if ( Session.get('previewState') === true ) {
+    if (Session.equals('previewState', true)) {
       return 'on';
     } else {
       return 'off';
     }
   },
   previewStateColor: function () {
-    if ( Session.get('previewState') === true ) {
+    if (Session.equals('previewState', true)) {
       return 'badge-green';
     } else {
       return 'badge-red';
@@ -27,14 +34,14 @@ Template.editorToolbar.helpers({
     return Session.get('currentDraft');
   },
   autosaveState: function () {
-    if ( Session.get('autosaveState') === true ) {
+    if  (Session.equals('autosaveState', true)) {
       return 'on';
     } else {
       return 'off';
     }
   },
   autosaveStateColor: function () {
-    if ( Session.get('autosaveState') === true ) {
+    if (Session.equals('autosaveState', true)) {
       return 'badge-green';
     } else {
       return 'badge-red';
@@ -54,6 +61,8 @@ Template.editorToolbar.events({
     }
   },
   'click .btn-new': function () {
+    var editor = $('#editor-content');
+
     $('#editor-title').val('');
     $('#editor-content').val('');
 
@@ -63,9 +72,32 @@ Template.editorToolbar.events({
 
     Session.set('currentDraft', null);
     window.clearInterval(Autosave);
+    liveUpdate(editor);
+  },
+  'click .btn-save-loaded': function () {
+
+    var draft = Session.get('currentDraft');
+
+    var title = $('#editor-title').val();
+    var content =  $('#editor-content').val();
+
+    var object = {
+      title: title,
+      content: content
+    }
+
+    Meteor.call('saveLoad', draft, object, function(error, result) {
+      if (error) {
+        console.log(error.reason);
+      } else {
+        console.log('Draft Saved');
+
+        // Session.set('currentDraft', result);
+      }
+    });
   },
   'click .btn-autosave': function () {
-    if (Session.get('autosaveState') === false) {
+    if (Session.equals('autosaveState', false)) {
       Session.set('autosaveState', true);
     } else {
       Session.set('autosaveState', false);
@@ -182,8 +214,6 @@ Template.editorToolbar.events({
 });
 
 Template.editorToolbar.onRendered( function () {
-  // Session
-  Session.set('previewState', true);
 
   $(window).on('resize', function () {
     if ($(window).width() <= 479) {

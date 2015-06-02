@@ -41,9 +41,18 @@ template(name="editorToolbar")
           li
             a.btn-new(href="" tabindex='-1')
               | New
-        li
-          a.btn-save-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
-            | Save Draft
+        else
+          li
+            a.btn-save-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
+              | Save Draft
+
+        if loadedDraft
+          li
+            a.btn-save-loaded(href="" tabindex='-1')
+              | Save
+          li
+            a.btn-save-as(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
+              | Save As...
         li
           a.btn-load-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftModal")
             | Load Draft

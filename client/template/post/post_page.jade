@@ -1,17 +1,19 @@
 template(name="postPage")
   .container
     .main.postpage
-      .post-metadata
-
-        .profile-wrapper.hidden-tn.hidden-xxs
-          img(src="/img/avatar.png")
-        p.author
-          | <strong>{{user.username}}</strong>
-        p.date
-          | {{createdAt}}
-        +voting
-      h2.post-title {{title}}
-      hr
-      p
+      .post-header
+        .post-side
+          .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs
+                img(src="/img/avatar.png")
+          +voting
+        .post-metadata.clearfix
+          p
+            span.author
+              | <strong>{{user.username}}</strong>
+            span.date
+              | {{createdAt}}
+          h2.post-title {{title}}
+      .post-body
+        hr
         +markdown
           {{content}}

@@ -1,8 +1,18 @@
 template(name="sidebarNotification")
   .sidebar.push.right.notification(tabindex="-1")
-    h3 Notifications
-    ul
-      li.clearfix
+    h4 Notifications
+    ul.notifications-sort.clearfix
+      li
+        a.active(href="")
+          | All
+      li
+        a(href="")
+          | Unread
+      //- li
+      //-   a(href="")
+      //-     | Read
+    ul.notifications-list
+      li.notifications.clearfix
         p.notification-type
           | 댓글
         a(href="" tabindex="-1")
@@ -11,7 +21,7 @@ template(name="sidebarNotification")
           | documentExec('insertText', false, clipboardData('text/plain'))을 사용해보세요.
         p.notification-author
           | Author
-      li.clearfix
+      li.notifications.clearfix
         p.notification-type
           | 답변
         a(href="" tabindex="-1")

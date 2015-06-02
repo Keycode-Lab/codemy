@@ -1,4 +1,5 @@
 @sidebar-notification-width: 250px;
+@notifications-sort-height: 25px;
 
 .sidebar.notification {
   background: @white;
@@ -10,18 +11,20 @@
 }
 
 .sidebar.notification {
-  h3 {
+  h4 {
     text-align: center;
     font-family: 'Montserrat', 'Proxima Nova Alt', Sans-serif;
+    font-weight: bold;
     margin: 0;
     margin-bottom: 15px;
+    .uppercase;
   }
 
-  ul {
+  ul.notifications-list {
     .strip-list;
   }
 
-  li {
+  ul.notifications-list li.notifications {
     cursor: pointer;
     border-top: 1px solid @border-color;
     padding: 0.5em;
@@ -30,11 +33,11 @@
     }
   }
 
-  li p {
+  li.notifications p {
     margin: 0;
   }
 
-  li a {
+  li.notifications a {
     display: block;
     margin: 0;
     font-weight: bold;
@@ -55,5 +58,53 @@
     margin-top: 10px;
     font-weight: bold;
     clear: both;
+  }
+}
+
+ul.notifications-sort {
+  height: @notifications-sort-height;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: white;
+}
+
+ul.notifications-sort li {
+  display: inline-block;
+  margin: 0;
+}
+
+ul.notifications-sort li a {
+  display: inline-block;
+  padding: 0 10px;
+  line-height: @notifications-sort-height;
+  height: @notifications-sort-height;
+  text-decoration: none;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: @black;
+
+  .uppercase;
+  .letter-spacing(0.05em);
+
+  &.active {
+    color: @red;
+    border-bottom: 3px solid @red;
+  }
+  // Animating border bottom
+  &:after {
+    content: '';
+    display: block;
+    margin: auto;
+    margin-top: -3px;
+    height: 3px;
+    width: 0;
+    background: transparent;
+    transition: width .5s ease, background-color .5s ease;
+  }
+  &:hover:after {
+    width: 100%;
+    background: @red;
   }
 }
