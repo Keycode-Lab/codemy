@@ -8,6 +8,8 @@ meteor-platform
 autopublish
 insecure
 
+mizzao:jquery-ui
+
 # Accounts
 accounts-base
 accounts-password
@@ -53,3 +55,5 @@ juliancwirko:s-alert-flip
 
 # Tags
 ajduke:bootstrap-tagsinput@=0.5.0
+
+fastclick

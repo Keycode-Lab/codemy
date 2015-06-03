@@ -1,0 +1,59 @@
+/*
+**
+**  Modal Defaults
+**
+*/
+
+.modal-dialog,
+.modal-content {
+  border-radius: 2px;
+}
+
+.modal-header {
+  cursor: pointer;
+  cursor: -webkit-grab;
+}
+
+h4.modal-title {
+  font-weight: bold;
+  font-family: 'Montserrat', 'ProximaNovaAlt', 'Helvetica', Open Sans;
+
+  .uppercase;
+}
+
+#draftModal .modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 3;
+  margin: 0;
+  width: 400px;
+
+  .translate(-50%, -50%);
+}
+
+#draftModal .modal-body {
+  overflow-y: scroll;
+  padding: 0;
+  height: 400px;
+}
+
+#draftModal .modal-body ul.draft-list {
+  .strip-list;
+}
+
+#draftModal .modal-body ul.draft-list li.draft {
+  padding: 1em;
+  border-bottom: 1px solid @border-color;
+  &:hover {
+    background-color: @gray-lighter;
+  }
+  a {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+  }
+  button {
+    float: right;
+  }
+}

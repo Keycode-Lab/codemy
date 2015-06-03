@@ -25,4 +25,28 @@ Template.layout.onRendered( function () {
     Session.set('mobile', false);
   };
 
+  $(".modal").draggable({
+    handle: ".modal-header"
+  });
+
+  // Prevent Focus on Button & Textarea
+  $('input, textarea, button, a').on('focus', function (event) {
+    event.preventDefault();
+  });
+
+  $('input, textarea, button, a').on('blur', function (event) {
+    event.preventDefault();
+  });
+
+  // $('input, textarea').ontouch = function (event) {
+  //   event.preventDefault();
+  // };
+
+  /* Prevent Scrolling when focused/touched (Mobile)
+  $(document).ready(function() {
+    document.ontouchmove = function(e){
+      e.preventDefault();
+    }
+  });
+  */
 });

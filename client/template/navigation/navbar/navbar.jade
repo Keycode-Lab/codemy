@@ -1,12 +1,12 @@
 template(name="navbar")
-  .navbar-codemy
+  .navbar-codemy.clearfix
     .container
       ul.navbar
-        .pull-left
+        .pull-left.clearfix
           li
             a.logo(href="{{pathFor 'home'}}")
                 | CODEMY
-        .pull-right
+        .pull-right.clearfix
           if currentUser
             li
                 a.notification(href="#")

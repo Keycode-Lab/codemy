@@ -34,8 +34,6 @@ replaceSelectedText = function (el, text) {
     var sel = getInputSelection(el);
     var val = el.val();
     el.value = val.slice(0, sel.start) + text + val.slice(sel.end);
-
-
 }
 
 // http://stackoverflow.com/questions/3964710/replacing-selected-text-in-the-textarea

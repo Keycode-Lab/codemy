@@ -73,9 +73,20 @@
     border-radius: 3px;
     min-height: 200px;
     padding: 0.8em;
-    pre {
+
+    & > pre {
       border: 0;
+      border-left-color: lighten(@blue, 30%);
+      border-left-width: 2px;
+      // font-size: 80%;
       // background: #EEEEEE;
+    }
+    pre code {
+
+      overflow: auto;
+      word-wrap: normal;
+      white-space: pre;
+      // font-size: 13px !important;
     }
     blockquote {
       border-left-color: lighten(@blue, 30%);
@@ -88,7 +99,9 @@
 // Font of Editor
 .preview-inner pre code,
 .preview-inner pre {
-  font-family: 'InputMono', 'ProximaNovaAlt', Monospace, Sans-serif;
+  // font-family: 'InputMono', 'ProximaNovaAlt', Monospace, Sans-serif;
+  font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+  // font-family: "Lucida Console", "Monaco", "DejaVu Sans Mono", monospace;
 }
 
 // Show Preview ON
@@ -126,21 +139,17 @@ span.draftMode {
   margin-top: 1em;
 }
 
-#draftModal .modal-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  .translate(-50%, -50%);
-  z-index: 3;
-  margin: 0;
-  width: 400px
-}
+
 
 @media screen and (max-width: @screen-tn) {
+  .editor-wrapper {
+    padding: 1em !important;
+  }
   .editor-wrapper input#editor-title {
     font-size: 1.2em !important;
   }
   #draftModal .modal-dialog {
     width: 300px;
   }
+
 }
