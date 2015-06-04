@@ -37,6 +37,11 @@ template(name="editorToolbar")
             | Preview
             span.badge(class="{{previewStateColor}}")
               | {{previewState}}
+        li
+          a.btn-autosize(href="" tabindex='-1')
+            | Autosize
+            span.badge(class="{{autosizeStateColor}}")
+              | {{autosizeState}}
         if loadedDraft
           li
             a.btn-new(href="" tabindex='-1')

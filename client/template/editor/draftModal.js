@@ -34,6 +34,7 @@ Template.draftModal.events({
 
     // Update Editor Preview
     Session.set('editor-content', content);
+    Session.set('editor-title', title);
 
     // Set Current Draft Mode
     Session.set('currentDraft', this._id);

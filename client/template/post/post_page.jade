@@ -3,15 +3,15 @@ template(name="postPage")
     .main.postpage
       .post-header
         .post-side
-          .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs
+          .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
                 img(src="/img/avatar.png")
           +voting
         .post-metadata.clearfix
           p
             span.author
-              | <strong>{{user.username}}</strong>
+              | <strong>{{user.username}} {{isonline}}</strong>
             span.date
-              | {{createdAt}}
+              | {{moFromNow createdAt withoutSuffix}}
           h2.post-title {{title}}
       .post-body
         hr

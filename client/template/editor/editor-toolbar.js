@@ -1,12 +1,13 @@
 Template.editorToolbar.onCreated( function () {
   // Turn Autosave off
   Session.set('autosaveState', false);
-
+  Session.set('editor-autosize', false);
   // Set previewState to Default (true)
   Session.set('previewState', true);
 });
 
 Template.editorToolbar.onDestroyed( function () {
+  Session.set('editor-autosize', false);
   // if (Session.equals('autosaveState', true)) {
   //   // Turn Off Autostate if its on.
   //   window.clearInterval(Autosave);
@@ -47,6 +48,20 @@ Template.editorToolbar.helpers({
       return 'badge-red';
     }
   },
+  autosizeState: function () {
+    if  (Session.equals('editor-autosize', true)) {
+      return 'on';
+    } else {
+      return 'off';
+    }
+  },
+  autosizeStateColor: function () {
+    if (Session.equals('editor-autosize', true)) {
+      return 'badge-green';
+    } else {
+      return 'badge-red';
+    }
+  },
 });
 
 Template.editorToolbar.events({
@@ -73,6 +88,18 @@ Template.editorToolbar.events({
     Session.set('currentDraft', null);
     window.clearInterval(Autosave);
     liveUpdate(editor);
+  },
+  'click .btn-autosize': function () {
+    if (Session.equals('editor-autosize', true)) {
+      var ta = $('#editor-content');
+      // remove autosize from ta
+      ta.trigger('autosize.destroy');
+      Session.set('editor-autosize', false);
+    } else {
+      var ta = $('#editor-content')
+      ta.autosize();
+      Session.set('editor-autosize', true);
+    }
   },
   'click .btn-save-loaded': function () {
 

@@ -4,6 +4,8 @@
   padding-top: 0.5em;
   padding-left: 6em;
   word-wrap: break-word;
+  .box-shadow(0 6px 12px rgba(0, 0, 0, 0.05));
+  .user-select(text);
   pre {
     border: 0;
     font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
@@ -54,7 +56,7 @@ a.btn-zoomOut {
     font-weight: bold;
     margin: 0;
     margin: -8px 0;
-    margin-top: -10.5px;
+    margin-top: -14px;
     text-align: center;
     display: block;
     color: @dark;
@@ -96,6 +98,10 @@ a.btn-zoomOut {
   // .translate(-50%, 0);
 }
 
+.user-border-online {
+  box-shadow: 0 0 0 6px @green !important;
+}
+
 .postpage .profile-wrapper {
   // position: relative;
   // top: 1em;
@@ -117,7 +123,7 @@ a.btn-zoomOut {
   }
 }
 
-@media screen and (max-width: @screen-sm) {
+@media screen and (max-width: 767px) {
   .main.postpage {
     padding: 1em 2em;
   }
@@ -127,6 +133,12 @@ a.btn-zoomOut {
   }
   .postpage .voting-wrapper {
     margin-top: -30px;
+    .voteCount-container {
+      margin-top: -15px;
+    }
+    .upvote {
+      margin-bottom: -10px;
+    }
   }
   .post-metadata {
     padding-top: 0 !important;
@@ -163,6 +175,9 @@ a.btn-zoomOut {
     .voteCount-container {
       margin-top: -12px;
     }
+  }
+  span.date {
+    display: block;
   }
 }
 

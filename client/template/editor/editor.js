@@ -4,12 +4,14 @@ Template.editor.onCreated( function () {
 
   // Set Default Value of Preview to default
   Session.set('editor-content', '**마크다운 미리보기**');
+  Session.set('editor-title', null);
 });
 
 Template.editor.onDestroyed( function () {
   console.log('Editor Template Destroyed')
   Session.set('currentDraft', null);
   Session.set('editor-content', null);
+  Session.set('editor-title', null);
 
   if (Session.equals('autosaveState', true)) {
     // Turn Off Autostate if its on.
@@ -32,6 +34,14 @@ Template.editor.helpers({
 });
 
 Template.editor.events({
+  'keyup #editor-title': function (e) {
+    setTimeout(function(){
+      e.preventDefault();
+      var title =  $(e.target).val();
+      Session.set('editor-title', '');
+      Session.set('editor-title', title);
+    },100);
+  },
   'keyup #editor-content': function (e) {
     setTimeout(function(){
       e.preventDefault();

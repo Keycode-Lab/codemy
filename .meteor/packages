@@ -8,7 +8,10 @@ meteor-platform
 autopublish
 insecure
 
+mizzao:user-status
 mizzao:jquery-ui
+
+lbee:moment-helpers
 
 # Accounts
 accounts-base

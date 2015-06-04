@@ -4,14 +4,16 @@ template(name="draftSaveModal")
       .modal-content
         .modal-header
           button.close(type="button" data-dismiss="modal" aria-hidden="true")
-            | x
+            span(aria-hidden="true")&times;
           h4.modal-title
-            | 임시저장
+            | SAVE
+            small Confirm Save?
         .modal-body
-          //- label(for="draft-name")
-          //- input#draft-name
+          h4.draft-title
+            | {{session 'editor-title'}}
+          | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
         .modal-footer
           button.btn.btn-primary.btn-save
-            | 네
+            | YES
           button.btn.btn-default(data-dismiss="modal")
-            | 아니요
+            | NO

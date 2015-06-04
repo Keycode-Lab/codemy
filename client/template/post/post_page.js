@@ -1,3 +1,4 @@
+
 Template.postPage.events({
   'click a.btn-zoom': function (event) {
     event.preventDefault;
