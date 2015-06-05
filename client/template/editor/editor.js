@@ -133,6 +133,13 @@ Template.editor.onRendered( function () {
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();
 
+  $('.modal').on('show.bs.modal', function() {
+    //Make sure the modal and backdrop are siblings (changes the DOM)
+    $(this).before($('.modal-backdrop'));
+    //Make sure the z-index is higher than the backdrop
+    $(this).css("z-index", parseInt($('.modal-backdrop').css('z-index')) + 1);
+  });
+
   // Auto Update Loaded Draft
   this.autorun( function () {
     console.log('this.autorun in editor is running');

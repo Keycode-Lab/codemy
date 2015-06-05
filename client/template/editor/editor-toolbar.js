@@ -1,22 +1,32 @@
 Template.editorToolbar.onCreated( function () {
   // Turn Autosave off
   Session.set('autosaveState', false);
+
+  // Turn Autosize off
   Session.set('editor-autosize', false);
+
   // Set previewState to Default (true)
   Session.set('previewState', true);
 });
 
 Template.editorToolbar.onDestroyed( function () {
   Session.set('editor-autosize', false);
-  // if (Session.equals('autosaveState', true)) {
-  //   // Turn Off Autostate if its on.
-  //   window.clearInterval(Autosave);
-  // }
-  // // Turn Autosave off
-  // Session.set('autosaveState', false);
 });
 
 Template.editorToolbar.helpers({
+  /**
+   *  Loaded Draft
+   */
+  loadedDraft: function () {
+    return Session.get('currentDraft');
+  },
+
+  /**
+   *
+   *  XState = shows on or off of X
+   *  XStateColor = shows color of X
+   *
+   */
   previewState: function () {
     if (Session.equals('previewState', true)) {
       return 'on';
@@ -30,9 +40,6 @@ Template.editorToolbar.helpers({
     } else {
       return 'badge-red';
     }
-  },
-  loadedDraft: function () {
-    return Session.get('currentDraft');
   },
   autosaveState: function () {
     if  (Session.equals('autosaveState', true)) {
@@ -65,19 +72,34 @@ Template.editorToolbar.helpers({
 });
 
 Template.editorToolbar.events({
+
+  /**
+   *    Editor Settings Events
+   */
+
+  // Preview Toggle
   'click .btn-preview': function (e) {
+    // Apply 'editor-state' Classes here
     var $editorWrapper = $('.editor-wrapper');
+
     if ( $editorWrapper.hasClass('show-preview') ) {
+      // if preview-mode, turn off
       $editorWrapper.removeClass('show-preview');
       Session.set('previewState', false);
     } else {
+      // if not preview-mode, turn on
       $editorWrapper.addClass('show-preview');
       Session.set('previewState', true);
     }
   },
+
+
+  // New
   'click .btn-new': function () {
+    // textarea#editor-content
     var editor = $('#editor-content');
 
+    // Clear Title and Content
     $('#editor-title').val('');
     $('#editor-content').val('');
 
@@ -89,20 +111,27 @@ Template.editorToolbar.events({
     window.clearInterval(Autosave);
     liveUpdate(editor);
   },
+
+  // Autosize toggle
   'click .btn-autosize': function () {
     if (Session.equals('editor-autosize', true)) {
+      // If autosize, turn off
       var ta = $('#editor-content');
       // remove autosize from ta
       ta.trigger('autosize.destroy');
       Session.set('editor-autosize', false);
     } else {
+      // If not autosize, turn on
       var ta = $('#editor-content')
       ta.autosize();
       Session.set('editor-autosize', true);
     }
+    editor.focus();
   },
-  'click .btn-save-loaded': function () {
 
+  // Save button when Draft Exists (Update loaded/current draft)
+  'click .btn-save-loaded': function () {
+    // draft = draft _id
     var draft = Session.get('currentDraft');
 
     var title = $('#editor-title').val();
@@ -123,16 +152,31 @@ Template.editorToolbar.events({
       }
     });
   },
+
+  // Toggle Autosave
+  // Toggle autosave sessions. this.autorun listens for session boolean change
   'click .btn-autosave': function () {
     if (Session.equals('autosaveState', false)) {
+      // if not autosave, turn on
       Session.set('autosaveState', true);
     } else {
+      // if autosave, turn off
       Session.set('autosaveState', false);
     }
   },
+
+  // Toggle Markdown Cheatsheet (deprecated for now)
+  /*
   'click .btn-markdown': function () {
     $('#wrapper').toggleClass('sidebar-right-markdown');
   },
+  */
+
+  /**
+   *    Editor Markdown Toolbar
+   */
+
+  //
   'click .e-bold': function () {
     var editor = $('#editor-content');
     var select = getSelected(editor);
@@ -141,12 +185,12 @@ Template.editorToolbar.events({
 
     if (getSelectionText().length >= 1) {
       var editor = document.getElementById ("editor-content");
-      var bold = document.createEvent('TextEvent');
+      var bold   = document.createEvent('TextEvent');
       bold.initTextEvent('textInput', true, true, null, "**"+select[2]+"**");
       editor.dispatchEvent(bold);
     } else {
       var editor = document.getElementById ("editor-content");
-      var bold = document.createEvent('TextEvent');
+      var bold   = document.createEvent('TextEvent');
       bold.initTextEvent('textInput', true, true, null, "**"+"boldtext"+"**");
       editor.dispatchEvent(bold);
       editor.selectionStart -= 10;
@@ -157,7 +201,6 @@ Template.editorToolbar.events({
     liveUpdate(editor);
   },
   'click .e-italic': function () {
-    // Declare Editor Variables
     var editor = $('#editor-content');
     var select = getSelected(editor);
 
@@ -181,7 +224,6 @@ Template.editorToolbar.events({
     liveUpdate(editor);
   },
   'click .e-code': function () {
-    // Declare Editor Variables
     var editor = $('#editor-content');
     var select = getSelected(editor);
 
@@ -237,6 +279,9 @@ Template.editorToolbar.events({
   },
   'click .e-link': function () {
 
+  },
+  'click ul.dropdown-link': function (event) {
+    event.stopPropagation();
   }
 });
 

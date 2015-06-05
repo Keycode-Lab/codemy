@@ -11,11 +11,11 @@ Template.signin.events({
                           Meteor.user().profile.name;
 
         setTimeout( function () {
-          sAlert.success('Welcome ' + currentUser + '!');
+          // sAlert.success('Welcome ' + currentUser + '!');
         }, 100);
       } else {
-        sAlert.error(error.reason);
-        //throwError('Invalid Login', error.reason);
+        // sAlert.error(error.reason);
+        // throwError('Invalid Login', error.reason);
       }
       return;
     })

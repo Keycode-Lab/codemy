@@ -1,3 +1,39 @@
+.col-postPage {
+  float:left;
+  width: ~"calc(100% - 350px)";
+}
+
+.col-postPage-aside {
+  float:right;
+  padding: 0 15px;
+  padding-top: 8px;
+  width: 350px;
+  //min-height: 100vh;
+  display: block;
+  //background: @white;
+}
+
+@media screen and (max-width: @screen-lg) {
+  .col-postPage {
+    width: ~"calc(100% - 200px)";
+  }
+  .col-postPage-aside {
+    width: 200px;
+  }
+}
+
+
+@media screen and (max-width: @screen-md) {
+  .col-postPage {
+    width: 100%;
+  }
+  .col-postPage-aside {
+    display: none;
+  }
+}
+
+
+
 .main.postpage {
   position: relative;
   padding: 2em 2em;

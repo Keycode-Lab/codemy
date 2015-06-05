@@ -10,7 +10,7 @@ Template.layout.events({
     Meteor.logout( function() {
       Router.go('/');
       setTimeout( function () {
-        sAlert.success('Good Bye ' + currentUser + '!');
+        // sAlert.success('Good Bye ' + currentUser + '!');
       }, 100);
     });
     //var currentUser = Meteor.user().profile.username || Meteor.user().profile.name;

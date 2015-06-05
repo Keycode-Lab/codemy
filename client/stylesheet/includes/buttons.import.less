@@ -1,0 +1,85 @@
+.btn {
+  font-family: 'Monserrat', 'ProximaNovaAlt', 'Helvetica Neue', Helvetica, Sans-Serif;
+}
+
+.btn-o {
+  background: none;
+  color: @gray-light;
+  border: 2px solid @gray-light;
+  &:hover {
+    color: darken(@gray-light, 10%);
+    border-color: darken(@gray-light, 10%)
+  }
+}
+
+.btn-o-red {
+
+}
+
+.btn-o-green {
+  color: @green;
+  border-color: @green !important;
+  &:hover {
+    color: darken(@green, 10%) !important;
+    border-color: darken(@green, 10%) !important;
+  }
+}
+
+.btn-gray {
+  @btn-gray : #E0E0E0;
+  color: @gray-light;
+  background-color: @btn-gray;
+  .box-shadow-bottom(3px, darken(@btn-gray, 5%));
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &:hover {
+    color: @gray-light;
+    background-color: darken(@btn-gray, 5%);
+  }
+  &:focus {
+    color: @gray-light;
+    background-color: darken(@btn-gray, 5%);
+  }
+}
+
+.btn-green {
+  color: @white;
+  background-color: @green;
+  .box-shadow-bottom(3px, darken(@green, 5%));
+  //border-bottom: 3px solid darken(@green, 10%);
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &:hover {
+    color: @white;
+    background-color: darken(@green, 5%);
+  }
+  &:focus {
+    color: @white;
+    background-color: darken(@green, 5%);
+  }
+}
+
+.btn-red {
+  color: @white;
+  background-color: @red;
+  .box-shadow-bottom(3px, darken(@red, 5%));
+  //border-bottom: 3px solid darken(@green, 10%);
+  font-weight: 700;
+  .uppercase;
+  .letter-spacing(0.05em);
+  &:hover {
+    color: @white;
+    background-color: darken(@red, 5%);
+  }
+  &:focus {
+    color: @white;
+    background-color: darken(@red, 5%);
+  }
+}
+
+.btn-upper {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

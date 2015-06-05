@@ -1,2 +1,17 @@
 template(name="submit")
-  +editor
+  .container
+    .row-fluid.clearfix
+      .col-editor
+        +editor
+      .col-submit-aside.hidden-xs
+        .item-ask.clearfix
+          h4 Question Guideline
+          p 단순히 해결법을 바라는 형태의 질문은 좋은 질문이 아닙니다.
+          p 어떤게 문제인지, 무엇을 하고자하는지, 현재까지 해본 방법, 등을 최대한 자세하게 올려주세요.
+          p
+            a(href="http://jsfiddle.net")
+              | jsFiddle
+            |, code-block 등을 최대한 활용하여 질문을 올려주세요.
+          p(style="float:right;")
+            a(href="")
+              | <strong>전체 가이드라인 보기</strong>

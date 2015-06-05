@@ -1,3 +1,16 @@
+Template.postPage.onCreated( function () {
+  if (Meteor.user()) {
+    var postId = Router.current().params._id;
+    Meteor.call('viewCount', postId, function(error, result) {
+      if (error) {
+        console.log(error.reason);
+      } else {
+        console.log('viewed page. incremented');
+      }
+    });
+  }
+});
+
 
 Template.postPage.events({
   'click a.btn-zoom': function (event) {

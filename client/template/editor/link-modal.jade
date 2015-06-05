@@ -1,19 +1,18 @@
-template(name="draftSaveModal")
-  .modal.fade.draftModal(id="draftSaveModal")
+template(name="linkModal")
+  .modal.fade.draftModal(id="linkModal")
     .modal-dialog
       .modal-content
         .modal-header
           button.close(type="button" data-dismiss="modal" aria-hidden="true")
             span(aria-hidden="true") &times;
           h4.modal-title
-            | SAVE
-            small Confirm Save?
-        .modal-body
-          h4.draft-title
-            | {{session 'editor-title'}}
-          | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+            | ADD A LINK
+            small Link
+        .modal-body(style="text-align:center;")
+          p 예시) http://www.example.com
+          input
         .modal-footer
           button.btn.btn-o.btn-o-green.btn-save
-            | YES
+            | 링크 추가
           button.btn.btn-o(data-dismiss="modal")
-            | NO
+            | 취소

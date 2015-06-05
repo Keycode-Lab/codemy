@@ -1,19 +1,24 @@
 template(name="postPage")
   .container
-    .main.postpage
-      .post-header
-        .post-side
-          .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
-                img(src="/img/avatar.png")
-          +voting
-        .post-metadata.clearfix
-          p
-            span.author
-              | <strong>{{user.username}} {{isonline}}</strong>
-            span.date
-              | {{moFromNow createdAt withoutSuffix}}
-          h2.post-title {{title}}
-      .post-body
-        hr
-        +markdown
-          {{content}}
+    .col-postPage
+      .main.postpage
+        .post-header
+          .post-side
+            .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
+                  img(src="/img/avatar.png")
+            +voting
+          .post-metadata.clearfix
+            p
+              span.author
+                | <strong>{{user.username}} {{isonline}}</strong>
+              span.date
+                | {{moFromNow createdAt withoutSuffix}}
+            h2.post-title {{title}}
+        .post-body
+          hr
+          +markdown
+            {{content}}
+        .post-footer
+          +commentSubmit
+    .col-postPage-aside
+      p <strong>조회수</strong>: {{views}}
