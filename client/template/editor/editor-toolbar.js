@@ -108,7 +108,11 @@ Template.editorToolbar.events({
     $('#editor-content').focus();
 
     Session.set('currentDraft', null);
-    window.clearInterval(Autosave);
+
+    if (Session.equals('autosaveState', true)) {
+      window.clearInterval(Autosave);
+    }
+
     liveUpdate(editor);
   },
 

@@ -26,12 +26,18 @@ Template.postPage.events({
     if(zoomOutFont >= 10) {
       $(event.target).closest('code').css('font-size', zoomOutFont);
     }
+  },
+  'click a.add-comment': function (event, template) {
+    template.$('.post-footer').show();
+    $(event.target).hide();
   }
 });
 
 
 
 Template.postPage.onRendered( function () {
+  $('.post-footer').hide();
+
   this.autorun( function () {
     $('pre code').prepend('<a class="btn btn-xs btn-zoom" tabindex="-1"><i class="plus icon"></i></a>');
     $('pre code').prepend('<a class="btn btn-xs btn-zoomOut" tabindex="-1"><i class="minus icon"></i></a>');

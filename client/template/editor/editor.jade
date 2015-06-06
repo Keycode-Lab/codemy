@@ -6,13 +6,17 @@ template(name="editor")
 
       .row-fluid
         .editor-wrapper.clearfix.show-preview
-          .row-fluid
-            label TITLE
-            span.draftMode {{draftMode}}
-            div(style="float:right;")
-              label.char-count-title 0
-              span.char-limit-title
-            input(type="text" id="editor-title")
+          if currentRoute 'submit'
+            .row-fluid
+              label TITLE
+              span.draftMode {{draftMode}}
+              div(style="float:right;")
+                label.char-count-title 0
+                span.char-limit-title
+              input(type="text" id="editor-title")
+          if currentRoute 'postPage'
+            .row-fluid
+              h4(style="margin-top: 0px;") Your Answer
           .editor-content.clearfix
             +editorToolbar
             .textarea-wrapper
