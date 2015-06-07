@@ -9,6 +9,7 @@ template(name="draftSaveModal")
             | SAVE
             small Confirm Save?
         .modal-body
+          p <strong>Preview</strong>
           h4.draft-title
             | {{session 'editor-title'}}
           | {{#markdown}}{{session 'editor-content'}}{{/markdown}}

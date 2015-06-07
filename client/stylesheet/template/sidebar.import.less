@@ -20,15 +20,20 @@
 
 .sidebar.right {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: @navbar-height;
+  right: -@sidebar-notification-width;
   min-height: 100%;
   z-index: 12;
-  .transition(250ms cubic-bezier(0,.56,1,.47) all);
+  //.transition(250ms cubic-bezier(0,.56,1,.47) all);
+  .transition(250ms ease-in-out all);
+}
+
+.sidebarBlur {
+  z-index: 11;
 }
 
 #wrapper.sidebar-right-notification {
-  #canvas {
+  .sidebar.right {
     .translate(-@sidebar-notification-width);
   }
 }
@@ -36,5 +41,11 @@
 #wrapper.sidebar-right-markdown {
   .sidebar.markdown {
     .translate(0);
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .sidebar.right {
+    top: @navbar-height-mb;
   }
 }

@@ -15,7 +15,7 @@ charCounter = function (limit, target, counter, limitHolder) {
 
   var limitShow = limit;
 
-  $(limitHolder).html('/ ' + limit + ' characters');
+  $(limitHolder).html('/ ' + limit + '자');
 
   $(target).on('keyup focus', function (event) {
     msg_length = ($(target).val()).trim().bytes(); //to trim whitespaces

@@ -25,8 +25,8 @@ html, body {
   position: relative;
   overflow-x: hidden;
   height: 100vh;
-  background-color: @gray-lightest;
-  background-color: darken(white, 1%);
+  // background-color: @gray-lightest;
+  // background-color: darken(white, 1%);
   // z-index: 99999999;
 }
 
@@ -47,9 +47,8 @@ html, body {
 
 #inner-footer {
   margin-top: 50px;
-  height: 50px;
+  height: 100px;
   width: 100%;
-  min-height: 100px;
   text-align: center;
 }
 
@@ -157,4 +156,12 @@ a.red {
   h6 { font-size: ceil((@font-size-mobile * 0.85));  }
 }
 
+@media screen and (max-width: @screen-tn) {
+  .container.mobile {
+    padding: 0;
+  }
+  #wrapper {
+    background: white;
+  }
+}
 

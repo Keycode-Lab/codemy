@@ -1,0 +1,6 @@
+template(name="commentItem")
+  li.comment-item
+    .comment-item-inner
+      span <strong>{{user.username}} </strong>
+      span {{moFromNow createdAt withoutSuffix}}
+      p {{comment}}

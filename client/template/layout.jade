@@ -8,12 +8,13 @@ template(name="layout")
     #canvas
       +navbar
       #inner-body
+        +sidebarNotification
         .overlay-black
         +yield
       #inner-footer
         h4 I'm a footer
       //-+sidebarMarkdown
-      +sidebarNotification
+
 
   //- <!-- Modal -->
   //- div.modal.fade#signin-modal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")

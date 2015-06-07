@@ -4,13 +4,39 @@ textarea.comment-submit {
   min-height: 85px;
   resize: vertical;
   border-radius: 3px;
-  border-color: lighten(@gray-lighter, 10%);
+  border-color: @border-color;
+  //border-color: lighten(@gray-lighter, 10%);
   &:focus {
-    border-color: @blue;
+    border-color: @green;
   }
 }
 
 .btn-comment {
   display: inline-block;
   vertical-align: top;
+}
+
+span.info-count {
+  color: @gray;
+  font-size: 0.85em;
+}
+
+.comments-list {
+  .strip-list;
+  margin-bottom: 10px;
+}
+
+.comment-item {
+  font-size: 0.9em;
+  padding: 0.5em 0;
+  border-top: 1px solid @border-color;
+  p {
+    margin-bottom: 0;
+  }
+  &:last-child {
+    border-bottom: 1px solid @border-color;
+  }
+}
+.comment-item .comment-item-inner {
+  margin-left: 2em;
 }

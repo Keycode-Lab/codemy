@@ -6,7 +6,7 @@
 .col-postPage-aside {
   float:right;
   padding: 0 15px;
-  padding-top: 8px;
+  padding-top: 1.5em;
   width: 350px;
   //min-height: 100vh;
   display: block;
@@ -40,7 +40,8 @@
   padding-top: 0.5em;
   padding-left: 6em;
   word-wrap: break-word;
-  .box-shadow(0 6px 12px rgba(0, 0, 0, 0.05));
+  //border: 1px solid @gray-lighter;
+  //.box-shadow(0 6px 12px rgba(0, 0, 0, 0.05));
   .user-select(text);
   pre {
     border: 0;
@@ -62,7 +63,9 @@
 .post-footer {
   padding: 1em 2em;
   padding-left: 6em;
-  background: @gray-lighter;
+  border-top: 1px solid @border-color;
+  // background: @gray-lighter;
+
 }
 
 a.btn-zoom,
@@ -217,6 +220,10 @@ a.btn-zoomOut {
 }
 
 @media screen and (max-width: @screen-tn) {
+  .main.postpage {
+    margin-top: -20px;
+    border: 0;
+  }
   .postpage .voting-wrapper {
     font-size: 0.9em;
     margin-top: -25px;

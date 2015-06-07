@@ -1,6 +1,6 @@
 template(name="list")
   .container.mobile
-    .main.postslist
+    .main.postslist.clearfix
       ul.posts-sort.clearfix
         li
           a.active(href="")
@@ -11,11 +11,11 @@ template(name="list")
         li
           a(href="")
             | Needs Answer
-        if currentUser
-          a.btn.btn-sm.btn-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
-              | Ask Question
-        else
-          a.btn.btn-sm.btn-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
+        //- if currentUser
+        a.btn.btn-sm.btn-o.btn-o-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
+          | Ask Question
+        //- else
+          a.btn.btn-sm.btn-o.btn-o-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
               | Ask Question
       ul.posts-list
         each posts

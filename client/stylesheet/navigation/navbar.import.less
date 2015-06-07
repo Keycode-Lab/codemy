@@ -23,7 +23,7 @@
 
 .navbar-codemy,
 .navbar-codemy-sub {
-  border-bottom: 1px solid @border-color;
+  // border-bottom: 1px solid @border-color;
   font-family: 'Montserrat', 'Proxima Nova Alt', 'Nanum Gothic', Sans-serif;
 }
 
@@ -147,6 +147,7 @@ a.dropdown-toggle i.fa-chevron-down {
   width: 100%;
   height: @navbar-sub-height;
   background: @navbar-sub-background;
+  border-bottom: 1px solid @border-color;
 }
 
 .navbar-codemy-sub ul {
@@ -206,4 +207,10 @@ a.dropdown-toggle i.fa-chevron-down {
   //     margin-bottom: 12.5px;
   //   }
   // }
+}
+
+@media screen and (max-width: @screen-tn) {
+  .container.mobile-navbar {
+    padding: 0;
+  }
 }

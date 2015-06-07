@@ -32,14 +32,14 @@ template(name="editorToolbar")
         //- Preview
         li
           a.btn-preview(href="" tabindex='-1')
-            | Preview
+            | 미리보기
             span.badge(class="{{previewStateColor}}")
               | {{previewState}}
 
         //- AutoSize
         li
           a.btn-autosize(href="" tabindex='-1')
-            | Autosize
+            | 자동크기
             span.badge(class="{{autosizeStateColor}}")
               | {{autosizeState}}
 
@@ -49,7 +49,7 @@ template(name="editorToolbar")
           //- New
           li
             a.btn-new(href="" tabindex='-1')
-              | New
+              | 새 문서
 
 
         else
@@ -57,7 +57,7 @@ template(name="editorToolbar")
           //- Save Draft
           li
             a.btn-save-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
-              | Save Draft
+              | 저장
 
 
         if loadedDraft
@@ -65,17 +65,17 @@ template(name="editorToolbar")
           //- Save
           li
             a.btn-save-loaded(href="" tabindex='-1')
-              | Save
+              | 저장
 
           //- Save As
           li
             a.btn-save-as(href="" tabindex='-1' data-toggle="modal" data-target="#draftSaveModal")
-              | Save As...
+              | 다른 이름으로 저장
 
         //- Load Draft
         li
           a.btn-load-draft(href="" tabindex='-1' data-toggle="modal" data-target="#draftModal")
-            | Load Draft
+            | 불러오기
 
 
         if loadedDraft
@@ -83,6 +83,6 @@ template(name="editorToolbar")
           //- Autosave
           li
             a.btn-autosave(href="" tabindex='-1')
-              | Autosave
+              | 자동저장
               span.badge(class="{{autosaveStateColor}}")
                 | {{autosaveState}}

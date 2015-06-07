@@ -4,21 +4,16 @@ Template.signin.events({
     password = t.find('#signin-password').value;
 
     Meteor.loginWithPassword(username, password, function(error){
-      if (Meteor.user()){
-        Router.go('/');
-
-        var currentUser = Meteor.user().profile.username ||
-                          Meteor.user().profile.name;
-
-        setTimeout( function () {
-          // sAlert.success('Welcome ' + currentUser + '!');
-        }, 100);
+      if (error) {
+        console.log(error.reason)
       } else {
-        // sAlert.error(error.reason);
-        // throwError('Invalid Login', error.reason);
+        if (Router.current() && Router.current().route.getName() === 'signin') {
+          // if we are on the login route, we want to redirect the user
+          Router.go('/');
+        }
       }
-      return;
-    })
+
+    });
     return false;
   },
 });
