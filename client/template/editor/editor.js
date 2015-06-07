@@ -5,6 +5,8 @@ Template.editor.onCreated( function () {
   // Set Default Value of Preview to default
   Session.set('editor-content', '**마크다운 미리보기**');
   Session.set('editor-title', null);
+
+  Session.set('draftsLimit', 5);
 });
 
 Template.editor.onDestroyed( function () {
@@ -12,6 +14,7 @@ Template.editor.onDestroyed( function () {
   Session.set('currentDraft', null);
   Session.set('editor-content', null);
   Session.set('editor-title', null);
+  Session.set('draftsLimit', null);
 
   if (Session.equals('autosaveState', true)) {
     // Turn Off Autostate if its on.
@@ -21,7 +24,17 @@ Template.editor.onDestroyed( function () {
   // Turn Autosave off
   Session.set('autosaveState', false);
 
-  delete Session.keys['currentDraft', 'editor-content', 'autosaveState', 'previewState'];
+  /**
+   * Deleting Sessions
+   * http://stackoverflow.com/questions/10743703/how-do-i-delete-or-remove-session-variables
+   */
+  delete Session.keys['currentDraft'];
+  delete Session.keys['editor-content'];
+  delete Session.keys['editor-title'];
+  delete Session.keys['editor-autosize']; // Does not delete?
+  delete Session.keys['draftsLimit'];
+  delete Session.keys['autosaveState'];
+  delete Session.keys['previewState'];
 });
 
 Template.editor.helpers({

@@ -1,5 +1,5 @@
 Template.postPage.onCreated( function () {
-
+  // Set Default 'commentLimit' to 4
   Session.set('commentLimit', 4);
 
   if (Meteor.user()) {
@@ -14,18 +14,35 @@ Template.postPage.onCreated( function () {
   }
 });
 
+Template.postPage.onDestroyed( function () {
+  delete Session.keys['commentLimit'];
+});
+
 Template.postPage.helpers({
-  comments: function() {
-    var commentCursor = parseInt(Session.get('commentLimit'));
+  /**
+   * [comments description]
+   * Returns comments based on postId and 'commentCursor' Session.
+   */
+  comments: function () {
+    var commentCursor = Number(Session.get('commentLimit'));
     return Comments.find({postId: this._id}, {limit: commentCursor});
+  },
+  // noComments: function () {
+  //   var commentCount = Comments.find({postId: this._id}, {limit: commentCout}).count();
+  //   return commentCount === 0;
+  // },
+  nextPath: function () {
+    var commentCursor = Number(Session.get('commentLimit'));
+    return commentCursor === Comments.find({postId: this._id}, {limit: commentCursor}).count();
   },
   cpointsAuthor: function () {
     var author = this.user;
 
     if (author && author._id) {
       var authorById = Meteor.users.findOne({_id: author._id});
-
-      return authorById.profile.cpoints;
+      if (authorById && authorById.profile) {
+        return authorById.profile.cpoints;
+      }
     }
   },
 
@@ -48,7 +65,7 @@ Template.postPage.events({
     }
   },
   'click a.add-comment': function (event, template) {
-    template.$('.post-footer').show();
+    template.$('.comment-wrapper').show();
     $(event.target).hide();
   },
   'click a.load-more-comments': function (event) {
@@ -61,7 +78,7 @@ Template.postPage.events({
 
 
 Template.postPage.onRendered( function () {
-  $('.post-footer').hide();
+  $('.comment-wrapper').hide();
 
   $('[data-toggle="tooltip"]').tooltip();
 

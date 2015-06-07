@@ -15,3 +15,7 @@ template(name="draftModal")
                 a(href="") {{title}}
                 button.btn.btn-xs.btn-red.btn-delete
                   | Delete
+            if nextPath
+              li
+                a.load-more-draft(href="")
+                  | 더 보기

@@ -22,12 +22,14 @@ template(name="postPage")
           ul.comments-list
             each comments
               +commentItem
-          a.load-more-comments(href="")
-            | load more
+            if nextPath
+              a.load-more-comments(href="")
+                | 더 보기
           a.add-comment(href="")
             | <strong>댓글 남기기</strong>
+          +commentSubmit
       .post-footer
-        +commentSubmit
+
     .col-postPage-aside
       p
         i.fa.fa-coffee

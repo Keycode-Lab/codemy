@@ -13,6 +13,7 @@ Template.editorToolbar.onCreated( function () {
 
 Template.editorToolbar.onDestroyed( function () {
   Session.set('editor-autosize', false);
+
 });
 
 Template.editorToolbar.helpers({
