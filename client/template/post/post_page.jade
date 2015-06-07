@@ -1,19 +1,43 @@
 template(name="postPage")
-  .container
-    .main.postpage
-      .post-header
-        .post-side
-          .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs
-                img(src="/img/avatar.png")
-          +voting
-        .post-metadata.clearfix
-          p
-            span.author
-              | <strong>{{user.username}}</strong>
-            span.date
-              | {{createdAt}}
-          h2.post-title {{title}}
-      .post-body
-        hr
-        +markdown
-          {{content}}
+  //div(style="margin-top: 10px;")
+  .container.mobile
+    .col-postPage
+      .main.postpage
+        .post-header
+          .post-side
+            .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
+                  img(src="/img/avatar.png")
+            +voting
+          .post-metadata.clearfix
+            p
+              span.author
+                | <strong>{{user.username}} {{isonline}}</strong>
+              span.date
+                | {{moFromNow createdAt withoutSuffix}}
+            h2.post-title {{title}}
+        .post-body
+          hr
+          +markdown
+            {{content}}
+          ul.comments-list
+            each comments
+              +commentItem
+            if nextPath
+              a.load-more-comments(href="")
+                | 더 보기
+          a.add-comment(href="")
+            | <strong>댓글 남기기</strong>
+          +commentSubmit
+      .post-footer
+
+    .col-postPage-aside
+      p
+        i.fa.fa-coffee
+        | &nbsp; {{cpointsAuthor}}
+      p
+        i.fa.fa-eye
+        | &nbsp; {{views}}
+
+  .container.mobile
+    hr
+  +submit

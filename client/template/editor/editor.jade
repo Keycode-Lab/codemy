@@ -1,32 +1,33 @@
 template(name="editor")
-  .container
+
     .editor-outer
       .row-fluid
-        .btn-toolbar
-
-      .row-fluid
         .editor-wrapper.clearfix.show-preview
-          .row-fluid
-            label TITLE
-            span.draftMode {{draftMode}}
-            div(style="float:right;")
-              label.char-count-title 0
-              span.char-limit-title
-            input(type="text" id="editor-title")
+          if currentRoute 'submit'
+            .row-fluid
+              label 제목
+              span.draftMode {{draftMode}}
+              div(style="float:right;")
+                label.char-count-title 0
+                span.char-limit-title
+              input(type="text" id="editor-title")
           .editor-content.clearfix
             +editorToolbar
             .textarea-wrapper
-              label MARKDOWN
+              label 마크다운
               div(style="float:right;")
                 label.char-count-content 0
                 span.char-limit-content
               textarea(id="editor-content")
             .preview-wrapper
-              label MARKDOWN PREVIEW
+              label 마크다운 미리보기
               .preview-inner
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
           .editor-bottom
             button.btn.btn-green.btn-submit
-              | 질문하기
+              if currentRoute 'submit'
+                | 질문하기
+              if currentRoute 'postPage'
+                | 답변하기
             //-button.btn.btn-info.btn-draft
               | Save Draft

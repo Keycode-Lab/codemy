@@ -1,7 +1,7 @@
 Template.list.helpers({
-  posts: function () {
-    return Posts.find();
-  }
+  // posts: function () {
+  //   return Posts.find();
+  // }
 });
 
 Template.list.events({

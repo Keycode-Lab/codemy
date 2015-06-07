@@ -1,6 +1,5 @@
+Template.draftSaveModal.helpers({
 
-Template.draftSaveModal.onRendered( function () {
-  $('#draft-name').val($('#editor-title').val());
 });
 
 Template.draftSaveModal.events({
@@ -55,4 +54,8 @@ Template.draftSaveModal.events({
       });
     }
   }
+});
+
+Template.draftSaveModal.onRendered( function () {
+  $('#draft-name').val($('#editor-title').val());
 });

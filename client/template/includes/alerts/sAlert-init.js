@@ -1,10 +1,10 @@
-Meteor.startup(function () {
+// Meteor.startup(function () {
 
-    sAlert.config({
-        effect: 'flip',
-        position: 'top-right',
-        timeout: 5000,
-        html: false
-    });
+// //     sAlert.config({
+// //         effect: 'flip',
+// //         position: 'top-right',
+// //         timeout: 5000,
+// //         html: false
+// //     });
 
-});
+// // });

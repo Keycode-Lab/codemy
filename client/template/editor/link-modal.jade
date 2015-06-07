@@ -1,0 +1,18 @@
+template(name="linkModal")
+  .modal.fade.draftModal(id="linkModal")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type="button" data-dismiss="modal" aria-hidden="true")
+            span(aria-hidden="true") &times;
+          h4.modal-title
+            | ADD A LINK
+            small Link
+        .modal-body(style="text-align:center;")
+          p 예시) http://www.example.com
+          input
+        .modal-footer
+          button.btn.btn-o.btn-o-green.btn-save
+            | 링크 추가
+          button.btn.btn-o(data-dismiss="modal")
+            | 취소

@@ -21,7 +21,9 @@ h4.modal-title {
   .uppercase;
 }
 
-#draftModal .modal-dialog {
+#draftModal .modal-dialog,
+#draftSaveModal .modal-dialog,
+#linkModal .modal-dialog {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -38,8 +40,41 @@ h4.modal-title {
   height: 400px;
 }
 
+#draftSaveModal .modal-body {
+  overflow-y: scroll;
+  height: 400px;
+  h4.draft-title {
+    margin-top: 0;
+  }
+  pre {
+    border: 0;
+    font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+  }
+  pre code {
+    overflow: auto;
+    word-wrap: normal;
+    white-space: pre;
+  }
+  blockquote {
+    border-left-color: lighten(@blue, 30%);
+    border-left-width: 2px;
+    background: lighten(@blue, 50%);
+  }
+}
+
 #draftModal .modal-body ul.draft-list {
   .strip-list;
+  a.load-more-draft {
+    display: block;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    text-decoration: none;
+    &:hover {
+      background-color: @gray-lighter;
+    }
+  }
 }
 
 #draftModal .modal-body ul.draft-list li.draft {
@@ -55,5 +90,13 @@ h4.modal-title {
   }
   button {
     float: right;
+  }
+}
+
+@media screen and (max-width: @screen-tn) {
+  #draftModal .modal-dialog,
+  #draftSaveModal .modal-dialog,
+  #linkModal .modal-dialog {
+    width: 300px;
   }
 }

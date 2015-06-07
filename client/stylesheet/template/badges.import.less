@@ -1,0 +1,33 @@
+.trophy {
+  display: block;
+  height: 40px;
+  width: 120px;
+  text-align: center;
+  .trophy-name {
+    line-height: 35px;
+    font-weight: bold;
+  }
+}
+
+.trophy.gold {
+  background: linear-gradient(135deg, #fceabb 0%,#ffeece 0%,#fcd600 7%,#fffefc 17%,#ffe607 20%,#ffd000 31%,#fffefc 43%,#fcd600 54%,#fccd4d 60%,#776500 83%,#f9f7ed 83%,#f9f7ed 83%,#776500 83%,#443102 88%,#fcd600 100%); /* W3C */
+  background-size: 200% 100%;
+
+  -webkit-animation: goldAnimation 5s ease-in-out infinite;
+  animation: goldAnimation 5s ease-in-out infinite;
+
+    @-webkit-keyframes goldAnimation {
+        0%{background-position:93% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:93% 0%}
+    }
+    @keyframes goldAnimation {
+        0%{background-position:93% 0%}
+        50%{background-position:0% 100%}
+        100%{background-position:93% 0%}
+    }
+    color: darken(gold, 20%);
+    border-bottom: 5px solid darken(gold, 10%);
+    .box-shadow(0px 0px 0px 1px rgba(102,82,0,0.8));
+}
+

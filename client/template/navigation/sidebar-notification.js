@@ -1,0 +1,3 @@
+Template.sidebarNotification.onRendered( function () {
+
+});

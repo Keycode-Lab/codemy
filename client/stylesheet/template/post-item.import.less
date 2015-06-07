@@ -1,6 +1,9 @@
 li.question-item {
   //height: 100px;
   border-bottom: 1px solid @border-color;
+  &:last-child {
+    border-bottom: 0;
+  }
 }
 
 li.question-item {
@@ -86,5 +89,11 @@ li.question-item .answer-count {
   }
   li.question-item .question-meta {
     max-width: 100%;
+  }
+}
+
+@media screen and (max-width: @screen-tn) {
+  .row-fluid.tags {
+    padding: 0 0.5em;
   }
 }

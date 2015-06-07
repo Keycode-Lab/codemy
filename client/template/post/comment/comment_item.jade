@@ -1,0 +1,7 @@
+template(name="commentItem")
+  li.comment-item
+    .comment-item-inner
+
+      p {{comment}} -
+        a(href="" class="{{commentOp}}") {{user.username}}
+        span.date {{moFromNow createdAt withoutSuffix}}

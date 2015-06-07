@@ -1,7 +1,10 @@
 Template.layout.events({
-  'click #inner-wrapper': function (e) {
+  'click #inner-body': function (e) {
+    // Disabling Sidebar
     if( $('#wrapper').hasClass('sidebar-right-notification') ) {
-      $('#wrapper').removeClass('sidebar-right-notification');
+      if (! $(event.target).is('.sidebar.right.notification, .sidebar.right.notification *')) {
+        $('#wrapper').removeClass('sidebar-right-notification');
+      }
     }
   },
   'click #signout': function () {
@@ -10,7 +13,7 @@ Template.layout.events({
     Meteor.logout( function() {
       Router.go('/');
       setTimeout( function () {
-        sAlert.success('Good Bye ' + currentUser + '!');
+        // sAlert.success('Good Bye ' + currentUser + '!');
       }, 100);
     });
     //var currentUser = Meteor.user().profile.username || Meteor.user().profile.name;
@@ -38,6 +41,13 @@ Template.layout.onRendered( function () {
     event.preventDefault();
   });
 
+  // $('#inner-body').on('click', function () {
+  //   if ($('#wrapper').hasClass('sidebar-right-notification') &&
+  //       ($(event.target) != $('.notification'))) {
+  //       $('#wrapper').removeClass('sidebar-right-notification')
+  //   }
+  // });
+
   // $('input, textarea').ontouch = function (event) {
   //   event.preventDefault();
   // };
@@ -49,4 +59,5 @@ Template.layout.onRendered( function () {
     }
   });
   */
+
 });

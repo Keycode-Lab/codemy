@@ -1,17 +1,21 @@
 template(name="layout")
   +alerts
-  +sAlert
-
+  //-+sAlert
+  +linkModal
+  +draftModal
+  +draftSaveModal
   #wrapper
     #canvas
       +navbar
-      #inner-wrapper
+      #inner-body
+        +sidebarNotification
         .overlay-black
         +yield
-      +sidebarMarkdown
-      +sidebarNotification
-  +draftModal
-  +draftSaveModal
+      #inner-footer
+        h4 I'm a footer
+      //-+sidebarMarkdown
+
+
   //- <!-- Modal -->
   //- div.modal.fade#signin-modal(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true")
   //-   .modal-dialog

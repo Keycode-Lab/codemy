@@ -12,7 +12,7 @@ template(name="postItem")
           strong {{user.username}}
         span.comment
           i.icon-chat-alt
-          | 1
+          | {{commentsCount}}
         span.votes
           i.icon-coffee
           | 1
@@ -24,7 +24,7 @@ template(name="postItem")
         | Answers
       span.count
         | 0
-    .row-fluid(style="margin-top: 10px;")
+    .row-fluid.tags(style="margin-top: 10px;")
       .label.label-outline.label-red
         | javascript
       .label.label-outline.label-red

@@ -1,3 +1,5 @@
+
+
 Template.draftModal.helpers({
   draft: function () {
     var userId = Meteor.userId();
@@ -14,11 +16,15 @@ Template.draftModal.helpers({
     if (userId && draft) {
       return draft.count();
     }
-  }
+  },
+  nextPath: function () {
+    var draftCursor = Number(Session.get('draftsLimit'));
+    return draftCursor === Drafts.find({'user._id': Meteor.user()._id}, {limit: draftCursor}).count();
+  },
 });
 
 Template.draftModal.events({
-  'click li a': function () {
+  'click li.draft a': function () {
     var title = this.title;
     var content = this.content;
 
@@ -34,6 +40,7 @@ Template.draftModal.events({
 
     // Update Editor Preview
     Session.set('editor-content', content);
+    Session.set('editor-title', title);
 
     // Set Current Draft Mode
     Session.set('currentDraft', this._id);
@@ -61,5 +68,10 @@ Template.draftModal.events({
       Drafts.remove(this._id);
     }
 
+  },
+  'click a.load-more-draft': function (event) {
+    event.preventDefault();
+
+    Session.set('draftsLimit', Number(Session.get('draftsLimit')) + 5)
   }
 });

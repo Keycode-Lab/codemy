@@ -1,12 +1,12 @@
 template(name="sidebarNotification")
-  .sidebar.push.right.notification(tabindex="-1")
-    h4 Notifications
+  .sidebar.right.notification(tabindex="-1")
+    //- h4 Notifications
     ul.notifications-sort.clearfix
       li
-        a.active(href="")
+        a.all.active(href="")
           | All
       li
-        a(href="")
+        a.unread(href="")
           | Unread
       //- li
       //-   a(href="")

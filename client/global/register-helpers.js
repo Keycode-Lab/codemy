@@ -27,3 +27,27 @@ Template.registerHelper('activeRoute', function (/* route names */) {
   return active && 'active';
 });
 
+// Show user status in text next to username
+Template.registerHelper('isonline', function () {
+  var id = this && this.user && this.user._id;
+  var user = Meteor.users.findOne({_id: id});
+  if (user && user.status  && user.status.online)
+    return "is online"
+  else
+    return null;
+});
+
+// Match Current Route Name
+Template.registerHelper('currentRoute', function (name) {
+  return Router.current() && Router.current().route.getName() === name
+});
+
+// Show user status in text next to username
+Template.registerHelper('userStatusBorder', function () {
+  var id = this && this.user && this.user._id;
+  var user = Meteor.users.findOne({_id: id});
+  if (user && user.status  && user.status.online)
+    return "user-border-online"
+  else
+    return null;
+});
