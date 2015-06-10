@@ -8,13 +8,6 @@ Meteor.publish('posts', function(options) {
   return posts;
 });
 
-// Meteor.publish('comments', function(options) {
-//   check(options, {
-//     limit: Number
-//   });
-//   return Comments.find({}, options);
-// });
-
 Meteor.publish('comments', function (filter, options) {
     check(filter, {
         postId: String
@@ -35,33 +28,23 @@ Meteor.publish('answers', function (filter, options) {
     return Answers.find(filter, options);
 });
 
+Meteor.publish('commentAnswer', function(answerId, limit) {
+  // check(filter, {
+  //   answerId: String
+  // });
+  // check(options, {
+  //   limit: Number
+  // });
+  // Meteor._sleepForMs(2000);
+  return Comments.find({answerId: answerId}, {limit: limit});
+});
+
 Meteor.publish('draftsList', function (options) {
   check(options, {
       limit: Number
   });
   return Drafts.find({'user._id': this.userId}, options);
 });
-
-// Meteor.publish("userStatus", function(author) {
-//   return Meteor.users.find(
-//     {
-//       _id: Meteor.users.findOne({_id: author})
-//     },
-//     {
-//       fields: { status:1 }
-//     }
-//   );
-// });
-
-
-// // Codemy
-// // Old Publication
-// Meteor.publish("userStatus", function() {
-//   return Meteor.users.find({ "status.online": true, userId: Posts.find(this._id).user._id },
-//   {
-//     fields: { status: 1 }
-//   });
-// });
 
 
 Meteor.publish('singlePost', function (id) {

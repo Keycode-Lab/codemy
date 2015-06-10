@@ -16,13 +16,13 @@ template(name="answerItem")
       hr
       +markdown
         {{content}}
-      //- ul.comments-list
-      //-   each comments
-      //-     +commentItem
-      //-   if nextPath
-      //-     a.load-more-comments(href="")
-      //-       | 더 보기
+      ul.comments-list
+        each commentAnswer
+          +commentItem
+        if nextPath
+          a.load-more-commentAnswer(href="")
+            | 더 보기
       a.add-comment(href="")
         | <strong>댓글 남기기</strong>
-      +commentSubmit
+      +commentAnswerSubmit
    .post-footer
