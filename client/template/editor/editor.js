@@ -65,23 +65,22 @@ Template.editor.events({
   },
   'click .btn-submit': function (e, t) {
     e.preventDefault();
-    var post = {
-      title:    document.getElementById('editor-title').value,
-      content:  document.getElementById('editor-content').value
-    }
-
-    if ($.trim(post.title).length === 0) {
-      return false;
-    }
-
-    if ($.trim(post.content).length === 0) {
-      return false;
-    }
-
     var currentRoute = Router.current() && Router.current().route.getName();
 
     // Submit Question
     if (currentRoute === 'submit') {
+      var post = {
+        title:    document.getElementById('editor-title').value,
+        content:  document.getElementById('editor-content').value
+      }
+
+      if ($.trim(post.title).length === 0) {
+        return false;
+      }
+
+      if ($.trim(post.content).length === 0) {
+        return false;
+      }
       Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -102,6 +101,41 @@ Template.editor.events({
           Router.go('/');
 
           }
+        }
+      });
+    }
+
+    // Submit Question
+    if (currentRoute === 'postPage') {
+      var answer = {
+        postId: Template.parentData()._id,
+        content:  document.getElementById('editor-content').value
+      }
+
+      if ($.trim(answer.content).length === 0) {
+        return false;
+      }
+
+      Meteor.call('answerSubmit', answer, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          if (Session.get('currentDraft') !== null) {
+
+            var draft = Session.get('currentDraft');
+
+            Meteor.call('draftRemove', draft, function(error, result) {
+              if (error) {
+                console.log(error.reason);
+              } else {
+                console.log('Draft Autosaved');
+              }
+            });
+
+          }
+         document.getElementById('editor-content').value = "";
+         Session.set('editor-content', '**마크다운 미리보기**');
 
         }
       });

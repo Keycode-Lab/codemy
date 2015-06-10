@@ -25,6 +25,16 @@ Meteor.publish('comments', function (filter, options) {
     return Comments.find(filter, options);
 });
 
+Meteor.publish('answers', function (filter, options) {
+    check(filter, {
+        postId: String
+    });
+    check(options, {
+        limit: Number
+    });
+    return Answers.find(filter, options);
+});
+
 Meteor.publish('draftsList', function (options) {
   check(options, {
       limit: Number
