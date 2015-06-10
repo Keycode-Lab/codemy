@@ -2,6 +2,9 @@ Template.postPage.onCreated( function () {
   // Set Default 'commentLimit' to 4
   Session.set('commentLimit', 4);
 
+  // Set Default 'commentLimit' to 4
+  Session.set('answerLimit', 5);
+
   if (Meteor.user()) {
     var postId = Router.current().params._id;
     Meteor.call('viewCount', postId, function(error, result) {
@@ -26,6 +29,11 @@ Template.postPage.helpers({
   comments: function () {
     var commentCursor = Number(Session.get('commentLimit'));
     return Comments.find({postId: this._id}, {limit: commentCursor});
+  },
+
+  answers: function () {
+    var answerCursor = Number(Session.get('answerLimit'));
+    return Answers.find({postId: this._id}, {limit: answerCursor});
   },
   // noComments: function () {
   //   var commentCount = Comments.find({postId: this._id}, {limit: commentCout}).count();
@@ -65,7 +73,7 @@ Template.postPage.events({
     }
   },
   'click a.add-comment': function (event, template) {
-    template.$('.comment-wrapper').show();
+    $(event.target).parent().siblings('.comment-wrapper').show();
     $(event.target).hide();
   },
   'click a.load-more-comments': function (event) {
@@ -83,8 +91,8 @@ Template.postPage.onRendered( function () {
   $('[data-toggle="tooltip"]').tooltip();
 
   this.autorun( function () {
-    $('pre code').prepend('<a class="btn btn-xs btn-zoom" tabindex="-1"><i class="plus icon"></i></a>');
-    $('pre code').prepend('<a class="btn btn-xs btn-zoomOut" tabindex="-1"><i class="minus icon"></i></a>');
+    $('pre code').prepend('<a class="btn btn-xs btn-zoom" tabindex="-1"><i class="plus icon"></i></a>')
+                 .prepend('<a class="btn btn-xs btn-zoomOut" tabindex="-1"><i class="minus icon"></i></a>');
   });
 
   $('pre code').parent().hover(
