@@ -7,3 +7,12 @@ template(name="commentSubmit")
     .row-fluid
       span.info-count 최소 15자를 입력해주세요
 
+template(name="commentAnswerSubmit")
+  .comment-wrapper
+    .row-fluid
+      textarea.comment-answer-submit(placeholder="댓글은 추가적인 정보를 요쳥, 지적하거나 개선점을 말하는 등에 사용해주세요. 감사합니다, 추천, 등의 단답 댓글은 피해주세요.")
+      button.btn.btn-green.btn-comment-answer.btn-md
+        | 확인
+    .row-fluid
+      span.info-count 최소 15자를 입력해주세요
+
