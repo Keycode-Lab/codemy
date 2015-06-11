@@ -41,14 +41,14 @@ Template.voting.events({
     console.log('upvoted');
     template.$('.downvotable').prop('disabled', true);
     Meteor.call('upvote', this._id);
-    Meteor.call('upvoteUser', this.userId);
+    Meteor.call('upvoteUser', this.user._id);
   },
 
   'click .unvote': function (event, template) {
     event.preventDefault();
     template.$('.downvotable').prop('disabled', false);
     Meteor.call('unvote', this._id);
-    Meteor.call('unvoteUser', this.userId);
+    Meteor.call('unvoteUser', this.user._id);
   },
 
   'click .downvotable': function (event, template) {
@@ -56,14 +56,14 @@ Template.voting.events({
     console.log('downvoted');
     template.$('.upvotable').prop('disabled', true);
     Meteor.call('downvote', this._id);
-    Meteor.call('unvoteUser', this.userId);
+    Meteor.call('unvoteUser', this.user._id);
   },
 
   'click .undownvote': function (event, template) {
     event.preventDefault();
     template.$('.upvotable').prop('disabled', false);
     Meteor.call('undownvote', this._id);
-    Meteor.call('upvoteUser', this.userId);
+    Meteor.call('upvoteUser', this.user._id);
   }
 
 });
@@ -118,28 +118,28 @@ Template.votingAnswer.events({
     event.preventDefault();
     template.$('.downvotable').prop('disabled', true);
     Meteor.call('upvoteAnswer', this._id);
-    Meteor.call('upvoteUser', this.userId);
+    Meteor.call('upvoteUser', this.user._id);
   },
 
   'click .unvote': function (event, template) {
     event.preventDefault();
     template.$('.downvotable').prop('disabled', false);
     Meteor.call('unvoteAnswer', this._id);
-    Meteor.call('unvoteUser', this.userId);
+    Meteor.call('unvoteUser', this.user._id);
   },
 
   'click .downvotable': function (event, template) {
     event.preventDefault();
     template.$('.upvotable').prop('disabled', true);
     Meteor.call('downvoteAnswer', this._id);
-    Meteor.call('unvoteUser', this.userId);
+    Meteor.call('unvoteUser', this.user._id);
   },
 
   'click .undownvote': function (event, template) {
     event.preventDefault();
     template.$('.upvotable').prop('disabled', false);
     Meteor.call('undownvoteAnswer', this._id);
-    Meteor.call('upvoteUser', this.userId);
+    Meteor.call('upvoteUser', this.user._id);
   }
 
 });
