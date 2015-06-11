@@ -1,8 +1,8 @@
 Template.postPage.onCreated( function () {
-  // Set Default 'commentLimit' to 4
-  Session.set('commentLimit', 4);
+  // Set Default 'commentLimit' to 5
+  Session.set('commentLimit', 5);
 
-  // Set Default 'commentLimit' to 4
+  // Set Default 'answerLimit' to 5
   Session.set('answerLimit', 5);
 
   if (Meteor.user()) {
@@ -78,8 +78,7 @@ Template.postPage.events({
   },
   'click a.load-more-comments': function (event) {
     event.preventDefault();
-
-    Session.set('commentLimit', Number(Session.get('commentLimit')) + 4)
+    Session.set('commentLimit', Number(Session.get('commentLimit')) + 5)
   }
 });
 
@@ -98,20 +97,16 @@ Template.postPage.onRendered( function () {
   $('pre code').parent().hover(
     // On Hover (mouseenter)
     function (event) {
-      // $('a.btn-zoom', event.target).fadeIn('300');
-      // $('a.btn-zoomOut', event.target).fadeIn('300');
-      $('a.btn-zoom', event.target).css('display', 'inline-block');
-      $('a.btn-zoom', event.target).css('opacity', '1');
-      $('a.btn-zoomOut', event.target).css('display', 'inline-block');
-      $('a.btn-zoomOut', event.target).css('opacity', '1');
+      $('a.btn-zoom', event.target).css('display', 'inline-block')
+                                   .css('opacity', '1');
+      $('a.btn-zoomOut', event.target).css('display', 'inline-block')
+                                      .css('opacity', '1');
     },
     // On Hover Out (mouseleave)
     function (event) {
-      // $('a.btn-zoom', event.target).fadeOut('300');
-      // $('a.btn-zoomOut', event.target).fadeOut('300');
-      $('a.btn-zoom', event.target).css('display', 'none');
-      $('a.btn-zoom', event.target).css('opacity', '0');
-      $('a.btn-zoomOut', event.target).css('display', 'none');
-      $('a.btn-zoomOut', event.target).css('opacity', '0');
+      $('a.btn-zoom', event.target).css('display', 'none')
+                                   .css('opacity', '0');
+      $('a.btn-zoomOut', event.target).css('display', 'none')
+                                      .css('opacity', '0');
   });
 });

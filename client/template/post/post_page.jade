@@ -17,8 +17,9 @@ template(name="postPage")
             h2.post-title {{title}}
         .post-body
           hr
-          +markdown
-            {{content}}
+          .body-content
+            +markdown
+              {{content}}
           ul.comments-list
             each comments
               +commentItem
@@ -30,7 +31,7 @@ template(name="postPage")
           +commentSubmit
       .post-footer
 
-      hr
+
 
 
       //-Each Answers Layout

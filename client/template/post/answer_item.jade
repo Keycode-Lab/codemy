@@ -1,21 +1,23 @@
 template(name="answerItem")
+  hr
   .main.postpage
     .post-header
       .post-side
         .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
               img(src="/img/avatar.png")
-        +voting
+        +votingAnswer
       .post-metadata.clearfix
         p
           span.author
             | <strong>{{user.username}} {{isonline}}</strong>
           span.date
             | {{moFromNow createdAt withoutSuffix}}
-        h2.post-title Answer by {{user.username}}
+        h2.post-title {{user.username}}님의 답변
     .post-body
       hr
-      +markdown
-        {{content}}
+      .body-content
+        +markdown
+          {{content}}
       ul.comments-list
         each commentAnswer
           +commentItem

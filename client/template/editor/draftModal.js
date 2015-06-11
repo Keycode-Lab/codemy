@@ -19,7 +19,7 @@ Template.draftModal.helpers({
   },
   nextPath: function () {
     var draftCursor = Number(Session.get('draftsLimit'));
-    return draftCursor === Drafts.find({'user._id': Meteor.user()._id}, {limit: draftCursor}).count();
+    return draftCursor === Drafts.find({'user._id': Meteor.userId()}, {limit: draftCursor}).count();
   },
 });
 
