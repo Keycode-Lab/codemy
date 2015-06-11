@@ -5,10 +5,25 @@
   }
 }
 
+a.upvote,
+a.downvote {
+  &:disabled {
+    color: @gray-lightest !important;
+  }
+}
+
 a.unvote {
-  color: @green !important;
+  color: @green;
+  &:disabled {
+    color: @gray-lightest !important;
+  }
 }
 
 a.undownvote {
-  color: @red !important;
+  color: @red;
+}
+
+a.upvote[disabled="true"],
+a.downvote[disabled="true"] {
+  pointer-events: none;
 }

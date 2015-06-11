@@ -9,9 +9,9 @@ template(name="voting")
 
 template(name="votingAnswer")
   .voting-wrapper
-    button(class="upvote")
+    a(class="upvote {{upvotedClass}}")
       span.glyphicon.glyphicon-triangle-top
-    .voteCount-container
-      span 112
-    button(class="downvote")
+
+    span.voteCount-container {{votes}}
+    a(class="downvote {{downvotedClass}}")
       span.glyphicon.glyphicon-triangle-bottom
