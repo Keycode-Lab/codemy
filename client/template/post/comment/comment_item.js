@@ -1,4 +1,16 @@
 Template.commentItem.helpers({
+  // hammerInitOptions: function () {
+  //   return function (hammer, templateInstance) {
+  //     var swipeleft = new Hammer.Swipe({
+  //       event: 'swipeleft',  prefix for custom swipe events, e.g. 2fingerswipeleft, 2fingerswiperight
+  //       pointers: 1,
+  //       velocity: 0.5
+  //     });
+  //     hammer.add(swipeleft);
+  //     return hammer;
+  //   }
+  // },
+
   // Needs more work
   // commentOp: function () {
   //   var post = Posts.findOne({_id: this._id});

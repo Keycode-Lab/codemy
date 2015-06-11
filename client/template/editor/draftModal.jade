@@ -10,12 +10,16 @@ template(name="draftModal")
             small Load ({{draftCount}})
         .modal-body
           ul.draft-list
-            +each draft
-              li.draft.clearfix
-                a(href="") {{title}}
-                button.btn.btn-xs.btn-red.btn-delete
-                  | Delete
+            +HammerTouchArea(initOptions=configureHammer gestureMap=templateGestures)
+              +each draft
+                li.draft.clearfix
+                  .draft-inner(style="padding: 1em;")
+                    a(href="") {{title}}
+                  button.btn-delete
+                    i.fa.fa-trash.fa-2x
             if nextPath
               li
                 a.load-more-draft(href="")
                   | 더 보기
+
+//initOptions=hammerInitOptions

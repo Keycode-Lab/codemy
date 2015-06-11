@@ -1,6 +1,53 @@
 
 
 Template.draftModal.helpers({
+  configureHammer: function () {
+    return function (hammer, templateInstance) {
+      var swipeleft = new Hammer.Swipe({
+        event: 'swipe', /* prefix for custom swipe events, e.g. 2fingerswipeleft, 2fingerswiperight */
+        pointers: 1,
+        threshold: 10,
+        velocity: 0.1
+      });
+      hammer.add(twoFingerSwipe);
+      return hammer;
+    }
+  },
+  templateGestures: {
+
+    'swipeleft li.draft': function (event, templateInstance) {
+      /* `event` is the Hammer.js event object */
+      /* `templateInstance` is the `Blaze.TemplateInstance` */
+      /* `this` is the data context of the element in your template, so in this case the iteree from someArray in the template */
+      console.log('swiped left');
+      if ($(event.target).is('li.draft')) {
+        if (! $(event.target).hasClass('swiped-left')) {
+          $(event.target).addClass('swiped-left');
+        }
+      }
+      if ($(event.target).parent().is('li.draft')) {
+        if (! $(event.target).parent().hasClass('swiped-left')) {
+          $(event.target).parent().addClass('swiped-left');
+        }
+      }
+    },
+    'swiperight li.draft': function (event, templateInstance) {
+      /* `event` is the Hammer.js event object */
+      /* `templateInstance` is the `Blaze.TemplateInstance` */
+      /* `this` is the data context of the element in your template, so in this case the iteree from someArray in the template */
+      console.log('swiped right');
+      if ($(event.target).is('li.draft')) {
+        if ($(event.target).hasClass('swiped-left')) {
+          $(event.target).removeClass('swiped-left');
+        }
+      }
+      if ($(event.target).parent().is('li.draft')) {
+        if ($(event.target).parent().hasClass('swiped-left')) {
+          $(event.target).parent().removeClass('swiped-left');
+        }
+      }
+    }
+  },
   draft: function () {
     var userId = Meteor.userId();
     var draft = Drafts.find({'user._id': userId });

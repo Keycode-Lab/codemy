@@ -64,6 +64,7 @@ h4.modal-title {
 
 #draftModal .modal-body ul.draft-list {
   .strip-list;
+  overflow-x: hidden;
   a.load-more-draft {
     display: block;
     padding: 1em;
@@ -78,11 +79,18 @@ h4.modal-title {
 }
 
 #draftModal .modal-body ul.draft-list li.draft {
-  padding: 1em;
+  position: relative;
+
+  display: block;
+  width: 100%;
+  height: 100px;
   border-bottom: 1px solid @border-color;
-  &:hover {
-    background-color: @gray-lighter;
-  }
+  left: 0;
+  width: ~"calc(100% + 100px)";
+  .transition(200ms ease-in-out all);
+  // &:hover {
+  //   background-color: @gray-lighter;
+  // }
   a {
     display: block;
     margin-bottom: 0.5em;
@@ -91,6 +99,32 @@ h4.modal-title {
   button {
     float: right;
   }
+}
+
+.draft-inner {
+  display: inline-block;
+  width: ~"calc(100% + -100px)";
+}
+
+.btn-delete {
+  position: relative;
+  display: inline-block;
+  right: 0;
+  //top: -55px;
+  width: 100px;
+  height: 100%;
+  background: @red;
+  color: white;
+  outline: 0;
+  border: 0;
+  .box-shadow(0);
+  &:hover {
+    background: darken(@red, 10%);
+  }
+}
+
+li.draft.swiped-left {
+  .translate(-100px);
 }
 
 @media screen and (max-width: @screen-tn) {
