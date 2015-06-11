@@ -1,7 +1,7 @@
 template(name="dropdownAccount")
   ul.dropdown-menu.dropdown-menu-right.account(role="menu")
     li
-      a(href="")
+      a(href="{{pathFor 'settings'}}")
         .profile-wrapper
                   img(src="{{avatar}}")
         | {{currentUser.profile.username}}
