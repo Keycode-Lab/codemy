@@ -5,3 +5,5 @@ template(name="commentItem")
       p {{comment}} -
         a(href="" class="{{commentOp}}") {{user.username}}
         span.date {{moFromNow createdAt withoutSuffix}}
+      a.btn-comment-delete(href="")
+        | Delete

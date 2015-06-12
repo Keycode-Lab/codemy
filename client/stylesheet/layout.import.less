@@ -21,6 +21,14 @@ html, body {
   }
 }
 
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 #wrapper {
   position: relative;
   overflow-x: hidden;
@@ -42,7 +50,6 @@ html, body {
 
 #inner-body {
   min-height: ~"calc(100vh - 150px)"; //100 vertical height - 150px(footer height + footer margin-top)
-
 }
 
 #inner-footer {
@@ -50,6 +57,15 @@ html, body {
   height: 100px;
   width: 100%;
   text-align: center;
+}
+
+/**
+ * Prevent Multiple Srollbars
+ */
+#wrapper::-webkit-scrollbar
+#canvas::-webkit-scrollbar,
+#inner-body::-webkit-scrollbar {
+    display: none;
 }
 
 .main {

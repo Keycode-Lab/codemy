@@ -1,3 +1,9 @@
+Template.commentItem.events({
+  'click .btn-comment-delete': function (event) {
+    Meteor.call('commentRemove', this.postId, this._id);
+  }
+});
+
 Template.commentItem.helpers({
   // Needs more work
   // commentOp: function () {
