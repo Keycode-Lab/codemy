@@ -68,6 +68,9 @@ Template.answerItem.events({
     // increase limit by 5 and update it
     limit += 5;
     Template.instance().limit.set(limit);
+  },
+  'click .btn-answer-delete': function (event) {
+    Meteor.call('answerRemove', this.postId, this._id);
   }
 });
 

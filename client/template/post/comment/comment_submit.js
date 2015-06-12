@@ -18,7 +18,7 @@ Template.commentSubmit.events({
         if (error){
           //throwError(error.reason);
         } else {
-          template.$('.comment-submit').val('');
+          $('.comment-submit').val('');
         }
     });
   }

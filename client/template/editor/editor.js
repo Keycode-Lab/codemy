@@ -105,7 +105,7 @@ Template.editor.events({
       });
     }
 
-    // Submit Question
+    // Submit Answer
     if (currentRoute === 'postPage') {
       var answer = {
         postId: Template.parentData()._id,

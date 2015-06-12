@@ -1,1 +1,30 @@
 template(name="settings")
+  .container.mobile
+    .col-md-8
+      ul.accounts-settings
+        li
+          a(href="{{pathFor 'account'}}")
+            i.icon-user-outline
+            h3 프로필 설정
+            span
+              | 아바타, 아이디, 비밀번호 등의 회원정보를 관리하세요.
+        li
+          a(href="")
+            i.icon-pen
+            h3 에디터 설정
+            span
+              | 코데미 마크다운 에디터와 관련된 것들을 설정하세요.
+
+      ul.accounts-settings
+        li
+          a(href="")
+            i.icon-doc
+            h3 내가 쓴 글
+            span
+              | 본인이 쓴 질문, 답변과 댓글을 조회하세요.
+        li
+          a(href="")
+            i.icon-chart-outline
+            h3 통계
+            span
+              | 코데미의 전반적인 통계와 본인의 통계에 관한 모든것을 조회하세요.

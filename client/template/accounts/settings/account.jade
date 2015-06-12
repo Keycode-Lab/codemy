@@ -1,0 +1,41 @@
+template(name="account")
+  .container.mobile
+    .page-header
+      h1.accounts
+        i.icon-user-outline
+        | 프로필 설정
+        small
+          | 아바타, 아이디, 비밀번호 등의 회원정보를 관리하세요.
+    .row-fluid
+      .col-md-8
+        ul.nav.nav-tabs.settings
+          li.active(role="presentation" data-tabs="tabs")
+            a(href="#account" data-toggle="tab")
+              | 프로필 설정
+           li
+             a(href="")
+              | 에디터 설정
+           li
+             a(href="")
+              | 내가 쓴 글
+           li
+             a(href="")
+              | 통계
+        .account-tab
+          .tab-pane.active#account
+            ul.account-list
+              li.account-list-avatar
+                a(href="")
+                  .avatar-account
+                    img(src="{{avatar}}")
+                  h3 아바타
+                  span 아바타는 첫인상과 같습니다. 좋은 아바타를 선택하시길 바랍니다.
+              //- li
+              //-   a(href="")
+              //- li
+              //-   a(href="")
+              //- li
+              //-   a(href="")
+              //- li
+              //-   a(href="")
+      .col-md-4
