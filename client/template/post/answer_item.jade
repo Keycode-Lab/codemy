@@ -11,6 +11,9 @@ template(name="answerItem")
         if ownPost
           button.answer-check(class="{{checkedState}}" $dyn = checkDisabled)
             i.icon.check
+        if checkedAnswer
+          button.answer-check(class="checkedAnswer" disabled)
+            i.icon.check
         p
           span.author
             | <strong>{{user.username}} {{isonline}}</strong>

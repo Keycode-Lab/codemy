@@ -69,6 +69,9 @@ Template.answerItem.helpers({
     } else {
       return null;
     }
+  },
+  checkedAnswer: function () {
+    return this.checked;
   }
 });
 
