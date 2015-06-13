@@ -24,12 +24,34 @@ template(name="account")
             button#upload-avatar.btn.btn-md.btn-green(style="margin-top: 10px;")
               | 업로드
         .account-panel.clearfix
-          form
-            .form-inline
-              label 아이디
-              input
-            .form-inline
-              label 이메일
-              input
+          ul.profile-edit
+            li.profile-edit-item.profile-edit-username.clearfix
+              .row-fluid.clearfix
+                .pull-left
+                  h4 아이디
+                .pull-right
+                  button.btn.btn-md.btn-default.btn-edit
+                    | 수정
+              .row-fluid
+                .inner
+                  input#username-edit(value="{{currentUser.profile.username}}")
+                  button.btn.btn-green.btn-save-username
+                    | 저장
+                  p
+                    | 아이디는 6~16자이며 띄어쓰기와 특수문자를 사용 할 수 없습니다. 아이디는 한달에 한번밖에 수정이 되지 않으니 신중하게 선택하시길 바랍니다.
+            li.profile-edit-item.profile-edit-email.clearfix
+              .row-fluid.clearfix
+                .pull-left
+                  h4 이메일
+                .pull-right
+                  button.btn.btn-md.btn-default.btn-edit
+                    | 수정
+              .row-fluid
+                .inner
+                  input#username-edit(value="{{userEmail}}")
+                  button.btn.btn-green.btn-save-email
+                    | 저장
+                  p
+                    | 이메일은 한달에 한번밖에 수정이 되지 않으니 신중하게 선택하시길 바랍니다. 이메일은 비밀번호 복구에 필요로하니 자주 쓰는 이메일 계정이면 더욱 좋습니다.
 
       .col-md-3

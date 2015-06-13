@@ -54,6 +54,56 @@ h2.accounts {
   }
 }
 
+
+/**
+ * List and Items for Username, Password, etc Edit
+ */
+
+ul.profile-edit {
+  .strip-list;
+
+}
+
+ul.profile-edit li {
+  padding: 1em 0;
+  border-bottom: 1px solid @gray-lighter;
+  h4 {
+    font-weight: bold;
+    margin: 0;
+  }
+  .inner {
+
+  }
+}
+
+ul.profile-edit li.profile-edit-item .inner {
+  padding: 1em 0;
+  display: none;
+  input {
+    border: 1px solid @gray-lighter;
+    border-radius: 3px;
+    padding: 0.5em;
+    width: 200px;
+  }
+  button {
+    vertical-align: top;
+  }
+  p {
+    margin-top: 0.5em;
+    color: lighten(@gray-light, 10%);
+    font-size: 0.9em;
+  }
+}
+
+li.profile-edit-item.open .inner {
+  display: block !important;
+}
+
+
+
+
+
+
 @media screen and (max-width: @screen-sm) {
   .account-panel .section-half {
     float: left;

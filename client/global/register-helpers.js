@@ -51,3 +51,11 @@ Template.registerHelper('userStatusBorder', function () {
   else
     return null;
 });
+
+// Get currentUser Email
+Template.registerHelper('userEmail', function () {
+    var user = Meteor.user();
+    if (user && user.emails) {
+      return user.emails[0].address;
+    }
+});
