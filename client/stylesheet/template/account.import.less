@@ -1,4 +1,4 @@
-h1.accounts {
+h2.accounts {
   margin: 0;
   width: 100%;
   overflow: hidden;
@@ -6,5 +6,60 @@ h1.accounts {
   text-overflow: ellipsis;
   i.icon-user-outline {
     color: @blue;
+  }
+}
+
+.account-panel {
+  display: block;
+   border: 1px solid @gray-lighter;
+   padding: 1em;
+   border-radius: 3px;
+   margin-bottom: 2em;
+   .box-shadow-bottom(2px, darken(@gray-lighter, 5%));
+}
+
+.account-panel .section-half {
+  float: left;
+  width: 50%;
+}
+
+.account-panel .section-heading {
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.account-panel p.section-sub {
+  font-weight: thick;
+  color: @gray;
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.account-panel span {
+  display: block;
+  color: lighten(@gray-light, 10%);
+
+}
+
+.account-panel  .avatar-wrapper {
+  display: block;
+  height: 192px;
+  width: 192px;
+  overflow: hidden;
+  border-radius: 5px;
+  img {
+    height: 100%;
+    margin-left: 50%;
+    .translate(-50%);
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .account-panel .section-half {
+    float: left;
+    width: 100%;
+  }
+  .account-panel  button#remove-avatar {
+    margin-bottom: 10px;
   }
 }
