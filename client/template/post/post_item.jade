@@ -17,12 +17,17 @@ template(name="postItem")
           i.icon-coffee
           | {{votes}}
         span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
-          i.fa.fa-check
+          if answered
+            i.fa.fa-check.checked
+          else
+            i.fa.fa-check
           | 0
     .answer-count.hidden-tn.hidden-xxs
       span.answer
         | Answers
       span.count
+        if answered
+          i.fa.fa-check.checked
         | {{answersCount}}
     .row-fluid.tags(style="margin-top: 10px;")
       .label.label-outline.label-red
