@@ -12,10 +12,10 @@ template(name="navbar")
                 a.notification(href="#")
                   span.badge.badge-primary
                     | 10
-          li.hidden-tn
+          li
             a(href="#")
               i.fa.fa-search
-          li.hidden-tn
+          li
             a(href="{{pathFor 'submit'}}")
               i.fa.fa-pencil
           if currentUser
@@ -30,14 +30,14 @@ template(name="navbar")
               a(href="{{pathFor 'signin'}}")
                 //-i.li_settings
                 | Sign-In
-  .navbar-codemy-sub.visible-tn
-    .container.mobile-navbar
-      ul
-        li
-          a(href="")
-            i.icon.search
-            | Search
-        li
-          a(href="{{pathFor 'submit'}}")
-            i.icon.write
-            | Ask Question
+  //- .navbar-codemy-sub.visible-tn
+  //-   .container.mobile-navbar
+  //-     ul
+  //-       li
+  //-         a(href="")
+  //-           i.icon.search
+  //-           | Search
+  //-       li
+  //-         a(href="{{pathFor 'submit'}}")
+  //-           i.icon.write
+  //-           | Ask Question
