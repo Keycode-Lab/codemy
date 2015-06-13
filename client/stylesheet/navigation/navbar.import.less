@@ -17,6 +17,28 @@
 @navbar-sub-hover       : darken(@navbar-sub-background, 5%);
 
 
+
+//======================================
+// Navbar Scroll Hide
+//======================================
+
+.navbar-codemy {
+  .transition(100ms ease-in-out top);
+}
+
+.nav-up {
+  top: -@navbar-height !important;
+}
+
+#wrapper.sidebar-right-notification {
+  .nav-up {
+    top: 0 !important;
+  }
+}
+
+
+//https://github.com/twbs/bootstrap/issues/4756
+
 //======================================
 // Navbar Main
 //======================================
@@ -117,6 +139,7 @@ a.dropdown-toggle i.fa-chevron-down {
 .dropdown-menu.account,
 .dropdown-menu.notification {
   margin-top: -10px;
+  z-index: 10; //??
 }
 .dropdown-menu.notification {
   width: 300px;
