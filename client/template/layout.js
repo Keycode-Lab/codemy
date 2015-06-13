@@ -41,6 +41,8 @@ Template.layout.onRendered( function () {
     event.preventDefault();
   });
 
+  navScrol();
+
   // $('#inner-body').on('click', function () {
   //   if ($('#wrapper').hasClass('sidebar-right-notification') &&
   //       ($(event.target) != $('.notification'))) {

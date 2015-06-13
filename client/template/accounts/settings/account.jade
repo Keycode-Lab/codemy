@@ -39,6 +39,7 @@ template(name="account")
                     | 저장
                   p
                     | 아이디는 6~16자이며 띄어쓰기와 특수문자를 사용 할 수 없습니다. 아이디는 한달에 한번밖에 수정이 되지 않으니 신중하게 선택하시길 바랍니다.
+
             li.profile-edit-item.profile-edit-email.clearfix
               .row-fluid.clearfix
                 .pull-left
@@ -48,10 +49,26 @@ template(name="account")
                     | 수정
               .row-fluid
                 .inner
-                  input#username-edit(value="{{userEmail}}")
+                  input#email-edit(value="{{userEmail}}")
                   button.btn.btn-green.btn-save-email
                     | 저장
                   p
                     | 이메일은 한달에 한번밖에 수정이 되지 않으니 신중하게 선택하시길 바랍니다. 이메일은 비밀번호 복구에 필요로하니 자주 쓰는 이메일 계정이면 더욱 좋습니다.
+
+            li.profile-edit-item.profile-change-password.clearfix
+              .row-fluid.clearfix
+                .pull-left
+                  h4 비밀번호
+                .pull-right
+                  button.btn.btn-md.btn-default.btn-edit
+                    | 수정
+              .row-fluid
+                .inner
+                  input#password-change-current(type="password" placeholder="현재 비밀번호" style="display:block; margin-bottom: 10px;")
+                  input#password-change-new(type="password" placeholder="새로운 비밀번호")
+                  button.btn.btn-green.btn-save-password
+                    | 저장
+                  p
+                    //- | 이메일은 한달에 한번밖에 수정이 되지 않으니 신중하게 선택하시길 바랍니다. 이메일은 비밀번호 복구에 필요로하니 자주 쓰는 이메일 계정이면 더욱 좋습니다.
 
       .col-md-3
