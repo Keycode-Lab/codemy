@@ -27,6 +27,7 @@
     padding: 0.5em;
     border: 0;
     margin-bottom: 1em;
+    border-radius: 3px;
     .box-shadow-bottom(2px, @gray-lighter);
     .user-select(text);
     &:focus,
@@ -108,6 +109,28 @@
   font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
   // font-family: "Lucida Console", "Monaco", "DejaVu Sans Mono", monospace;
 }
+
+  .tag-wrapper {
+    margin-top: 10px;
+  }
+
+  .tag-wrapper input#tags {
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.5em;
+    border: 0;
+    border-radius: 3px;
+    .box-shadow-bottom(2px, @gray-lighter);
+    .user-select(text);
+    &:focus,
+    &:active {
+      box-shadow: none;
+      border: 0;
+      background: darken(@white, 10%);
+      .box-shadow-bottom(2px, darken(@gray-lighter, 10%));
+    }
+  }
 
 // Show Preview ON
 .editor-wrapper.show-preview {

@@ -81,6 +81,7 @@ Template.editor.events({
       if ($.trim(post.content).length === 0) {
         return false;
       }
+
       Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){

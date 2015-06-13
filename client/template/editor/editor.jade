@@ -23,6 +23,9 @@ template(name="editor")
               label 마크다운 미리보기
               .preview-inner
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
+            .tag-wrapper
+              label 태그
+              input#tags
           .editor-bottom
             button.btn.btn-green.btn-submit
               if currentRoute 'submit'
