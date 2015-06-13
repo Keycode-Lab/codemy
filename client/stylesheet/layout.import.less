@@ -29,26 +29,27 @@ html {
   box-sizing: inherit;
 }
 
-#wrapper {
-  position: relative;
-  overflow-x: hidden;
-  height: 100%;
-  // background-color: @gray-lightest;
-  // background-color: darken(white, 1%);
-  // z-index: 99999999;
-}
+// #wrapper {
+//   position: relative;
+//   overflow-x: hidden;
+//   height: 100%;
+//   // background-color: @gray-lightest;
+//   // background-color: darken(white, 1%);
+//   // z-index: 99999999;
+// }
 
-#canvas {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
-}
+// #canvas {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
+//   -webkit-transform: translateX(0);
+//   transform: translateX(0);
+//   -webkit-transition: .3s ease all;
+//   transition: .3s ease all;
+// }
 
 #inner-body {
+  padding-top: @navbar-height;
   min-height: ~"calc(100vh - 150px)"; //100 vertical height - 150px(footer height + footer margin-top)
 }
 
@@ -62,10 +63,15 @@ html {
 /**
  * Prevent Multiple Srollbars
  */
-#wrapper::-webkit-scrollbar
-#canvas::-webkit-scrollbar,
-#inner-body::-webkit-scrollbar {
-    display: none;
+// #wrapper::-webkit-scrollbar
+// #canvas::-webkit-scrollbar,
+// #inner-body::-webkit-scrollbar {
+//     display: none;
+// }
+
+::selection {
+  background: @dark;
+  color: @white;
 }
 
 .main {
@@ -170,6 +176,10 @@ a.red {
   h4 { font-size: ceil((@font-size-mobile * 1.25));  }
   h5 { font-size: @font-size-mobile;                 }
   h6 { font-size: ceil((@font-size-mobile * 0.85));  }
+
+  #inner-body {
+    padding-top: @navbar-height-mb;
+  }
 }
 
 @media screen and (max-width: @screen-tn) {
@@ -178,6 +188,9 @@ a.red {
   }
   #wrapper {
     background: white;
+  }
+  #inner-body {
+    padding-top: @navbar-height-mb+@navbar-sub-height;
   }
 }
 

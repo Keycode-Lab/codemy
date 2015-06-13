@@ -32,6 +32,9 @@
   width: 100%;
   height: @navbar-height;
   background-color: @navbar-background;
+  position: fixed;
+  top: 0;
+  z-index: 5;
 }
 
 .navbar-codemy ul.navbar {
@@ -147,6 +150,8 @@ a.dropdown-toggle i.fa-chevron-down {
   width: 100%;
   height: @navbar-sub-height;
   background: @navbar-sub-background;
+  position: fixed;
+  top: @navbar-height-mb;
   border-bottom: 1px solid @border-color;
 }
 

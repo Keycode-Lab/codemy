@@ -47,6 +47,28 @@ Template.answerItem.helpers({
   },
   nextPath: function () {
     return Template.instance().commentAnswer().count() >= Template.instance().limit.get();
+  },
+  ownPost: function () {
+    var post = Posts.findOne({_id: this.postId}).user._id;
+    return Meteor.userId() === post;
+  },
+  checkedState: function () {
+    var self = this;
+    if (self && (self.checked === true)) {
+      return 'checked';
+    } else {
+      return null;
+    }
+  },
+  checkDisabled: function () {
+    var postId = this.postId;
+    var checked = this.checked;
+    var post = Posts.findOne({_id: postId});
+    if (postId && post && (checked === false) && (post.answered === true)) {
+      return 'disabled';
+    } else {
+      return null;
+    }
   }
 });
 
@@ -71,6 +93,15 @@ Template.answerItem.events({
   },
   'click .btn-answer-delete': function (event) {
     Meteor.call('answerRemove', this.postId, this._id);
+  },
+  'click .answer-check': function (event, template) {
+    if (template.$('.answer-check').hasClass('checked')) {
+      template.$('.answer-check').removeClass('checked');
+      Meteor.call('uncheckAnswer', this._id, this.postId, this.user._id);
+    } else {
+      template.$('.answer-check').addClass('checked');
+      Meteor.call('checkAnswer', this._id, this.postId, this.user._id);
+    }
   }
 });
 

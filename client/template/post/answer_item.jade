@@ -6,7 +6,11 @@ template(name="answerItem")
         .profile-wrapper.hidden-tn.hidden-xxs.hidden-xs(class="{{userStatusBorder}}")
               img(src="/img/avatar.png")
         +votingAnswer
+
       .post-metadata.clearfix
+        if ownPost
+          button.answer-check(class="{{checkedState}}" $dyn = checkDisabled)
+            i.icon.check
         p
           span.author
             | <strong>{{user.username}} {{isonline}}</strong>
