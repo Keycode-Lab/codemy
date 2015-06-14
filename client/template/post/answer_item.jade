@@ -22,9 +22,14 @@ template(name="answerItem")
         h2.post-title {{user.username}}님의 답변
     .post-body
       hr
-      .body-content
+      .body-content.clearfix
         +markdown
           {{content}}
+        if currentUser
+          .btn-group.pull-right
+            button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
+              | ...
+            +dropdownAnswerItem
       ul.comments-list
         each commentAnswer
           +commentItem

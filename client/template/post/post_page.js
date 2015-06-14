@@ -53,6 +53,13 @@ Template.postPage.helpers({
       }
     }
   },
+  ownPost: function () {
+    var post = Posts.findOne({_id: this._id});
+
+    if (post && post.user && post.user._id) {
+      return Meteor.userId() === post.user._id;
+    }
+  }
 
 });
 
@@ -79,6 +86,12 @@ Template.postPage.events({
   'click a.load-more-comments': function (event) {
     event.preventDefault();
     Session.set('commentLimit', Number(Session.get('commentLimit')) + 5)
+  },
+  'click .btn-confirm-delete': function () {
+    // Call Method to delete here
+  },
+  'click .btn-confirm-cancel': function () {
+    $('.delete-confirm').slideToggle(300);
   }
 });
 

@@ -223,7 +223,9 @@ Template.editor.onRendered( function () {
   // $('#editor-content').autosize();
 
   if (Router.current() && Router.current().route.getName() === 'postEdit') {
-    liveUpdate($('#editor-content'));
+    setTimeout( function () {
+      liveUpdate($('#editor-content'));
+    }, 200);
   }
 
   // Initialize BS Tooltip

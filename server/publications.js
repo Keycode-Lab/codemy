@@ -40,10 +40,14 @@ Meteor.publish('commentAnswer', function(answerId, limit) {
 });
 
 Meteor.publish('draftsList', function (options) {
+  check(this.userId, String);
   check(options, {
       limit: Number
   });
-  return Drafts.find({'user._id': this.userId}, options);
+
+  var drafts = Drafts.find({'user._id': this.userId}, options);
+
+  return drafts;
 });
 
 

@@ -17,13 +17,24 @@ template(name="postPage")
             h2.post-title {{title}}
         .post-body
           hr
-          .body-content.clearfix
+          .body-content
             +markdown
               {{content}}
-            .btn-group.pull-right
-              button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
-                | ...
-              +dropdownPostPage
+            .row-fluid.clearfix
+              if currentUser
+                .btn-group.pull-right
+                  button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
+                    | ...
+                  +dropdownPostPage
+            .row-fluid
+              .delete-confirm(style="margin-top: 10px;" id="post-{{_id}}")
+                h4 해당 게시물을 삭제하시겠습니까?
+                p 코데미에선 차후에 유저들이 정보를 입수 할 수 있게 게시물 삭제를 추천하지 않습니다.
+                p 그래도 삭제하시겠습니까?
+                button.btn.btn-confirm-delete
+                  | 예
+                button.btn.btn-confirm-cancel
+                  | 아니요
           ul.comments-list
             each comments
               +commentItem
@@ -51,7 +62,8 @@ template(name="postPage")
       p
         i.fa.fa-eye
         | &nbsp; {{views}}
-
+      img.img-responsive(src="/img/ad1.jpg" style="margin-bottom: 10px;")
+      img.img-responsive(src="/img/ad2.png")
   .container.mobile
     hr
   +submit
