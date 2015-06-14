@@ -1,4 +1,6 @@
 Template.editor.onCreated( function () {
+  var self = this;
+
   console.log('Editor Template Created')
   Session.set('currentDraft', null);
 
@@ -7,6 +9,7 @@ Template.editor.onCreated( function () {
   Session.set('editor-title', null);
 
   Session.set('draftsLimit', 5);
+
 });
 
 Template.editor.onDestroyed( function () {
@@ -106,6 +109,47 @@ Template.editor.events({
       });
     }
 
+    // Edit Post
+    if (currentRoute === 'postEdit') {
+      var post = {
+        title:    document.getElementById('editor-title').value,
+        content:  document.getElementById('editor-content').value
+      }
+
+      var postId = Template.parentData()._id;
+
+      if ($.trim(post.title).length === 0) {
+        return false;
+      }
+
+      if ($.trim(post.content).length === 0) {
+        return false;
+      }
+
+      Meteor.call('postEdit', postId, post, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          console.log(error.reason);
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          if (Session.get('currentDraft') !== null) {
+
+            var draft = Session.get('currentDraft');
+
+            Meteor.call('draftRemove', draft, function(error, result) {
+              if (error) {
+                console.log(error.reason);
+              } else {
+                console.log('Draft Autosaved');
+              }
+            });
+
+          }
+          Router.go('/posts/' + postId);
+        }
+      });
+    }
+
     // Submit Answer
     if (currentRoute === 'postPage') {
       var answer = {
@@ -177,6 +221,10 @@ Template.editor.events({
 Template.editor.onRendered( function () {
   // Autosize of Content Text Area (this is a plugin)
   // $('#editor-content').autosize();
+
+  if (Router.current() && Router.current().route.getName() === 'postEdit') {
+    liveUpdate($('#editor-content'));
+  }
 
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();

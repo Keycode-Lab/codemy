@@ -17,9 +17,13 @@ template(name="postPage")
             h2.post-title {{title}}
         .post-body
           hr
-          .body-content
+          .body-content.clearfix
             +markdown
               {{content}}
+            .btn-group.pull-right
+              button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
+                | ...
+              +dropdownPostPage
           ul.comments-list
             each comments
               +commentItem

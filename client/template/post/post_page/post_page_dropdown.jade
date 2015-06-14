@@ -1,0 +1,18 @@
+template(name="dropdownPostPage")
+  ul.dropdown-menu.dropdown-menu-right(role="menu")
+    li
+      a.post-edit(href="{{pathFor 'postEdit'}}")
+        | 수정
+    li
+      a.post-delete(href="")
+        | 삭제
+    //-li
+      a(href="")
+        | Account Info
+    li.divider
+    li.small
+      a.post-share(href="")
+        | 공유하기
+    li.small
+      a.post-report(href="")
+        | 신고하기
