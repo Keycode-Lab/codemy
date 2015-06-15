@@ -89,6 +89,15 @@ Template.postPage.events({
   },
   'click .btn-confirm-delete': function () {
     // Call Method to delete here
+    console.log(this._id)
+    console.log(this.user._id)
+    Meteor.call('postRemove', this.user._id, this._id, function (error, result) {
+      if (error) {
+        console.log(error)
+      } else {
+        Router.go('/new');
+      }
+    });
   },
   'click .btn-confirm-cancel': function () {
     $('.delete-confirm').slideToggle(300);

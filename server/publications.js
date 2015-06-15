@@ -40,7 +40,6 @@ Meteor.publish('commentAnswer', function(answerId, limit) {
 });
 
 Meteor.publish('draftsList', function (options) {
-  check(this.userId, String);
   check(options, {
       limit: Number
   });

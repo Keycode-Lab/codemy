@@ -83,3 +83,25 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+
+
+.btn-submit {
+  .transition(150ms ease-in-out all);
+  overflow: hidden;
+  width: 85px;
+  .loader {
+    opacity: 0;
+  }
+  * {
+    vertical-align: middle;
+  }
+}
+
+.btn-submit.btn-loading {
+  overflow: visible;
+  width: 115px;
+  .loader {
+    opacity: 1;
+  }
+
+}

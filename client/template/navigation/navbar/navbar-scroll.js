@@ -5,7 +5,7 @@ navScrol = function () {
   var delta = 5;
   var navbarHeight = $('.navbar-codemy').outerHeight();
 
-  $(window).scroll(function(event){
+  $(window).scroll( function (event) {
       didScroll = true;
   });
 
@@ -37,6 +37,7 @@ navScrol = function () {
 
       lastScrollTop = st;
   }
+
 
 }
 

@@ -85,10 +85,15 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){
           //return throwError('Something went wrong',error.reason);
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
         } else {
           if (Session.get('currentDraft') !== null) {
 
@@ -97,15 +102,19 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
-                console.log('Draft Autosaved');
+
               }
             });
-
-          Router.go('/');
-
           }
         }
+        $('.btn-submit').removeClass('btn-loading');
+        $('.btn-submit').attr('disabled', false);
+
+         Router.go('/new');
       });
     }
 
