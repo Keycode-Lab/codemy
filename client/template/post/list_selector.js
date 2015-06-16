@@ -10,7 +10,7 @@ listSelector = function () {
         $selected  = $('.posts-list li.is-selected'),
         select = 'is-selected';
 
-    //Keydown J
+    // Keydown J
     if (keyCode == 74) {
       // Do Nothing when Input of Textarea
       if ($('input').is(":focus") || $('textarea').is(":focus")) {
@@ -34,7 +34,7 @@ listSelector = function () {
       }
     }
 
-    //Keydown K
+    // Keydown K
     if (keyCode == 75) {
       // Do Nothing when Input of Textarea
       if ($('input').is(":focus") || $('textarea').is(":focus")) {
@@ -54,6 +54,19 @@ listSelector = function () {
         // If above all else, select Previous item
         else {
           $selected.removeClass(select).next().addClass(select);
+        }
+      }
+    }
+
+    // Keydown Enter
+    if (keyCode == 13) {
+      // Do Nothing when Input of Textarea
+      if ($('input').is(":focus") || $('textarea').is(":focus")) {
+        return;
+      } else {
+        if ($selected) {
+          var link = $('.posts-list li.is-selected a').attr('href');
+          Router.go(link);
         }
       }
     }

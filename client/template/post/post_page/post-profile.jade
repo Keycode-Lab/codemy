@@ -1,5 +1,7 @@
 template(name="postProfile")
-  .row-fluid.clearfix
+  .row-fluid.clearfix(style="margin-top: 10px;")
+    if editted
+      span {{moFromNow updatedAt withoutSuffix}}에 수정됨
     .post-profile.pull-right
       p 작성자: <strong>{{this.user.username}}</strong>
       p 작성일: <strong>{{moFormat createdAt 'MM-DD-YY'}}</strong>
