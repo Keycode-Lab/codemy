@@ -12,7 +12,7 @@ template(name="list")
           a(href="")
             | Needs Answer
         //- if currentUser
-        a.btn.btn-sm.btn-o.btn-o-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
+        a.btn.btn-sm.btn-o.btn-o-green.hidden-xs.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'submit'}}" style="float:right;")
           | Ask Question
         //- else
           a.btn.btn-sm.btn-o.btn-o-green.hidden-xxs.hidden-tn.btn-ask(href="{{pathFor 'signin'}}" style="float:right;")
