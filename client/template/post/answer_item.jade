@@ -32,9 +32,6 @@ template(name="answerItem")
               button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
                 | ...
               +dropdownAnswerItem
-        .row-fluid
-          if editted
-            span {{moFromNow updatedAt withoutSuffix}}에 수정됨
         +postProfile
         .row-fluid
           .delete-confirm(style="margin-top: 10px;" id="answer-{{_id}}")
