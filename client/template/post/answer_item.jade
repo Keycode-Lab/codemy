@@ -11,9 +11,10 @@ template(name="answerItem")
         if ownPost
           button.answer-check(class="{{checkedState}}" $dyn = checkDisabled)
             i.icon.check
-        if checkedAnswer
-          button.answer-check(class="checkedAnswer" disabled)
-            i.icon.check
+        else // If not OP
+          if checkedAnswer
+            button.answer-check(class="checkedAnswer" disabled)
+              i.icon.check
         p
           span.author
             | <strong>{{user.username}} {{isonline}}</strong>
@@ -26,10 +27,20 @@ template(name="answerItem")
         +markdown
           {{content}}
         if currentUser
-          .btn-group.pull-right
-            button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
-              | ...
-            +dropdownAnswerItem
+          .row-fluid.clearfix
+            .btn-group.pull-right
+              button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
+                | ...
+              +dropdownAnswerItem
+        .row-fluid
+          .delete-confirm(style="margin-top: 10px;" id="answer-{{_id}}")
+            h4 해당 게시물을 삭제하시겠습니까?
+            p 코데미에선 차후에 유저들이 정보를 입수 할 수 있게 게시물 삭제를 추천하지 않습니다.
+            p 그래도 삭제하시겠습니까?
+            button.btn.btn-confirm-delete
+              | 예
+            button.btn.btn-confirm-cancel
+              | 아니요
       ul.comments-list
         each commentAnswer
           +commentItem

@@ -64,6 +64,14 @@ Template.answerItem.helpers({
     var postId = this.postId;
     var checked = this.checked;
     var post = Posts.findOne({_id: postId});
+    var userId = Meteor.userId();
+
+    // If Answerer is OP disable check
+    if (this && this.user && (this.user._id === userId)) {
+      return 'disabled';
+    }
+
+    // If Answered return disabled.
     if (postId && post && (checked === false) && (post.answered === true)) {
       return 'disabled';
     } else {
@@ -94,9 +102,6 @@ Template.answerItem.events({
     limit += 5;
     Template.instance().limit.set(limit);
   },
-  'click .btn-answer-delete': function (event) {
-    Meteor.call('answerRemove', this.postId, this._id);
-  },
   'click .answer-check': function (event, template) {
     if (template.$('.answer-check').hasClass('checked')) {
       template.$('.answer-check').removeClass('checked');
@@ -105,7 +110,23 @@ Template.answerItem.events({
       template.$('.answer-check').addClass('checked');
       Meteor.call('checkAnswer', this._id, this.postId, this.user._id);
     }
-  }
+  },
+  'click .btn-confirm-delete': function (event) {
+    // Call Method to delete here
+    var id = '#answer-'+this._id;
+    console.log(this._id)
+    console.log(this.user._id)
+
+    if ($(event.target).parent().is(id)) {
+      Meteor.call('answerRemove', this.user._id, this.postId, this._id, function (error, result) {
+        if (error) {
+          console.log(error)
+        } else {
+          // Router.go('/new');
+        }
+      });
+    }
+  },
 });
 
 Template.answerItem.onRendered( function () {

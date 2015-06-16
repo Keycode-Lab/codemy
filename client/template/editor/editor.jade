@@ -19,6 +19,9 @@ template(name="editor")
                 label.char-count-title 0
                 span.char-limit-title
               input(type="text" id="editor-title" value="{{title}}")
+          if currentRoute 'answerEdit'
+            .row-fluid
+              h3(style="margin-top: 0;") 답변 수정
           .editor-content.clearfix
             +editorToolbar
             .textarea-wrapper
@@ -30,22 +33,32 @@ template(name="editor")
                 textarea(id="editor-content")
                   | {{content}}
               else
-                textarea(id="editor-content")
+                if currentRoute 'answerEdit'
+                  textarea(id="editor-content")
+                    | {{content}}
+                else
+                  textarea(id="editor-content")
             .preview-wrapper
               label 마크다운 미리보기
               .preview-inner
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
-            .tag-wrapper
-              label 태그
-              input#tags
+            if currentRoute 'submit'
+              .tag-wrapper
+                label 태그
+                input#tags
+            if currentRoute 'postEdit'
+              .tag-wrapper
+                  label 태그
+                  input#tags
           .editor-bottom
             button.btn.btn-green.btn-submit
               if currentRoute 'submit'
                 | 질문하기
-              if currentRoute 'postPage'
-                | 답변하기
-              if currentRoute 'postEdit'
-                | 저장하기
+              else
+                if currentRoute 'postPage'
+                  | 답변하기
+                else //- Includes postEdit and answerEdit
+                  | 저장하기
               .loader
             //-button.btn.btn-info.btn-draft
               | Save Draft

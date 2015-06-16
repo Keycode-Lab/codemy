@@ -39,7 +39,7 @@ Template.registerHelper('isonline', function () {
 
 // Match Current Route Name
 Template.registerHelper('currentRoute', function (name) {
-  return Router.current() && Router.current().route.getName() === name
+  return Router.current() && Router.current().route.getName() === name;
 });
 
 // Show user status in text next to username

@@ -110,11 +110,13 @@ Template.editor.events({
               }
             });
           }
-        }
+
         $('.btn-submit').removeClass('btn-loading');
         $('.btn-submit').attr('disabled', false);
 
-         Router.go('/new');
+        Router.go('postPage', {_id: result});
+      }
+
       });
     }
 
@@ -154,7 +156,45 @@ Template.editor.events({
             });
 
           }
-          Router.go('/posts/' + postId);
+          Router.go('/question/' + postId);
+        }
+      });
+    }
+
+    // Edit Answer
+    if (currentRoute === 'answerEdit') {
+      var answer = {
+        content:  document.getElementById('editor-content').value
+      }
+
+      var answerId = Template.parentData()._id;
+
+      var postId = Template.parentData().postId;
+
+      if ($.trim(answer.content).length === 0) {
+        return false;
+      }
+
+      Meteor.call('answerEdit', answerId, answer, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          console.log(error.reason);
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          if (Session.get('currentDraft') !== null) {
+
+            var draft = Session.get('currentDraft');
+
+            Meteor.call('draftRemove', draft, function(error, result) {
+              if (error) {
+                console.log(error.reason);
+              } else {
+                console.log('Draft Autosaved');
+              }
+            });
+
+          }
+          Router.go('/question/' + postId);
         }
       });
     }
@@ -231,11 +271,17 @@ Template.editor.onRendered( function () {
   // Autosize of Content Text Area (this is a plugin)
   // $('#editor-content').autosize();
 
-  if (Router.current() && Router.current().route.getName() === 'postEdit') {
+  // if (Router.current() && Router.current().route.getName() === 'postEdit') {
     setTimeout( function () {
       liveUpdate($('#editor-content'));
     }, 200);
-  }
+  // }
+
+  // if (Router.current() && Router.current().route.getName() === 'answerEdit') {
+    // setTimeout( function () {
+    //   liveUpdate($('#editor-content'));
+    // }, 200);
+  // }
 
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();

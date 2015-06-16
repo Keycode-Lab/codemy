@@ -13,7 +13,7 @@ Template.dropdownPostPage.events({
     var id = '#post-'+this._id;
 
     if ($('.delete-confirm').is(id)) {
-      $('.delete-confirm').slideToggle(300);
+      $(id).slideToggle(300);
     }
   }
 });
