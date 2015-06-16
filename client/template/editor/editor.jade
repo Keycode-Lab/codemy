@@ -54,6 +54,10 @@ template(name="editor")
                   | 태그
                   small (엔터와 쉼표로 태그를 추가하세요)
                 select.tagsinput(multiple id="tagsinput" data-role="tagsinput")
+                  each tags
+                    option(value="{{this}}")
+                     | {{this}}
+
           .editor-bottom
             button.btn.btn-green.btn-submit
               if currentRoute 'submit'
