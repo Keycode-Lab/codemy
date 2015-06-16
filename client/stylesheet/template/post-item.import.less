@@ -89,6 +89,23 @@ li.question-item .checked {
   color: @green !important;
 }
 
+@media screen and (max-width: @screen-md) {
+  li.question-item {
+    .question-meta {
+      width: 70%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 510px) {
+  li.question-item {
+    .question-meta {
+      width: 63%;
+    }
+  }
+}
+
 // Small Screen Devices
 @media screen and (max-width: @screen-xs) {
   li.question-item {
