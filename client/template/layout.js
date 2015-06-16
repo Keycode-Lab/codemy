@@ -38,4 +38,5 @@ Template.layout.onRendered( function () {
   });
 
   navScrol();
+  listSelector();
 });

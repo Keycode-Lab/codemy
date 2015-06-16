@@ -1,6 +1,9 @@
 li.question-item {
   //height: 100px;
   border-bottom: 1px solid @border-color;
+  &.is-selected {
+    background: lighten(@yellow, 40%);
+  }
   &:last-child {
     border-bottom: 0;
   }
