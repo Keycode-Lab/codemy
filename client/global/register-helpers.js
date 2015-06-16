@@ -60,6 +60,10 @@ Template.registerHelper('userEmail', function () {
     }
 });
 
+Template.registerHelper('editted', function () {
+  return this.updatedAt !== 0;
+});
+
 // Own Post
 // Template.registerHelper('ownPost', function () {
 //   var post = Posts.findOne({_id: this._id});

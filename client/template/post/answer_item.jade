@@ -19,7 +19,7 @@ template(name="answerItem")
           span.author
             | <strong>{{user.username}} {{isonline}}</strong>
           span.date
-            | {{moFromNow createdAt withoutSuffix}}
+            | {{moFromNow createdAt withoutSuffix}}에 작성됨
         h2.post-title {{user.username}}님의 답변
     .post-body
       hr
@@ -32,6 +32,9 @@ template(name="answerItem")
               button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
                 | ...
               +dropdownAnswerItem
+        .row-fluid
+          if editted
+            span {{moFromNow updatedAt withoutSuffix}}에 수정됨
         .row-fluid
           .delete-confirm(style="margin-top: 10px;" id="answer-{{_id}}")
             h4 해당 게시물을 삭제하시겠습니까?

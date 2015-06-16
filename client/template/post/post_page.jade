@@ -13,7 +13,7 @@ template(name="postPage")
               span.author
                 | <strong>{{user.username}} {{isonline}}</strong>
               span.date
-                | {{moFromNow createdAt withoutSuffix}}
+                | {{moFromNow createdAt withoutSuffix}}에 작성
             h2.post-title {{title}}
         .post-body
           hr
@@ -26,6 +26,9 @@ template(name="postPage")
                   button.btn.btn-default.btn-xs(data-toggle="dropdown" aria-expanded="false")
                     | ...
                   +dropdownPostPage
+            .row-fluid
+              if editted
+                span {{moFromNow updatedAt withoutSuffix}}에 수정됨
             .row-fluid
               .delete-confirm(style="margin-top: 10px;" id="post-{{_id}}")
                 h4 해당 게시물을 삭제하시겠습니까?
