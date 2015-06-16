@@ -44,12 +44,16 @@ template(name="editor")
                 | {{#markdown}}{{session 'editor-content'}}{{/markdown}}
             if currentRoute 'submit'
               .tag-wrapper
-                label 태그
-                input#tags
+                label
+                  | 태그
+                  small (엔터와 쉼표로 태그를 추가하세요)
+                select.tagsinput(multiple id="tagsinput" data-role="tagsinput")
             if currentRoute 'postEdit'
               .tag-wrapper
-                  label 태그
-                  input#tags
+                label
+                  | 태그
+                  small (엔터와 쉼표로 태그를 추가하세요)
+                select.tagsinput(multiple id="tagsinput" data-role="tagsinput")
           .editor-bottom
             button.btn.btn-green.btn-submit
               if currentRoute 'submit'

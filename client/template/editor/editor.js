@@ -74,7 +74,8 @@ Template.editor.events({
     if (currentRoute === 'submit') {
       var post = {
         title:    document.getElementById('editor-title').value,
-        content:  document.getElementById('editor-content').value
+        content:  document.getElementById('editor-content').value,
+        tags: $('select.tagsinput').val()
       }
 
       if ($.trim(post.title).length === 0) {
@@ -127,7 +128,8 @@ Template.editor.events({
     if (currentRoute === 'postEdit') {
       var post = {
         title:    document.getElementById('editor-title').value,
-        content:  document.getElementById('editor-content').value
+        content:  document.getElementById('editor-content').value,
+        tags: $('select.tagsinput').val()
       }
 
       var postId = Template.parentData()._id;
@@ -303,20 +305,22 @@ Template.editor.events({
 });
 
 Template.editor.onRendered( function () {
+
+
   // Autosize of Content Text Area (this is a plugin)
   // $('#editor-content').autosize();
 
-  // if (Router.current() && Router.current().route.getName() === 'postEdit') {
+  if (Router.current() && Router.current().route.getName() === 'postEdit') {
     setTimeout( function () {
       liveUpdate($('#editor-content'));
     }, 200);
-  // }
+  }
 
-  // if (Router.current() && Router.current().route.getName() === 'answerEdit') {
-    // setTimeout( function () {
-    //   liveUpdate($('#editor-content'));
-    // }, 200);
-  // }
+  if (Router.current() && Router.current().route.getName() === 'answerEdit') {
+    setTimeout( function () {
+      liveUpdate($('#editor-content'));
+    }, 200);
+  }
 
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();
@@ -372,5 +376,23 @@ Template.editor.onRendered( function () {
   // });
   // // tabIndent.render(textarea);
   // editor.init(textarea);
+
+  // Tags
+  $('.tagsinput').tagsinput({
+    confirmKeys: [13, 188], //Enter Comma
+    maxTags: 5,
+    trimValue: true,
+    maxChars: 16,
+    tagClass: 'label label-default tagCustom'
+  });
+
+  $('.bootstrap-tagsinput input').on('keydown', function () {
+    var keyCode = event.keyCode || event.which;
+
+    if (keyCode === 32) {
+      event.preventDefault();
+    }
+  });
+
 });
 
