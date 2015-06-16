@@ -1,0 +1,11 @@
+template(name="postProfile")
+  .row-fluid.clearfix
+    .post-profile.pull-right
+      p 작성자: <strong>{{this.user.username}}</strong>
+      p 작성일: <strong>{{moFormat createdAt 'MM-DD-YY'}}</strong>
+      if editted
+        p
+          span
+            | 최근 수정: <strong>{{moFormat updatedAt 'MM-DD-YY'}}</strong>
+
+

@@ -29,6 +29,7 @@ template(name="postPage")
             .row-fluid
               if editted
                 span {{moFromNow updatedAt withoutSuffix}}에 수정됨
+            +postProfile
             .row-fluid
               .delete-confirm(style="margin-top: 10px;" id="post-{{_id}}")
                 h4 해당 게시물을 삭제하시겠습니까?
