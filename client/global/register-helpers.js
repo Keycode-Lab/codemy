@@ -59,3 +59,12 @@ Template.registerHelper('userEmail', function () {
       return user.emails[0].address;
     }
 });
+
+// Own Post
+// Template.registerHelper('ownPost', function () {
+//   var post = Posts.findOne({_id: this._id});
+
+//   if (post && post.user && post.user._id) {
+//     return Meteor.userId() === post.user._id;
+//   }
+// });

@@ -43,7 +43,10 @@ Meteor.publish('draftsList', function (options) {
   check(options, {
       limit: Number
   });
-  return Drafts.find({'user._id': this.userId}, options);
+
+  var drafts = Drafts.find({'user._id': this.userId}, options);
+
+  return drafts;
 });
 
 

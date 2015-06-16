@@ -10,7 +10,15 @@ template(name="editor")
               div(style="float:right;")
                 label.char-count-title 0
                 span.char-limit-title
-              input(type="text" id="editor-title")
+              input(type="text" id="editor-title" value="{{title}}")
+          if currentRoute 'postEdit'
+            .row-fluid
+              label 제목
+              span.draftMode {{draftMode}}
+              div(style="float:right;")
+                label.char-count-title 0
+                span.char-limit-title
+              input(type="text" id="editor-title" value="{{title}}")
           .editor-content.clearfix
             +editorToolbar
             .textarea-wrapper
@@ -18,7 +26,11 @@ template(name="editor")
               div(style="float:right;")
                 label.char-count-content 0
                 span.char-limit-content
-              textarea(id="editor-content")
+              if currentRoute 'postEdit'
+                textarea(id="editor-content")
+                  | {{content}}
+              else
+                textarea(id="editor-content")
             .preview-wrapper
               label 마크다운 미리보기
               .preview-inner
@@ -32,5 +44,8 @@ template(name="editor")
                 | 질문하기
               if currentRoute 'postPage'
                 | 답변하기
+              if currentRoute 'postEdit'
+                | 저장하기
+              .loader
             //-button.btn.btn-info.btn-draft
               | Save Draft

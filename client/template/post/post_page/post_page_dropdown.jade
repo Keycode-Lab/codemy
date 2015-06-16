@@ -1,0 +1,20 @@
+template(name="dropdownPostPage")
+  ul.dropdown-menu.dropdown-menu-right(role="menu")
+    if ownPost
+      li
+        a.post-edit(href="{{pathFor 'postEdit'}}")
+          i.icon-edit
+          | 수정
+      li
+        a.post-delete(href="")
+          i.icon-cancel-circled-outline
+          | 삭제
+      li.divider
+    li.small
+      a.post-share(href="")
+        i.icon-export-outline
+        | 공유하기
+    li.small
+      a.post-report(href="")
+        i.icon-flag
+        | 신고하기

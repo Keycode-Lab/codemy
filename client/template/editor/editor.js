@@ -1,4 +1,6 @@
 Template.editor.onCreated( function () {
+  var self = this;
+
   console.log('Editor Template Created')
   Session.set('currentDraft', null);
 
@@ -7,6 +9,7 @@ Template.editor.onCreated( function () {
   Session.set('editor-title', null);
 
   Session.set('draftsLimit', 5);
+
 });
 
 Template.editor.onDestroyed( function () {
@@ -82,9 +85,60 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){
+          //return throwError('Something went wrong',error.reason);
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+        } else {
+          if (Session.get('currentDraft') !== null) {
+
+            var draft = Session.get('currentDraft');
+
+            Meteor.call('draftRemove', draft, function(error, result) {
+              if (error) {
+                console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
+              } else {
+
+              }
+            });
+          }
+        }
+        $('.btn-submit').removeClass('btn-loading');
+        $('.btn-submit').attr('disabled', false);
+
+         Router.go('/new');
+      });
+    }
+
+    // Edit Post
+    if (currentRoute === 'postEdit') {
+      var post = {
+        title:    document.getElementById('editor-title').value,
+        content:  document.getElementById('editor-content').value
+      }
+
+      var postId = Template.parentData()._id;
+
+      if ($.trim(post.title).length === 0) {
+        return false;
+      }
+
+      if ($.trim(post.content).length === 0) {
+        return false;
+      }
+
+      Meteor.call('postEdit', postId, post, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          console.log(error.reason);
           //return throwError('Something went wrong',error.reason);
         } else {
           if (Session.get('currentDraft') !== null) {
@@ -99,9 +153,8 @@ Template.editor.events({
               }
             });
 
-          Router.go('/');
-
           }
+          Router.go('/posts/' + postId);
         }
       });
     }
@@ -177,6 +230,12 @@ Template.editor.events({
 Template.editor.onRendered( function () {
   // Autosize of Content Text Area (this is a plugin)
   // $('#editor-content').autosize();
+
+  if (Router.current() && Router.current().route.getName() === 'postEdit') {
+    setTimeout( function () {
+      liveUpdate($('#editor-content'));
+    }, 200);
+  }
 
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();

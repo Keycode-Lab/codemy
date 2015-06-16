@@ -53,6 +53,13 @@ Template.postPage.helpers({
       }
     }
   },
+  ownPost: function () {
+    var post = Posts.findOne({_id: this._id});
+
+    if (post && post.user && post.user._id) {
+      return Meteor.userId() === post.user._id;
+    }
+  }
 
 });
 
@@ -79,6 +86,21 @@ Template.postPage.events({
   'click a.load-more-comments': function (event) {
     event.preventDefault();
     Session.set('commentLimit', Number(Session.get('commentLimit')) + 5)
+  },
+  'click .btn-confirm-delete': function () {
+    // Call Method to delete here
+    console.log(this._id)
+    console.log(this.user._id)
+    Meteor.call('postRemove', this.user._id, this._id, function (error, result) {
+      if (error) {
+        console.log(error)
+      } else {
+        Router.go('/new');
+      }
+    });
+  },
+  'click .btn-confirm-cancel': function () {
+    $('.delete-confirm').slideToggle(300);
   }
 });
 
