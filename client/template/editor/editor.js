@@ -137,6 +137,9 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('postEdit', postId, post, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -180,6 +183,9 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('answerEdit', answerId, answer, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -219,6 +225,9 @@ Template.editor.events({
       if ($.trim(answer.content).length === 0) {
         return false;
       }
+
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
 
       Meteor.call('answerSubmit', answer, function(error, result) {
         // display the error to the user and abort
