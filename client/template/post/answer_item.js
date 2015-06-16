@@ -120,9 +120,10 @@ Template.answerItem.events({
     if ($(event.target).parent().is(id)) {
       Meteor.call('answerRemove', this.user._id, this.postId, this._id, function (error, result) {
         if (error) {
-          console.log(error)
+          console.log(error);
+          throwError(error.reason);
         } else {
-          // Router.go('/new');
+          throwSuccess('답변이 성공적으로 삭제됐습니다.')
         }
       });
     }

@@ -96,8 +96,10 @@ Template.postPage.events({
     if ($(event.target).parent().is(id)) {
       Meteor.call('postRemove', this.user._id, this._id, function (error, result) {
         if (error) {
-          console.log(error)
+          console.log(error);
+          throwError(error.reason);
         } else {
+          throwSuccess('질문이 성공적으로 삭제됐습니다.')
           Router.go('/new');
         }
       });
