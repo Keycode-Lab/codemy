@@ -91,7 +91,7 @@ Template.editor.events({
       Meteor.call('postSubmit', post, function(error, result) {
         // display the error to the user and abort
         if (error){
-          //return throwError('Something went wrong',error.reason);
+          throwError(error.reason);
           $('.btn-submit').removeClass('btn-loading');
           $('.btn-submit').attr('disabled', false);
         } else {
@@ -102,6 +102,7 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                throwError(error.reason);
                 $('.btn-submit').removeClass('btn-loading');
                 $('.btn-submit').attr('disabled', false);
                 return false;
@@ -115,6 +116,8 @@ Template.editor.events({
         $('.btn-submit').attr('disabled', false);
 
         Router.go('postPage', {_id: result});
+
+        throwSuccess('질문이 성공적으로 등록됐습니다.')
       }
 
       });
@@ -144,7 +147,7 @@ Template.editor.events({
         // display the error to the user and abort
         if (error){
           console.log(error.reason);
-          //return throwError('Something went wrong',error.reason);
+          throwError(error.reason);
         } else {
           if (Session.get('currentDraft') !== null) {
 
@@ -152,6 +155,7 @@ Template.editor.events({
 
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
+                throwError(error.reason);
                 console.log(error.reason);
                 $('.btn-submit').removeClass('btn-loading');
                 $('.btn-submit').attr('disabled', false);
@@ -165,6 +169,8 @@ Template.editor.events({
           $('.btn-submit').attr('disabled', false);
 
           Router.go('/question/' + postId);
+
+          throwSuccess('질문이 성공적으로 수정됐습니다.')
         }
       });
     }
@@ -190,7 +196,7 @@ Template.editor.events({
         // display the error to the user and abort
         if (error){
           console.log(error.reason);
-          //return throwError('Something went wrong',error.reason);
+          throwError(error.reason);
         } else {
           if (Session.get('currentDraft') !== null) {
 
@@ -199,6 +205,7 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                throwError(error.reason);
                 $('.btn-submit').removeClass('btn-loading');
                 $('.btn-submit').attr('disabled', false);
                 return false;
@@ -211,6 +218,8 @@ Template.editor.events({
           $('.btn-submit').removeClass('btn-loading');
           $('.btn-submit').attr('disabled', false);
           Router.go('/question/' + postId);
+
+          throwSuccess('답변이 성공적으로 수정됐습니다.')
         }
       });
     }
@@ -232,7 +241,7 @@ Template.editor.events({
       Meteor.call('answerSubmit', answer, function(error, result) {
         // display the error to the user and abort
         if (error){
-          //return throwError('Something went wrong',error.reason);
+          throwError(error.reason);
         } else {
           if (Session.get('currentDraft') !== null) {
 
@@ -252,6 +261,9 @@ Template.editor.events({
           }
           $('.btn-submit').removeClass('btn-loading');
           $('.btn-submit').attr('disabled', false);
+
+          throwSuccess('답변이 성공적으로 등록됐습니다.')
+
           document.getElementById('editor-content').value = "";
           Session.set('editor-content', '**마크다운 미리보기**');
         }

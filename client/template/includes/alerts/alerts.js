@@ -1,17 +1,28 @@
 // Local (client-only) collection
 Alerts = new Mongo.Collection(null);
 
-alert = function(title, message, type) {
+throwSuccess = function (message) {
 	Alerts.insert({
-		title:title,
 		message: message,
-		type:type
-	})
+		type: 'alert-success'
+	});
 	$('.alert').addClass('show');
-	Meteor.setTimeout( function () {
-		$('.alert').removeClass('show');
-		$('.alert').addClass('hide');
-	}, 4500);
+	// Meteor.setTimeout( function () {
+	// 	$('.alert').removeClass('show');
+	// 	$('.alert').addClass('hide');
+	// }, 4500);
+};
+
+throwError = function(message) {
+	Alerts.insert({
+		message: message,
+		type: 'alert-danger'
+	});
+	$('.alert').addClass('show');
+	// Meteor.setTimeout( function () {
+	// 	$('.alert').removeClass('show');
+	// 	$('.alert').addClass('hide');
+	// }, 4500);
 };
 
 Template.alerts.helpers({

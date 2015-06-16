@@ -16,9 +16,11 @@ Template.commentSubmit.events({
 
     Meteor.call('commentInsert', object, function(error, commentId) {
         if (error){
-          //throwError(error.reason);
+          console.log(error);
+          throwError(error.reason);
         } else {
           $('.comment-submit').val('');
+          throwSuccess('댓글이 성공적으로 등록됐습니다.')
         }
     });
   }
@@ -42,9 +44,11 @@ Template.commentAnswerSubmit.events({
 
     Meteor.call('commentAnswerInsert', object, function(error, commentId) {
         if (error){
-          //throwError(error.reason);
+          throwError(error.reason);
+          console.log(error);
         } else {
           template.$('.comment-answer-submit').val('');
+          throwSuccess('댓글이 성공적으로 등록됐습니다.')
         }
     });
   }

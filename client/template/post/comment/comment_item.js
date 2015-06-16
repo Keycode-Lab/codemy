@@ -1,6 +1,14 @@
 Template.commentItem.events({
   'click .btn-comment-delete': function (event) {
-    Meteor.call('commentRemove', this.postId, this._id);
+    Meteor.call('commentRemove', this.postId, this._id, function (error, result) {
+      if (error) {
+        console.log(error);
+        throwError(error.reason);
+      } else {
+        throwSuccess('댓글이 성공적으로 삭제됐습니다.')
+      }
+    } );
+
   }
 });
 

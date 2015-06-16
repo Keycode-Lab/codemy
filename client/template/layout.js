@@ -8,16 +8,12 @@ Template.layout.events({
     }
   },
   'click #signout': function () {
-    var currentUser = Meteor.user().profile.username ||
-                      Meteor.user().profile.name;
     Meteor.logout( function() {
       Router.go('/');
-      setTimeout( function () {
-        // sAlert.success('Good Bye ' + currentUser + '!');
-      }, 100);
     });
-    //var currentUser = Meteor.user().profile.username || Meteor.user().profile.name;
-    //throwSuccess('Sign Out Successful', 'We will miss you ' + currentUser);
+    var currentUser = Meteor.user().profile.username ||
+                      Meteor.user().profile.name;
+    throwSuccess('다음에 또 오세요!');
   }
 });
 
@@ -42,24 +38,4 @@ Template.layout.onRendered( function () {
   });
 
   navScrol();
-
-  // $('#inner-body').on('click', function () {
-  //   if ($('#wrapper').hasClass('sidebar-right-notification') &&
-  //       ($(event.target) != $('.notification'))) {
-  //       $('#wrapper').removeClass('sidebar-right-notification')
-  //   }
-  // });
-
-  // $('input, textarea').ontouch = function (event) {
-  //   event.preventDefault();
-  // };
-
-  /* Prevent Scrolling when focused/touched (Mobile)
-  $(document).ready(function() {
-    document.ontouchmove = function(e){
-      e.preventDefault();
-    }
-  });
-  */
-
 });

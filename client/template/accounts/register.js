@@ -42,12 +42,12 @@ Template.register.events({
                 //  Session.set('registerErrors', {email:' Email already exists'});
                 //  console.log('We are sorry but this email is already used.');
               } else {
-          //throwError('Error',error.reason);
+          throwError(error.reason);
           console.log('We are but something went wrong.');
         }
       } else {
         var currentUser = Meteor.user().profile.username || Meteor.user().profile.name ;
-        //throwSuccess('Registration Successful','Welcome ' + currentUser + '!');
+        throwSuccess('어서오세요 ' + currentUser + '님');
         Router.go('/'); //Redirect User to homepage
       }
     });
