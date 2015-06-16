@@ -3,10 +3,10 @@ template(name="list")
     .main.postslist.clearfix
       ul.posts-sort.clearfix
         li
-          a.active(href="")
+          a(href="{{pathFor 'newPosts'}}" class="{{activeRoute 'newPosts'}}")
             | New
         li
-          a(href="")
+          a(href="{{pathFor 'bestPosts'}}" class="{{activeRoute 'bestPosts'}}")
             | Popular
         li
           a(href="")
