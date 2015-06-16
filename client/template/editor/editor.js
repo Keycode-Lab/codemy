@@ -150,12 +150,17 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
                 console.log('Draft Autosaved');
               }
             });
-
           }
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+
           Router.go('/question/' + postId);
         }
       });
@@ -188,12 +193,17 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
                 console.log('Draft Autosaved');
               }
             });
 
           }
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
           Router.go('/question/' + postId);
         }
       });
@@ -222,15 +232,19 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
                 console.log('Draft Autosaved');
               }
             });
 
           }
-         document.getElementById('editor-content').value = "";
-         Session.set('editor-content', '**마크다운 미리보기**');
-
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+          document.getElementById('editor-content').value = "";
+          Session.set('editor-content', '**마크다운 미리보기**');
         }
       });
     }
