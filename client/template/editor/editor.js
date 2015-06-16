@@ -110,11 +110,13 @@ Template.editor.events({
               }
             });
           }
-        }
+
         $('.btn-submit').removeClass('btn-loading');
         $('.btn-submit').attr('disabled', false);
 
-         Router.go('/new');
+        Router.go('postPage', {_id: result});
+      }
+
       });
     }
 
@@ -135,6 +137,9 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('postEdit', postId, post, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -148,13 +153,64 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
+              } else {
+                console.log('Draft Autosaved');
+              }
+            });
+          }
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+
+          Router.go('/question/' + postId);
+        }
+      });
+    }
+
+    // Edit Answer
+    if (currentRoute === 'answerEdit') {
+      var answer = {
+        content:  document.getElementById('editor-content').value
+      }
+
+      var answerId = Template.parentData()._id;
+
+      var postId = Template.parentData().postId;
+
+      if ($.trim(answer.content).length === 0) {
+        return false;
+      }
+
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
+      Meteor.call('answerEdit', answerId, answer, function(error, result) {
+        // display the error to the user and abort
+        if (error){
+          console.log(error.reason);
+          //return throwError('Something went wrong',error.reason);
+        } else {
+          if (Session.get('currentDraft') !== null) {
+
+            var draft = Session.get('currentDraft');
+
+            Meteor.call('draftRemove', draft, function(error, result) {
+              if (error) {
+                console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
                 console.log('Draft Autosaved');
               }
             });
 
           }
-          Router.go('/posts/' + postId);
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+          Router.go('/question/' + postId);
         }
       });
     }
@@ -170,6 +226,9 @@ Template.editor.events({
         return false;
       }
 
+      $('.btn-submit').addClass('btn-loading');
+      $('.btn-submit').attr('disabled', true);
+
       Meteor.call('answerSubmit', answer, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -182,15 +241,19 @@ Template.editor.events({
             Meteor.call('draftRemove', draft, function(error, result) {
               if (error) {
                 console.log(error.reason);
+                $('.btn-submit').removeClass('btn-loading');
+                $('.btn-submit').attr('disabled', false);
+                return false;
               } else {
                 console.log('Draft Autosaved');
               }
             });
 
           }
-         document.getElementById('editor-content').value = "";
-         Session.set('editor-content', '**마크다운 미리보기**');
-
+          $('.btn-submit').removeClass('btn-loading');
+          $('.btn-submit').attr('disabled', false);
+          document.getElementById('editor-content').value = "";
+          Session.set('editor-content', '**마크다운 미리보기**');
         }
       });
     }
@@ -231,11 +294,17 @@ Template.editor.onRendered( function () {
   // Autosize of Content Text Area (this is a plugin)
   // $('#editor-content').autosize();
 
-  if (Router.current() && Router.current().route.getName() === 'postEdit') {
+  // if (Router.current() && Router.current().route.getName() === 'postEdit') {
     setTimeout( function () {
       liveUpdate($('#editor-content'));
     }, 200);
-  }
+  // }
+
+  // if (Router.current() && Router.current().route.getName() === 'answerEdit') {
+    // setTimeout( function () {
+    //   liveUpdate($('#editor-content'));
+    // }, 200);
+  // }
 
   // Initialize BS Tooltip
   $('[data-toggle="tooltip"]').tooltip();

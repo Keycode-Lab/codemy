@@ -40,7 +40,7 @@ Template.draftSaveModal.events({
     var currentRoute = Router.current() && Router.current().route.getName();
 
     // Submit Question
-    if (currentRoute === 'submit') {
+    // if (currentRoute === 'submit') {
       Meteor.call('saveDraft', post, function(error, result) {
         // display the error to the user and abort
         if (error){
@@ -52,7 +52,7 @@ Template.draftSaveModal.events({
           Session.set('currentDraft', result);
         }
       });
-    }
+    // }
   }
 });
 

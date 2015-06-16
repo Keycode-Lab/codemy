@@ -2,11 +2,11 @@ template(name="dropdownAnswerItem")
   ul.dropdown-menu.dropdown-menu-right(role="menu")
     if ownPost
       li
-        a.post-edit(href="{{pathFor 'postEdit'}}")
+        a.answer-edit(href="{{pathFor 'answerEdit'}}")
           i.icon-edit
           | 수정
       li
-        a.post-delete(href="")
+        a.answer-delete(href="")
           i.icon-cancel-circled-outline
           | 삭제
       li.divider

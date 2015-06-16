@@ -87,17 +87,22 @@ Template.postPage.events({
     event.preventDefault();
     Session.set('commentLimit', Number(Session.get('commentLimit')) + 5)
   },
-  'click .btn-confirm-delete': function () {
+  'click .btn-confirm-delete': function (event) {
     // Call Method to delete here
+    var id = '#post-'+this._id;
     console.log(this._id)
     console.log(this.user._id)
-    Meteor.call('postRemove', this.user._id, this._id, function (error, result) {
-      if (error) {
-        console.log(error)
-      } else {
-        Router.go('/new');
-      }
-    });
+
+    if ($(event.target).parent().is(id)) {
+      Meteor.call('postRemove', this.user._id, this._id, function (error, result) {
+        if (error) {
+          console.log(error)
+        } else {
+          Router.go('/new');
+        }
+      });
+    }
+
   },
   'click .btn-confirm-cancel': function () {
     $('.delete-confirm').slideToggle(300);

@@ -55,6 +55,11 @@ Meteor.publish('singlePost', function (id) {
   return Posts.find(id);
 });
 
+Meteor.publish('singleAnswer', function (id) {
+  check(id, String);
+  return Answers.find(id);
+});
+
 
 // Mizzaos Answer
 // https://github.com/mizzao/meteor-user-status/issues/56
