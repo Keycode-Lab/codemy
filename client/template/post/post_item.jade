@@ -14,7 +14,7 @@ template(name="postItem")
           i.icon-chat-alt
           | {{commentsCount}}
         span.votes
-          i.icon-coffee
+          i.icon-up-outline
           | {{votes}}
         span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
           if answered
@@ -24,7 +24,7 @@ template(name="postItem")
           | 0
     .answer-count.hidden-tn.hidden-xxs
       span.answer
-        | Answers
+        | 답변
       span.count
         if answered
           i.fa.fa-check.checked

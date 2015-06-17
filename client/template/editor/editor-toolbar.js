@@ -89,10 +89,12 @@ Template.editorToolbar.events({
       // if preview-mode, turn off
       $editorWrapper.removeClass('show-preview');
       Session.set('previewState', false);
+      throwError('미리보기 off');
     } else {
       // if not preview-mode, turn on
       $editorWrapper.addClass('show-preview');
       Session.set('previewState', true);
+      throwSuccess('미리보기 on');
     }
   },
 
@@ -127,11 +129,13 @@ Template.editorToolbar.events({
       // remove autosize from ta
       ta.trigger('autosize.destroy');
       Session.set('editor-autosize', false);
+      throwError('자동크기 조절 off');
     } else {
       // If not autosize, turn on
       var ta = $('#editor-content')
       ta.autosize();
       Session.set('editor-autosize', true);
+      throwSuccess('자동크기 조절 on');
     }
     editor.focus();
   },
