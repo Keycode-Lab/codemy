@@ -1,5 +1,6 @@
 .col-postPage {
   float:left;
+  padding-top: 1.5em;
   width: ~"calc(100% - 350px)";
 }
 
@@ -40,6 +41,9 @@
   padding-top: 0.5em;
   padding-left: 6em;
   word-wrap: break-word;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: @white;
   //border: 1px solid @gray-lighter;
   //.box-shadow(0 6px 12px rgba(0, 0, 0, 0.05));
   .user-select(text);
@@ -67,8 +71,10 @@
 .post-footer {
   padding: 1em 2em;
   padding-left: 6em;
-  //border-top: 1px solid @border-color;
-  // background: @gray-lighter;
+  border-top: 1px solid @background-color;
+  background: @container-color;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
 
 }
 
@@ -133,6 +139,10 @@ a.btn-zoomOut {
   h2 {
     margin-top: 0.3em;
   }
+  span.date {
+    color: @text-light;
+    font-size: 0.9em;
+  }
 }
 
 .postpage .voting-wrapper {
@@ -161,7 +171,7 @@ a.btn-zoomOut {
   height: 40px;
   border-radius: 50%;
   //background: @gray;
-  box-shadow: 0 0 0 6px lighten(@dark, 40%);
+  box-shadow: 0 0 0 6px @brand-color;
   vertical-align: middle;
   img {
     margin-top: 50%;

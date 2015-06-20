@@ -2,7 +2,8 @@
 html, body {
   min-height: 100% !important;
   font-family: 'ProximaNovaAlt', 'Helvetica Neue','Noto Sans', Helvetica ,Sans-serif;
-  color: @dark;
+  color: @text-dark;
+  background: @background-color;
 
   -webkit-font-smoothing: antialiased !important;
           font-smoothing: antialiased;
@@ -32,6 +33,11 @@ html {
 #wrapper {
   position: relative;
   overflow: hidden;
+}
+
+#iron-router-progress {
+  background-color : white;
+  box-shadow       : 0;
 }
 
 // #wrapper {
@@ -80,7 +86,7 @@ html {
 }
 
 .main {
-  background-color: @white;
+  // background-color: @white;
 }
 
 a {
@@ -188,12 +194,10 @@ a.red {
 }
 
 @media screen and (max-width: @screen-tn) {
-  .container.mobile {
-    padding: 0;
-  }
-  #wrapper {
-    background: white;
-  }
+  // .container.mobile {
+  //   padding: 0.5em;
+
+  // }
   #inner-body {
     padding-top: @navbar-height-mb;
   }

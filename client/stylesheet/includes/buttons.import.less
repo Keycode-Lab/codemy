@@ -25,23 +25,23 @@
   }
 }
 
-.btn-gray {
-  @btn-gray : #E0E0E0;
-  color: @gray-light;
-  background-color: @btn-gray;
-  .box-shadow-bottom(3px, darken(@btn-gray, 5%));
-  font-weight: 700;
-  .uppercase;
-  .letter-spacing(0.05em);
-  &:hover {
-    color: @gray-light;
-    background-color: darken(@btn-gray, 5%);
-  }
-  &:focus {
-    color: @gray-light;
-    background-color: darken(@btn-gray, 5%);
-  }
-}
+// .btn-gray {
+//   @btn-gray : #E0E0E0;
+//   color: @gray-light;
+//   background-color: @btn-gray;
+//   .box-shadow-bottom(3px, darken(@btn-gray, 5%));
+//   font-weight: 700;
+//   .uppercase;
+//   .letter-spacing(0.05em);
+//   &:hover {
+//     color: @gray-light;
+//     background-color: darken(@btn-gray, 5%);
+//   }
+//   &:focus {
+//     color: @gray-light;
+//     background-color: darken(@btn-gray, 5%);
+//   }
+// }
 
 .btn-green {
   color: @white;
@@ -100,6 +100,30 @@
 .btn-submit.btn-loading {
   overflow: visible;
   width: 115px;
+  .loader {
+    opacity: 1;
+  }
+}
+
+.btn-comment-save,
+.btn-comment,
+.btn-comment-answer {
+  .transition(150ms ease-in-out all);
+  overflow: hidden;
+  width: 55px;
+  .loader {
+    opacity: 0;
+  }
+  * {
+    vertical-align: middle;
+  }
+}
+
+.btn-comment-save.btn-loading,
+.btn-comment.btn-loading,
+.btn-comment-answer.btn-loading {
+  overflow: visible;
+  width: 85px;
   .loader {
     opacity: 1;
   }

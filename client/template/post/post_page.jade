@@ -43,10 +43,10 @@ template(name="postPage")
             if nextPath
               a.load-more-comments(href="")
                 | 더 보기
-          a.add-comment(href="")
+      .post-footer
+        a.add-comment(href="")
             | <strong>댓글 남기기</strong>
           +commentSubmit
-      .post-footer
 
 
 

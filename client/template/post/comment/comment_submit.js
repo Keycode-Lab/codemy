@@ -14,12 +14,17 @@ Template.commentSubmit.events({
     //   return Session.set('commentSubmitErrors', errors);
     // }
 
+    template.$('.btn-comment').addClass('btn-loading')
+                              .attr('disabled', true);
+
     Meteor.call('commentInsert', object, function(error, commentId) {
         if (error){
           console.log(error);
           throwError(error.reason);
         } else {
           $('.comment-submit').val('');
+          template.$('.btn-comment').removeClass('btn-loading')
+                                    .attr('disabled', false);
           throwSuccess('댓글이 성공적으로 등록됐습니다.')
         }
     });
@@ -42,12 +47,18 @@ Template.commentAnswerSubmit.events({
     //   return Session.set('commentSubmitErrors', errors);
     // }
 
+    template.$('.btn-comment-answer').addClass('btn-loading')
+                              .attr('disabled', true);
+
+
     Meteor.call('commentAnswerInsert', object, function(error, commentId) {
         if (error){
           throwError(error.reason);
           console.log(error);
         } else {
           template.$('.comment-answer-submit').val('');
+          template.$('.btn-comment-answer').removeClass('btn-loading')
+                                           .attr('disabled', false);
           throwSuccess('댓글이 성공적으로 등록됐습니다.')
         }
     });

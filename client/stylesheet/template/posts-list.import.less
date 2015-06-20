@@ -2,8 +2,10 @@
 @posts-sort-height-mb : 30px;
 
 .main.postslist {
+  margin-top: 1.5em;
   display: block;
   background: @white;
+  border-radius: 3px;
   padding: 0 2em;
   // .box-shadow(0 6px 12px rgba(0, 0, 0, 0.05));
 }
@@ -13,7 +15,7 @@ ul.posts-sort {
   list-style: none;
   padding: 0;
   margin: 0;
-  border-bottom: 1px solid @border-color;
+  border-bottom: 1px solid @background-color;
   background: white;
 }
 
@@ -36,7 +38,7 @@ ul.posts-sort li a {
   text-align: center;
   font-size: 0.9em;
   font-weight: 500;
-  color: @black;
+  color: @text-dark;
 
   .uppercase;
   .letter-spacing(0.05em);
@@ -68,9 +70,7 @@ ul.posts-list {
 }
 
 @media screen and (max-width: @screen-xs) {
-  .container.mobile {
-    background: white;
-  }
+
   .main.postslist {
     padding: 0;
   }
