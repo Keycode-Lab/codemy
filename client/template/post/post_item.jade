@@ -13,9 +13,19 @@ template(name="postItem")
         span.comment
           i.icon-chat-alt
           | {{commentsCount}}
-        span.votes
-          i.icon-up-outline
-          | {{votes}}
+
+        if negativeVote
+          span.votes.negative-vote
+            i.icon-down-outline
+            | {{votes}}
+        if zeroVote
+          span.votes.zero-vote
+            i.icon-up-outline
+            | {{votes}}
+        if positiveVote
+          span.votes.positive-vote
+            i.icon-up-outline
+            | {{votes}}
         span.answers.visible-tn-inline.visible-xxs-inline.hidden-xs
           if answered
             i.fa.fa-check.checked
