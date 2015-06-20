@@ -70,17 +70,20 @@ Template.editor.events({
     e.preventDefault();
     var currentRoute = Router.current() && Router.current().route.getName();
 
-    var tags = $('select.tagsinput').val();
 
-    var tagsToLowerCase = [];
-
-    for (var i = 0; i < tags.length; i++) {
-
-            tagsToLowerCase.push(tags[i].toLowerCase());
-    };
 
     // Submit Question
     if (currentRoute === 'submit') {
+
+      var tags = $('select.tagsinput').val();
+
+      var tagsToLowerCase = [];
+
+      for (var i = 0; i < tags.length; i++) {
+
+              tagsToLowerCase.push(tags[i].toLowerCase());
+      };
+
       var post = {
         title:    document.getElementById('editor-title').value,
         content:  document.getElementById('editor-content').value,
