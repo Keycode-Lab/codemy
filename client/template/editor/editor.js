@@ -401,7 +401,7 @@ Template.editor.onRendered( function () {
     maxTags: 5,
     trimValue: true,
     maxChars: 16,
-    tagClass: 'label label-default tagCustom'
+    tagClass: 'label tags'
   });
 
   $('.bootstrap-tagsinput input').on('keydown keyup', function () {
