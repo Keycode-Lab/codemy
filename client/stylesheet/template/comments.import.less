@@ -24,7 +24,7 @@ textarea.comment-answer-submit {
 }
 
 span.info-count {
-  color: @gray;
+  color: @text-light;
   font-size: 0.85em;
 }
 
@@ -37,21 +37,35 @@ span.info-count {
     width: 100%;
     text-align: center;
     padding-top: 0.5em;
-    border-top: 1px solid @border-color;
+    border-top: 1px solid @background-color;
   }
 }
 
 li.comment-item {
   font-size: 0.9em;
   padding: 0.5em 0;
-  border-top: 1px solid @border-color;
+  border-top: 1px solid @background-color;
   min-height: 60px;
+  a.author {
+    display: inline-block;
+  }
   p {
+    display: inline-block;
     margin-bottom: 0;
     font-weight: regular;
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 1em;
+      display: inline;
+    }
   }
   &:last-child {
-    border-bottom: 1px solid @border-color;
+    border-bottom: 1px solid @background-color;
+  }
+  a.btn-comment-edit {
+    display: inline-block;
+  }
+  a.btn-comment-delete {
+    display: inline-block;
   }
 }
 .comment-item .comment-item-inner {

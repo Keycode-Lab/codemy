@@ -2,8 +2,31 @@ template(name="commentItem")
   li.comment-item
     .comment-item-inner
 
-      p {{comment}} -
-        a(href="" class="{{commentOp}}") {{user.username}}
+      p
+        +markdown
+          {{comment}} -
+        a.author(href="" class="{{commentOp}}") {{user.username}}
         span.date {{moFromNow createdAt withoutSuffix}}
+      br
+      a.btn-comment-edit(href="")
+        | 수정
       a.btn-comment-delete(href="")
-        | Delete
+        | 삭제
+      span.comment-delete-confirm(style="display:none;") 댓글을 삭제하시겠습니까?
+        a.btn-comment-delete-confirm(href="")
+          | 예
+        a.btn-comment-delete-cancel(href="")
+          | 아니요
+    .comment-edit(style="display:none;")
+      .comment-wrapper
+        .row-fluid
+          textarea.comment-submit(placeholder="댓글은 추가적인 정보를 요쳥, 지적하거나 개선점을 말하는 등에 사용해주세요. 감사합니다, 추천, 등의 단답 댓글은 피해주세요.")
+            | {{comment}}
+          .comment-buttons(style="display:inline-block; vertical-align:top;")
+            button.btn.btn-green.btn-comment-save.btn-md
+              | 확인
+              .loader
+            button.btn.btn-green.btn-comment-edit-cancel.btn-md(type="button" style="display:block; margin-top: 10px;")
+              | 취소
+        .row-fluid
+          span.info-count 최소 15자를 입력해주세요

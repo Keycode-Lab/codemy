@@ -70,12 +70,21 @@ Template.editor.events({
     e.preventDefault();
     var currentRoute = Router.current() && Router.current().route.getName();
 
+    var tags = $('select.tagsinput').val();
+
+    var tagsToLowerCase = [];
+
+    for (var i = 0; i < tags.length; i++) {
+
+            tagsToLowerCase.push(tags[i].toLowerCase());
+    };
+
     // Submit Question
     if (currentRoute === 'submit') {
       var post = {
         title:    document.getElementById('editor-title').value,
         content:  document.getElementById('editor-content').value,
-        tags: $('select.tagsinput').val()
+        tags: tagsToLowerCase
       }
 
       if ($.trim(post.title).length === 0) {
@@ -126,10 +135,19 @@ Template.editor.events({
 
     // Edit Post
     if (currentRoute === 'postEdit') {
+
+      var tags = $('select.tagsinput').val();
+
+      var tagsToLowerCase = [];
+
+      for (var i = 0; i < tags.length; i++) {
+        tagsToLowerCase.push(tags[i].toLowerCase());
+      };
+
       var post = {
         title:    document.getElementById('editor-title').value,
         content:  document.getElementById('editor-content').value,
-        tags: $('select.tagsinput').val()
+        tags: tagsToLowerCase
       }
 
       var postId = Template.parentData()._id;
@@ -379,17 +397,21 @@ Template.editor.onRendered( function () {
 
   // Tags
   $('.tagsinput').tagsinput({
-    confirmKeys: [13, 188], //Enter Comma
+    confirmKeys: [13, 32], //Enter Space Comma
     maxTags: 5,
     trimValue: true,
     maxChars: 16,
     tagClass: 'label label-default tagCustom'
   });
 
-  $('.bootstrap-tagsinput input').on('keydown', function () {
+  $('.bootstrap-tagsinput input').on('keydown keyup', function () {
     var keyCode = event.keyCode || event.which;
 
-    if (keyCode === 32) {
+    // if (keyCode === 32) {
+    //   event.preventDefault();
+    // }
+
+    if (keyCode === 182 || keyCode === 188) {
       event.preventDefault();
     }
   });

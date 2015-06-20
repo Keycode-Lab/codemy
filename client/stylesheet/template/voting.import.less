@@ -7,16 +7,14 @@
 
 a.upvote,
 a.downvote {
+  color: @brand-color;
   &:disabled {
-    color: @gray-lightest !important;
+    color: @background-color;
   }
 }
 
 a.unvote {
   color: @green;
-  &:disabled {
-    color: @gray-lightest !important;
-  }
 }
 
 a.undownvote {
@@ -34,7 +32,7 @@ button.answer-check {
   top: 0.5em;
   right: 1em;
   font-size: 1.8em;
-  color: @gray-lighter;
+  color: @brand-color;
   background: none;
   border: 0;
   outline: 0;
@@ -50,7 +48,7 @@ button.answer-check {
   }
 
   &:disabled:hover {
-    color: @gray-lighter;
+    color: @background-color;
   }
 
   &.checkedAnswer {
